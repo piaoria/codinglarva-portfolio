@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bungee_Hairline } from "next/font/google";
 import localFont from "next/font/local";
+import Header from "@/components/layout/Header";
 import "./globals.css";
 
 export const bungeeHairline = Bungee_Hairline({
@@ -87,6 +88,7 @@ export default function RootLayout({
       <body
         className={`${bungeeHairline.variable} ${pretendardThin.variable} ${pretendardExtraLight.variable} ${pretendardLight.variable} ${pretendardRegular.variable} ${pretendardMedium.variable} ${pretendardSemiBold.variable} ${pretendardBold.variable} ${pretendardExtraBold.variable} ${pretendardBlack.variable} antialiased`}
       >
+        <Header />
         {children}
       </body>
     </html>
