@@ -5,7 +5,7 @@ import Header from "@/components/layout/Header";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import "./globals.css";
 
-export const bungeeHairline = Bungee_Hairline({
+const bungeeHairline = Bungee_Hairline({
   variable: "--font-bungee-hairline",
   subsets: ["latin"],
   weight: ["400"],
@@ -85,7 +85,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="kr" suppressHydrationWarning>
+    <html lang="ko" suppressHydrationWarning>
       <body
         className={`${bungeeHairline.variable} ${pretendardThin.variable} ${pretendardExtraLight.variable} ${pretendardLight.variable} ${pretendardRegular.variable} ${pretendardMedium.variable} ${pretendardSemiBold.variable} ${pretendardBold.variable} ${pretendardExtraBold.variable} ${pretendardBlack.variable} antialiased`}
       >
