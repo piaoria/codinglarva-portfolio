@@ -1,9 +1,11 @@
 import Logo from "./Logo";
+import ThemeSwitch from "./ThemeSwitch";
 
 export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 h-24 px-8 flex items-center">
       <Logo />
+      <ThemeSwitch />
       <div className="flex-1" />
       <div className="flex items-center gap-10">
         <button className="text-xl">
