@@ -28,8 +28,8 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  --background: var(--black);
+  --foreground: var(--white);
   font-family: var(--font-pretendard-regular), Arial, Helvetica, sans-serif;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: none;
