@@ -32,6 +32,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-pretendard-regular), Arial, Helvetica, sans-serif;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: none;
 }
 
 .dark {
@@ -40,4 +41,51 @@ body {
 
   --primary: 210 40% 98%;
   --primary-foreground: 222.2 47.4% 11.2%;
+}
+
+.custom-cursor {
+  width: 10px;
+  height: 10px;
+  background-color: #f78535;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+}
+
+.ripple {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background-color: #f78535;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  animation: ripple 0.5s ease-out forwards;
+}
+
+@keyframes ripple {
+  0% {
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  }
+}
+
+::selection {
+  background-color: #f7863594;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: #f7863594;
+  color: white;
 }

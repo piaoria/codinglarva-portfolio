@@ -3,6 +3,7 @@ import { Bungee_Hairline } from "next/font/google";
 import localFont from "next/font/local";
 import Header from "@/components/layout/Header";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import CustomCursor from "@/components/layout/CustomCursor";
 import "./globals.css";
 
 const bungeeHairline = Bungee_Hairline({
@@ -95,6 +96,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <CustomCursor />
           <Header />
           {children}
         </ThemeProvider>
