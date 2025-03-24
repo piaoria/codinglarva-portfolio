@@ -28,22 +28,22 @@ export default function Logo() {
   }, []);
 
   return (
-    <div className="relative w-[160px] h-[64px]">
+    <div className="relative w-[120px] h-[64px]">
       {/* 첫 번째 원 */}
       <div
-        className={`absolute left-0 top-2 w-12 h-12 rounded-full shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition-colors duration-300 ${
+        className={`absolute left-0 top-3 w-10 h-10 rounded-full shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition-colors duration-300 ${
           visitCount >= 1 ? "bg-[#F78535]" : "bg-[#333333]"
         }`}
       />
       {/* 두 번째 원 */}
       <div
-        className={`absolute left-8 top-2 w-12 h-12 rounded-full shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition-colors duration-300 ${
+        className={`absolute left-5 top-3 w-10 h-10 rounded-full shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition-colors duration-300 ${
           visitCount >= 2 ? "bg-[#F78535]" : "bg-[#333333]"
         }`}
       />
       {/* 세 번째 원 */}
       <div
-        className={`absolute left-16 top-2 w-12 h-12 rounded-full shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition-colors duration-300 ${
+        className={`absolute left-10 top-3 w-10 h-10 rounded-full shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition-colors duration-300 ${
           visitCount >= 3 ? "bg-[#F78535]" : "bg-[#333333]"
         }`}
       />
