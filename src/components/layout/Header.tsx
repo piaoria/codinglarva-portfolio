@@ -61,7 +61,8 @@ export default function Header() {
         <Image
           src="/svgs/horizontal-tap-icon.svg"
           alt="메뉴"
-          fill
+          width={32}
+          height={32}
           className="object-contain dark:invert"
         />
       </button>
