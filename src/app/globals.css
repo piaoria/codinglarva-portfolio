@@ -59,7 +59,31 @@ header {
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: transform 0.1s ease;
+  transition:
+    width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 커서 호버 스타일 */
+.custom-cursor.hover {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(247, 133, 53, 0.5);
+  border: 2px solid #f78535;
+  transform: translate(-50%, -50%) scale(1.5);
+  animation: pulse 2s;
+}
+
+/* 호버 가능한 요소의 기본 커서 숨기기 */
+button,
+a,
+[role="button"],
+[onClick],
+[data-clickable="true"] {
+  cursor: none !important;
 }
 
 /* 파동 효과 */
@@ -86,6 +110,19 @@ header {
     width: 100px;
     height: 100px;
     opacity: 0;
+  }
+}
+
+/* 커서 호버 시 펄스 애니메이션 */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(247, 133, 53, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(247, 133, 53, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(247, 133, 53, 0);
   }
 }
 

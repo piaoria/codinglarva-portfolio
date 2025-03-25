@@ -67,7 +67,6 @@ export default function Archive() {
                   height={150}
                   style={{ width: 300, height: 150 }}
                   className="rounded-lg"
-                  priority
                 />
               </a>
             </div>
