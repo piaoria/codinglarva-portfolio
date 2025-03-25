@@ -3,61 +3,36 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Pretendard";
-  src: url("/fonts/PretendardVariable.woff2") format("woff2-variations");
-  font-weight: 45 920;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "Bungee";
   src: url("/fonts/Bungee-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
+/* 기본 테마 설정 */
 :root {
-  --white: hsl(210 40% 98%);
-  --black: #121212;
-
-  --background: #fdfdfd;
-  --foreground: var(--black);
-
-  --primary: 222.2 47.4% 11.2%;
-  --primary-foreground: 210 40% 98%;
+  --font-color: #2c2c31;
+  --background-color: #fdfdfd;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-pretendard);
-  --font-mono: var(--font-bungee-hairline);
+/* 다크모드 테마 설정 */
+.dark:root {
+  --font-color: #fdfdfd;
+  --background-color: #2c2c31;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #2c2c31;
-    --foreground: #ededed;
-  }
-}
-
+/* 기본 body 설정 */
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: var(--font-pretendard), Arial, Helvetica, sans-serif;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: none;
+  color: var(--font-color);
+  background: var(--background-color);
+  transition:
+    color 0.5s ease,
+    background-color 0.5s ease;
 }
 
-.dark {
-  --background: #2c2c31;
-  --foreground: var(--white);
-
-  --primary: 210 40% 98%;
-  --primary-foreground: 222.2 47.4% 11.2%;
-}
-
+/* 마우스 커서 커스텀 */
 .custom-cursor {
   width: 10px;
   height: 10px;
@@ -70,6 +45,7 @@ body {
   transition: transform 0.1s ease;
 }
 
+/* 파동 효과 */
 .ripple {
   position: fixed;
   width: 10px;
@@ -82,6 +58,7 @@ body {
   animation: ripple 0.5s ease-out forwards;
 }
 
+/* 파동 애니메이션 */
 @keyframes ripple {
   0% {
     width: 10px;
@@ -95,6 +72,7 @@ body {
   }
 }
 
+/* 선택 효과 */
 ::selection {
   background-color: #f7863594;
   color: white;
