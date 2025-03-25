@@ -91,27 +91,32 @@ export default function Header() {
       </button>
 
       {/* 모바일 메뉴 */}
-      {isMenuOpen && (
-        <div
-          ref={menuRef}
-          className="absolute top-16 sm:top-24 left-0 right-0 bg-[var(--dropdown-bg)] border-gray-200 dark:border-gray-800 md:hidden z-50"
-        >
-          <div className="flex flex-col">
-            {menuItems.map((item) => (
-              <button
-                key={item.id}
-                className="px-4 py-3 text-left hover:bg-[var(--dropdown-hover)] transition-colors"
-                onClick={() => scrollToSection(item.id)}
-              >
-                <span className="text-[#F78535] font-black">
-                  {item.label[0]}
-                </span>
-                <span className="font-light">{item.label.slice(1)}</span>
-              </button>
-            ))}
-          </div>
+      <div
+        ref={menuRef}
+        className={`absolute top-16 sm:top-24 left-0 right-0 bg-[var(--dropdown-bg)] border-gray-200 dark:border-gray-800 md:hidden z-10 transition-all duration-300 ${
+          isMenuOpen
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-4 pointer-events-none"
+        }`}
+      >
+        <div className="flex flex-col">
+          {menuItems.map((item, index) => (
+            <button
+              key={item.id}
+              className="px-4 py-3 text-left hover:bg-[var(--dropdown-hover)] transition-colors opacity-0"
+              onClick={() => scrollToSection(item.id)}
+              style={{
+                animation: isMenuOpen
+                  ? `slideDown 0.3s ease forwards ${index * 0.1}s`
+                  : "none",
+              }}
+            >
+              <span className="text-[#F78535] font-black">{item.label[0]}</span>
+              <span className="font-light">{item.label.slice(1)}</span>
+            </button>
+          ))}
         </div>
-      )}
+      </div>
     </header>
   );
 }
