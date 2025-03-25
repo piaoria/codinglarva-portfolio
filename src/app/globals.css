@@ -13,12 +13,14 @@
 :root {
   --font-color: #2c2c31;
   --background-color: #fdfdfd;
+  --box-color: #38383f;
 }
 
 /* 다크모드 테마 설정 */
 .dark:root {
   --font-color: #fdfdfd;
   --background-color: #2c2c31;
+  --box-color: #38383f;
 }
 
 /* 기본 body 설정 */

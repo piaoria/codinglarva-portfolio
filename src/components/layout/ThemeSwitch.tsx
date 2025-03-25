@@ -34,7 +34,8 @@ export default function ThemeSwitch() {
           <Image
             src="/svgs/lightmode-icon.svg"
             alt="라이트 모드"
-            fill
+            width={32}
+            height={32}
             priority
             className="object-contain dark:invert"
           />
@@ -42,7 +43,8 @@ export default function ThemeSwitch() {
           <Image
             src="/svgs/darkmode-icon.svg"
             alt="다크 모드"
-            fill
+            width={32}
+            height={32}
             priority
             className="object-contain"
           />
