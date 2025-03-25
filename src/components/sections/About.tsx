@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function About() {
   return (
     <section
@@ -12,7 +14,7 @@ export default function About() {
             <span className="text-[#F78535] font-black">!</span>
             <br />
             <span className="text-[#F78535] font-black">F</span>
-            <span className="font-light">ront</span>
+            ront
             <span className="text-[#F78535] font-black">E</span>nd 개발자
             <br />
             <span className="font-black">박효진</span> 입니다
@@ -35,10 +37,14 @@ export default function About() {
 
           {/* 프로필 이미지 */}
           <div className="relative w-[300px] mx-auto">
-            <img
+            <Image
               src="/images/profile-image.png"
               alt="프로필 이미지"
-              className="w-full h-auto"
+              width={300}
+              height={300}
+              style={{ width: 300, height: 300 }}
+              className="object-contain"
+              priority={true}
             />
           </div>
         </div>
