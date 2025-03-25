@@ -65,7 +65,9 @@ export default function Archive() {
                   alt="Solved.ac 프로필"
                   width={300}
                   height={150}
+                  style={{ width: 300, height: 150 }}
                   className="rounded-lg"
+                  priority
                 />
               </a>
             </div>

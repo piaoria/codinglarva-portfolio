@@ -3,10 +3,30 @@
 import Logo from "./Logo";
 import ThemeSwitch from "./ThemeSwitch";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        menuRef.current &&
+        buttonRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -33,7 +53,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 h-16 sm:h-24 px-4 sm:px-8 flex items-center">
+    <header className="fixed top-0 left-0 right-0 h-16 sm:h-24 px-4 sm:px-8 flex items-center z-50 bg-[var(--dropdown-bg)]">
       <Logo />
       <ThemeSwitch />
       <div className="flex-1" />
@@ -47,13 +67,14 @@ export default function Header() {
             onClick={() => scrollToSection(item.id)}
           >
             <span className="text-[#F78535] font-black">{item.label[0]}</span>
-            <span className="font-thin">{item.label.slice(1)}</span>
+            <span className="font-light">{item.label.slice(1)}</span>
           </button>
         ))}
       </div>
 
-      {/* 모바일 메뉴 */}
+      {/* 모바일 메뉴 버튼 */}
       <button
+        ref={buttonRef}
         className="md:hidden w-8 h-8 relative"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
         aria-label="메뉴 열기"
@@ -63,24 +84,29 @@ export default function Header() {
           alt="메뉴"
           width={32}
           height={32}
-          className="object-contain dark:invert"
+          style={{ width: 32, height: 32 }}
+          className="object-contain"
+          priority
         />
       </button>
 
       {/* 모바일 메뉴 */}
       {isMenuOpen && (
-        <div className="absolute top-24 left-0 right-0 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800 md:hidden">
+        <div
+          ref={menuRef}
+          className="absolute top-16 sm:top-24 left-0 right-0 bg-[var(--dropdown-bg)] border-gray-200 dark:border-gray-800 md:hidden z-50"
+        >
           <div className="flex flex-col">
             {menuItems.map((item) => (
               <button
                 key={item.id}
-                className="px-4 py-3 text-left hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="px-4 py-3 text-left hover:bg-[var(--dropdown-hover)] transition-colors"
                 onClick={() => scrollToSection(item.id)}
               >
                 <span className="text-[#F78535] font-black">
                   {item.label[0]}
                 </span>
-                <span className="font-thin">{item.label.slice(1)}</span>
+                <span className="font-light">{item.label.slice(1)}</span>
               </button>
             ))}
           </div>

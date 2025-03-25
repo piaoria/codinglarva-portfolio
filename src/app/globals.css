@@ -14,6 +14,10 @@
   --font-color: #2c2c31;
   --background-color: #fdfdfd;
   --box-color: #38383f;
+  --header-color: #2c2c31;
+  --dropdown-bg: #ffffff;
+  --dropdown-hover: #f5f5f5;
+  --svg-color: #2c2c31;
 }
 
 /* 다크모드 테마 설정 */
@@ -21,6 +25,10 @@
   --font-color: #fdfdfd;
   --background-color: #2c2c31;
   --box-color: #38383f;
+  --header-color: #2c2c31;
+  --dropdown-bg: #2c2c31;
+  --dropdown-hover: #2a2a2f;
+  --svg-color: #fdfdfd;
 }
 
 /* 기본 body 설정 */
@@ -30,8 +38,15 @@ body {
   color: var(--font-color);
   background: var(--background-color);
   transition:
-    color 0.5s ease,
-    background-color 0.5s ease;
+    color 0.2s ease,
+    background-color 0.8s ease;
+}
+
+/* 헤더 테마 설정 */
+header {
+  transition:
+    color 0.2s ease,
+    background-color 0.8s ease;
 }
 
 /* 마우스 커서 커스텀 */
