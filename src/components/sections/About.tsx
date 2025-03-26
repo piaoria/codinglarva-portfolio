@@ -4,12 +4,12 @@ export default function About() {
   return (
     <section
       id="about"
-      className="min-h-[600px] flex flex-col items-center justify-center px-8"
+      className="min-h-[400px] md:min-h-[600px] flex flex-col items-center justify-center px-4 sm:px-8"
     >
-      <div className="w-full max-w-7xl flex items-center justify-between gap-16 sm:gap-32 mt-10">
+      <div className="w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 lg:gap-32">
         {/* 왼쪽 텍스트 */}
-        <div className="flex-1 min-w-0 flex justify-end">
-          <div className="text-6xl leading-tight font-thin">
+        <div className="flex-1 min-w-0 flex justify-center md:justify-end">
+          <div className="text-4xl md:text-6xl leading-tight font-thin">
             안녕하세요
             <span className="text-[#F78535] font-black">!</span>
             <br />
@@ -25,8 +25,8 @@ export default function About() {
         {/* 오른쪽 */}
         <div className="flex-1 relative">
           {/* 배경 텍스트 */}
-          <div className="absolute inset-0 flex items-center justify-center mb-48">
-            <h2 className="text-[100px] z-10 font-bungee text-[#F78535] leading-none">
+          <div className="absolute inset-0 flex items-center justify-center mb-24 md:mb-48">
+            <h2 className="text-[50px] md:text-[80px] lg:text-[100px] z-10 font-bungee text-[#F78535] leading-none">
               FRONT
               <br />
               END
@@ -36,13 +36,13 @@ export default function About() {
           </div>
 
           {/* 프로필 이미지 */}
-          <div className="relative w-[300px] mx-auto">
+          <div className="relative w-[150px] md:w-[250px] lg:w-[300px] mx-auto">
             <Image
               src="/images/profile-image.png"
               alt="프로필 이미지"
               width={300}
               height={300}
-              style={{ width: 300, height: 300 }}
+              style={{ width: "100%", height: "auto" }}
               className="object-contain"
               priority={true}
             />
