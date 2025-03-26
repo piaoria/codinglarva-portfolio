@@ -51,7 +51,6 @@ export default function Archive() {
               alt="Baekjoon Icon"
               width={0}
               height={0}
-              sizes="(max-width: 475px) 30px, 40px"
               className="absolute top-3 xs:top-4 sm:top-5 left-3 xs:left-4 sm:left-5 w-10 xs:w-7.5 sm:w-10 h-10 xs:h-7.5 sm:h-10"
             />
             <div className="mt-1 sm:mt-0">
@@ -70,9 +69,8 @@ export default function Archive() {
                   alt="Solved.ac 프로필"
                   width={0}
                   height={0}
-                  sizes="300px"
                   style={{ width: "100%", maxWidth: 300, height: "auto" }}
-                  className="rounded-lg"
+                  className="rounded-md"
                 />
               </a>
             </div>

@@ -79,15 +79,16 @@ export default function Header() {
         onClick={() => setIsMenuOpen(!isMenuOpen)}
         aria-label="메뉴 열기"
       >
-        <Image
-          src="/svgs/horizontal-tap-icon.svg"
-          alt="메뉴"
-          width={32}
-          height={32}
-          style={{ width: 32, height: 32 }}
-          className="object-contain"
-          priority
-        />
+        <div className="w-6 relative">
+          <Image
+            src="/svgs/horizontal-tap-icon.svg"
+            alt="메뉴"
+            width={24}
+            height={24}
+            priority
+            className="object-contain dark:invert"
+          />
+        </div>
       </button>
 
       {/* 모바일 메뉴 */}

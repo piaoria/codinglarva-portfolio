@@ -29,22 +29,22 @@ export default function ThemeSwitch() {
       className="w-12 h-12 relative rounded-full flex items-center justify-center transition-all duration-300 hover:bg-gray-200/50 dark:hover:bg-gray-700/50"
       aria-label="테마 변경"
     >
-      <div className="w-8 h-8 relative">
+      <div className="w-6 relative">
         {theme === "dark" ? (
           <Image
             src="/svgs/lightmode-icon.svg"
             alt="라이트 모드"
-            width={32}
-            height={32}
+            width={24}
+            height={24}
             priority
-            className="object-contain dark:invert"
+            className="object-contain"
           />
         ) : (
           <Image
             src="/svgs/darkmode-icon.svg"
             alt="다크 모드"
-            width={32}
-            height={32}
+            width={24}
+            height={24}
             priority
             className="object-contain"
           />
