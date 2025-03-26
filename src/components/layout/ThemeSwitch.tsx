@@ -26,7 +26,7 @@ export default function ThemeSwitch() {
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="w-12 h-12 relative rounded-full flex items-center justify-center transition-all duration-300 hover:bg-gray-200/50 dark:hover:bg-gray-700/50"
+      className="w-12 h-12 relative rounded-full flex items-center justify-center transition-all duration-300 md:hover:bg-gray-200/50 md:dark:hover:bg-gray-700/50"
       aria-label="테마 변경"
     >
       <div className="w-6 relative">
