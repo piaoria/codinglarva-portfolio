@@ -34,7 +34,6 @@
 /* 기본 body 설정 */
 body {
   font-family: var(--font-pretendard), Arial, Helvetica, sans-serif;
-  cursor: none;
   color: var(--font-color);
   background: var(--background-color);
   transition:
@@ -42,29 +41,50 @@ body {
     background-color 0.8s ease;
 }
 
-/* 헤더 테마 설정 */
-header {
-  transition:
-    color 0.2s ease,
-    background-color 0.8s ease;
-}
+/* 데스크톱에서만 커스텀 커서 적용 */
+@media (min-width: 475px) {
+  body {
+    cursor: none;
+    /* 마우스 커서 커스텀 */
+    .custom-cursor {
+      width: 10px;
+      height: 10px;
+      background-color: #f78535;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition:
+        width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        border 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
 
-/* 마우스 커서 커스텀 */
-.custom-cursor {
-  width: 10px;
-  height: 10px;
-  background-color: #f78535;
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition:
-    width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    border 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* 호버 가능한 요소의 기본 커서 숨기기 */
+  button,
+  a,
+  [role="button"],
+  [onClick],
+  [data-clickable="true"] {
+    cursor: none !important;
+  }
+
+  /* 파동 효과 */
+  .ripple {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: #f78535;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    animation: ripple 0.5s ease-out forwards;
+  }
 }
 
 /* 커서 호버 스타일 */
@@ -77,26 +97,11 @@ header {
   animation: pulse 2s;
 }
 
-/* 호버 가능한 요소의 기본 커서 숨기기 */
-button,
-a,
-[role="button"],
-[onClick],
-[data-clickable="true"] {
-  cursor: none !important;
-}
-
-/* 파동 효과 */
-.ripple {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  background-color: #f78535;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  animation: ripple 0.5s ease-out forwards;
+/* 헤더 테마 설정 */
+header {
+  transition:
+    color 0.2s ease,
+    background-color 0.8s ease;
 }
 
 /* 파동 애니메이션 */
