@@ -19,7 +19,7 @@ export default function BaseChip({
 
   return (
     <div
-      className={`${sizeClasses[size]} h-[30px] rounded-[50px] flex items-center justify-center text-[12px] font-bold whitespace-pre-line text-center`}
+      className={`${sizeClasses[size]} h-[20px] rounded-[50px] flex items-center justify-center text-[12px] font-bold whitespace-pre-line text-center`}
       style={{
         color: textColor,
         backgroundColor: backgroundColor,
