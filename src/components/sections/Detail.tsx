@@ -17,7 +17,7 @@ export default function Detail() {
 
   return (
     <section id="detail" className="min-h-[500px] flex flex-col items-center">
-      <h2 className="text-4xl sm:text-6xl font-regular mt-6 sm:mt-10 text-center">
+      <h2 className="text-6xl font-regular mt-6 sm:mt-10 text-center">
         <span>저는 이런 사람 입니다</span>
         <span className="text-[#F78535] font-black">.</span>
       </h2>
