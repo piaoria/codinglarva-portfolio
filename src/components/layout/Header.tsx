@@ -52,43 +52,45 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 h-16 sm:h-24 px-4 sm:px-8 flex items-center z-50 bg-[var(--dropdown-bg)]">
-      <Logo />
-      <ThemeSwitch />
-      <div className="flex-1" />
+    <header className="fixed top-0 left-0 right-0 h-16 sm:h-24 px-4 sm:px-8 flex items-center z-50 bg-[var(--dropdown-bg)] shadow-md">
+      <div className="w-full max-w-[1440px] mx-auto flex items-center">
+        <Logo />
+        <ThemeSwitch />
+        <div className="flex-1" />
 
-      {/* 데스크톱 */}
-      <div className="hidden md:flex items-center gap-4 sm:gap-10">
-        {menuItems.map((item) => (
-          <button
-            key={item.id}
-            className="text-base sm:text-xl"
-            onClick={() => scrollToSection(item.id)}
-          >
-            <span className="text-[#F78535] font-black">{item.label[0]}</span>
-            <span className="font-light">{item.label.slice(1)}</span>
-          </button>
-        ))}
-      </div>
-
-      {/* 모바일 메뉴 버튼 */}
-      <button
-        ref={buttonRef}
-        className="md:hidden w-8 h-8 relative"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        aria-label="메뉴 열기"
-      >
-        <div className="w-6 relative">
-          <Image
-            src="/svgs/horizontal-tap-icon.svg"
-            alt="메뉴"
-            width={24}
-            height={24}
-            priority
-            className="object-contain dark:invert"
-          />
+        {/* 데스크톱 */}
+        <div className="hidden md:flex items-center gap-4 sm:gap-10">
+          {menuItems.map((item) => (
+            <button
+              key={item.id}
+              className="text-base sm:text-xl"
+              onClick={() => scrollToSection(item.id)}
+            >
+              <span className="text-[#F78535] font-black">{item.label[0]}</span>
+              <span className="font-light">{item.label.slice(1)}</span>
+            </button>
+          ))}
         </div>
-      </button>
+
+        {/* 모바일 메뉴 버튼 */}
+        <button
+          ref={buttonRef}
+          className="md:hidden w-8 h-8 relative"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="메뉴 열기"
+        >
+          <div className="w-6 relative">
+            <Image
+              src="/svgs/horizontal-tap-icon.svg"
+              alt="메뉴"
+              width={24}
+              height={24}
+              priority
+              className="object-contain dark:invert"
+            />
+          </div>
+        </button>
+      </div>
 
       {/* 모바일 메뉴 */}
       <div
