@@ -26,7 +26,7 @@ export default function Detail() {
         <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-8 justify-items-center">
           {/* Team */}
           <div
-            className={`group w-[300px] sm:w-[400px] h-[250px] lg:w-[320px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative transition-all duration-300 ${
+            className={`group w-[300px] sm:w-[400px] h-[250px] lg:w-[350px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative transition-all duration-300 ${
               activeCards["team"] ? "ring-2 ring-[#F78535]" : ""
             }`}
             onClick={() => handleCardClick("team")}
@@ -64,7 +64,7 @@ export default function Detail() {
 
           {/* Idea */}
           <div
-            className={`group w-[300px] sm:w-[400px] h-[250px] lg:w-[320px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative transition-all duration-300 ${
+            className={`group w-[300px] sm:w-[400px] h-[250px] lg:w-[350px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative transition-all duration-300 ${
               activeCards["idea"] ? "ring-2 ring-[#F78535]" : ""
             }`}
             onClick={() => handleCardClick("idea")}
@@ -102,7 +102,7 @@ export default function Detail() {
 
           {/* Positive */}
           <div
-            className={`group w-[300px] sm:w-[400px] h-[250px] lg:w-[320px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative transition-all duration-300 ${
+            className={`group w-[300px] sm:w-[400px] h-[250px] lg:w-[350px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative transition-all duration-300 ${
               activeCards["positive"] ? "ring-2 ring-[#F78535]" : ""
             }`}
             onClick={() => handleCardClick("positive")}
