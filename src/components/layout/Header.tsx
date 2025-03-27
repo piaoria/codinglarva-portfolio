@@ -33,8 +33,7 @@ export default function Header() {
     if (element) {
       const headerHeight = window.innerWidth >= 768 ? 96 : 64; // 브레이크포인트 기준
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition =
-        elementPosition + window.pageYOffset - headerHeight;
+      const offsetPosition = elementPosition + window.scrollY - headerHeight;
 
       window.scrollTo({
         top: offsetPosition,

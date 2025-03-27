@@ -18,6 +18,7 @@
   --dropdown-bg: #ffffff;
   --dropdown-hover: #f5f5f5;
   --svg-color: #2c2c31;
+  --hint-color: #00009c;
 }
 
 /* 다크모드 테마 설정 */
@@ -29,6 +30,7 @@
   --dropdown-bg: #2c2c31;
   --dropdown-hover: #2a2a2f;
   --svg-color: #fdfdfd;
+  --hint-color: #8181a1;
 }
 
 /* 기본 body 설정 */

@@ -66,7 +66,7 @@ export default function Logo() {
       {/* 힌트 카드 */}
       {showHint && (
         <div
-          className="absolute w-[200px] bg-[var(--dropdown-bg)] border border-[var(--box-color)] rounded-lg p-4 shadow-lg z-50"
+          className="absolute w-[260px] bg-[var(--dropdown-bg)] border border-[var(--box-color)] rounded-lg p-4 shadow-lg z-50"
           style={{
             left: `${hintPosition.x}px`,
             top: `${hintPosition.y}px`,
@@ -74,11 +74,13 @@ export default function Logo() {
           }}
         >
           <p className="text-sm text-[var(--font-color)]">
-            이 원은 방문할 때마다 한 개씩 채워지게 됩니다.
+            애벌레 로고는 포트폴리오 관심도 입니다.
             <br />
-            3번 방문하면 모든 원을 채울 수 있습니다.
+            방문할 때마다 한 개씩 채워지게 됩니다.
             <br />
-            Shift + R을 누르면 초기화됩니다.
+            <span className="text-xs text-[var(--hint-color)]">
+              Shift + R을 누르면 초기화됩니다.
+            </span>
           </p>
         </div>
       )}
