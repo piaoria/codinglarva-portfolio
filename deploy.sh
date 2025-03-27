@@ -1,5 +1,5 @@
 # 디스코드 Webhook 주소
-WEBHOOK_URL="https://discord.com/api/webhooks/1353309083565817941/1JQ3EYIqZo31Y3lI6hqXApuzGPP7-eB9xdjDFbROEMRcydj1ezqJcD15UbN60M-50fZJ"  # 본인 주소로 교체
+WEBHOOK_URL="$DISCORD_SECRET"
 
 echo "[🚀 빌드 시작] $(date)"
 
