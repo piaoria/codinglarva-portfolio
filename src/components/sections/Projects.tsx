@@ -20,6 +20,7 @@ import {
   VueChip,
   PiniaChip,
   PythonChip,
+  JavascriptChip,
 } from "@/components/chips";
 
 export default function Projects() {
@@ -40,12 +41,11 @@ export default function Projects() {
               <Image
                 src="/images/codinglarva-icon.png"
                 alt="CodingLarva Icon"
-                width={48}
-                height={48}
-                className="w-12 h-12"
+                width={64}
+                height={64}
               />
               <div className="flex flex-col">
-                <p className="text-sm text-gray-500">
+                <p className="text-md text-gray-500">
                   디자인부터 배포까지 Self 포트폴리오
                 </p>
                 <div className="flex flex-col gap-8">
@@ -89,7 +89,7 @@ export default function Projects() {
                   width={16}
                   height={16}
                 />
-                <span className="text-sm text-gray-500">6주</span>
+                <span className="text-sm text-gray-500">~Ing</span>
               </div>
               <div className="flex items-center gap-1">
                 <Image
@@ -98,7 +98,7 @@ export default function Projects() {
                   width={16}
                   height={16}
                 />
-                <span className="text-sm text-gray-500">6명</span>
+                <span className="text-sm text-gray-500">1명</span>
               </div>
             </div>
           </div>
@@ -118,9 +118,8 @@ export default function Projects() {
               <Image
                 src="/images/eum-icon.png"
                 alt="EUM Icon"
-                width={48}
-                height={48}
-                className="w-12 h-12"
+                width={64}
+                height={64}
               />
               <div className="flex flex-col">
                 <p className="text-sm text-gray-500">실시간 필기 공유 서비스</p>
@@ -190,9 +189,8 @@ export default function Projects() {
               <Image
                 src="/images/newlearn-icon.png"
                 alt="NewLearn Icon"
-                width={48}
-                height={48}
-                className="w-12 h-12"
+                width={64}
+                height={64}
               />
               <div className="flex flex-col">
                 <p className="text-sm text-gray-500">
@@ -267,9 +265,8 @@ export default function Projects() {
               <Image
                 src="/images/crewin-icon.png"
                 alt="Crewin Icon"
-                width={48}
-                height={48}
-                className="w-12 h-12"
+                width={64}
+                height={64}
               />
               <div className="flex flex-col">
                 <p className="text-sm text-gray-500">러닝 크루 관리 플랫폼</p>
@@ -340,9 +337,8 @@ export default function Projects() {
               <Image
                 src="/images/honeymoney-icon.png"
                 alt="Honeymoney Icon"
-                width={48}
-                height={48}
-                className="w-12 h-12"
+                width={64}
+                height={64}
               />
               <div className="flex flex-col">
                 <p className="text-sm text-gray-500">금융 상품 추천 서비스</p>
@@ -353,6 +349,7 @@ export default function Projects() {
                     </h3>
                     <div className="flex gap-2">
                       <VueChip />
+                      <JavascriptChip />
                       <PiniaChip />
                       <PythonChip />
                     </div>
