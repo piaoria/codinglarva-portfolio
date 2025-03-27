@@ -2,7 +2,7 @@ interface BaseChipProps {
   text: string;
   textColor: string;
   backgroundColor: string;
-  size: "small" | "medium" | "large";
+  size: "small" | "medium" | "large" | "xlarge";
 }
 
 export default function BaseChip({
@@ -15,6 +15,7 @@ export default function BaseChip({
     small: "w-[60px]",
     medium: "w-[80px]",
     large: "w-[100px]",
+    xlarge: "w-[120px]",
   };
 
   return (

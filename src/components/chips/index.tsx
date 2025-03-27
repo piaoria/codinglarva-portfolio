@@ -156,11 +156,12 @@ export const ReactNativeChip = () => (
   />
 );
 
+// 4단계 Chips
 export const StyledComponentChip = () => (
   <BaseChip
     text="StyledComponent"
     textColor="#FFD364"
     backgroundColor="#C35190"
-    size="large"
+    size="xlarge"
   />
 );
