@@ -9,13 +9,27 @@ import Contact from "@/components/sections/Contact";
 export default function Home() {
   return (
     <main className="pt-16 sm:pt-24">
-      <About />
-      <Detail />
-      <Skills />
-      <Projects />
-      <Awards />
-      <Archive />
-      <Contact />
+      <div className="mb-12">
+        <About />
+      </div>
+      <div className="mb-12">
+        <Detail />
+      </div>
+      <div className="mb-12">
+        <Skills />
+      </div>
+      <div className="mb-12">
+        <Projects />
+      </div>
+      <div className="mb-12">
+        <Awards />
+      </div>
+      <div className="mb-12">
+        <Archive />
+      </div>
+      <div className="mb-12">
+        <Contact />
+      </div>
     </main>
   );
 }
