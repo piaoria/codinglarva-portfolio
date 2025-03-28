@@ -56,8 +56,6 @@ export default function Header() {
       <div className="w-full max-w-[1440px] mx-auto flex items-center">
         <Logo />
         <ThemeSwitch />
-        <div className="flex-1" />
-
         {/* 데스크톱 */}
         <div className="hidden md:flex items-center gap-4 sm:gap-10">
           {menuItems.map((item) => (
