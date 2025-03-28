@@ -8,10 +8,10 @@ export default function Archive() {
       </h2>
 
       {/* Cards 리스트 */}
-      <div className="mx-auto px-4 mt-8 sm:mt-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8 justify-items-center">
+      <div className="mt-8 sm:mt-16 w-11/12 max-w-[1000px]">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8">
           {/* Github */}
-          <div className="w-[300px] sm:w-[400px] h-[200px] sm:h-[260px] lg:w-[320px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative">
+          <div className="w-full h-[260px] border-2 border-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative">
             <Image
               src="/svgs/github-icon.svg"
               alt="Github Icon"
@@ -28,7 +28,7 @@ export default function Archive() {
           </div>
 
           {/* Tistory */}
-          <div className="w-[300px] sm:w-[400px] h-[200px] sm:h-[260px] lg:w-[320px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative">
+          <div className="w-full h-[260px] border-2 border-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative">
             <Image
               src="/svgs/tistory-icon.svg"
               alt="Tistory Icon"
@@ -45,7 +45,7 @@ export default function Archive() {
           </div>
 
           {/* Baekjoon */}
-          <div className="w-[300px] sm:w-[400px] h-[200px] sm:h-[260px] lg:w-[320px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative">
+          <div className="w-full h-[260px] border-2 border-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative">
             <Image
               src="/svgs/baekjoon-icon.svg"
               alt="Baekjoon Icon"
@@ -58,7 +58,7 @@ export default function Archive() {
                 Baekjoon
               </h3>
             </div>
-            <div className="mt-3 xs:mt-4 sm:mt-6 flex justify-center">
+            <div className="mt-6 xs:mt-10 my-auto flex justify-center">
               <a
                 href="https://solved.ac/codinglarva"
                 target="_blank"
