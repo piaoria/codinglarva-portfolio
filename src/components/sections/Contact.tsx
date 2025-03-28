@@ -24,9 +24,7 @@ export default function Contact() {
             <span className="text-xs xs:text-sm text-gray-400 font-light">
               이름
             </span>
-            <span className="text-xs xs:text-sm text-white font-bold">
-              박효진
-            </span>
+            <span className="text-xs md:text-lg font-bold">박효진</span>
           </div>
         </div>
 
@@ -43,9 +41,7 @@ export default function Contact() {
             <span className="text-xs xs:text-sm text-gray-400 font-light">
               생일
             </span>
-            <span className="text-xs xs:text-sm text-white font-bold">
-              1996.06.24
-            </span>
+            <span className="text-xs md:text-lg font-bold">1996.06.24</span>
           </div>
         </div>
 
@@ -62,9 +58,7 @@ export default function Contact() {
             <span className="text-xs xs:text-sm text-gray-400 font-light">
               학교
             </span>
-            <span className="text-xs xs:text-sm text-white font-bold">
-              중앙대학교
-            </span>
+            <span className="text-xs md:text-lg font-bold">중앙대학교</span>
           </div>
         </div>
 
@@ -81,9 +75,7 @@ export default function Contact() {
             <span className="text-xs xs:text-sm text-gray-400 font-light">
               집
             </span>
-            <span className="text-xs xs:text-sm text-white font-bold">
-              서울시 용산구
-            </span>
+            <span className="text-xs md:text-lg font-bold">서울시 용산구</span>
           </div>
         </div>
 
@@ -100,7 +92,7 @@ export default function Contact() {
             <span className="text-xs xs:text-sm text-gray-400 font-light">
               이메일
             </span>
-            <span className="text-xs xs:text-sm text-white font-bold">
+            <span className="text-xs md:text-lg font-bold">
               cron.phj@gmail.com
             </span>
           </div>
@@ -119,9 +111,7 @@ export default function Contact() {
             <span className="text-xs xs:text-sm text-gray-400 font-light">
               전화번호
             </span>
-            <span className="text-xs xs:text-sm text-white font-bold">
-              010.3319.9765
-            </span>
+            <span className="text-xs md:text-lg font-bold">010.3319.9765</span>
           </div>
         </div>
       </div>
