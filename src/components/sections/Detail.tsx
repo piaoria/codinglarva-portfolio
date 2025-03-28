@@ -27,7 +27,7 @@ export default function Detail() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-8 justify-items-center">
           {/* Team */}
           <div
-            className={`group w-11/12 max-w-[400px] h-[260px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative transition-all duration-300 ${
+            className={`group w-11/12 max-w-[480px] h-[320px] sm:h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-5 sm:p-6 relative transition-all duration-300 ${
               activeCards["team"] ? "ring-2 ring-[#F78535]" : ""
             }`}
             onClick={() => handleCardClick("team")}
@@ -49,11 +49,11 @@ export default function Detail() {
               className="absolute top-2 xs:top-3 sm:top-4 left-2 xs:left-3 sm:left-4 w-12 xs:w-8 sm:w-12 h-12 xs:h-8 sm:h-12 z-10 pointer-events-none dark:invert"
             />
             <div className="mt-2 sm:mt-0 pointer-events-none">
-              <h3 className="text-2xl sm:text-3xl font-bold font-pretendard text-center">
+              <h3 className="text-3xl font-bold font-pretendard text-center">
                 TEAM
                 <div className="w-full h-[1px] bg-current opacity-50 mt-3"></div>
               </h3>
-              <p className="text-[15px] mt-4 text-left leading-normal">
+              <p className="text-[18px] mt-4 text-left leading-normal">
                 팀을 정말 좋아해요. 팀장을 맡든, 팔로워로 있든 늘 팀의{" "}
                 <span className="font-bold">분위기와 소통</span>을 가장 중요하게
                 생각했어요.
@@ -67,7 +67,7 @@ export default function Detail() {
 
           {/* Idea */}
           <div
-            className={`group w-11/12 max-w-[400px] h-[260px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative transition-all duration-300 ${
+            className={`group w-11/12 max-w-[480px] h-[320px] sm:h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-5 sm:p-6 relative transition-all duration-300 ${
               activeCards["idea"] ? "ring-2 ring-[#F78535]" : ""
             }`}
             onClick={() => handleCardClick("idea")}
@@ -89,11 +89,11 @@ export default function Detail() {
               className="absolute top-2 xs:top-3 sm:top-4 left-2 xs:left-3 sm:left-4 w-12 xs:w-8 sm:w-12 h-12 xs:h-8 sm:h-12 z-10 pointer-events-none dark:invert"
             />
             <div className="mt-2 sm:mt-0 pointer-events-none">
-              <h3 className="text-2xl sm:text-3xl font-bold font-pretendard text-center">
+              <h3 className="text-3xl font-bold font-pretendard text-center">
                 IDEA
                 <div className="w-full h-[1px] bg-current opacity-50 mt-3"></div>
               </h3>
-              <p className="text-[15px] mt-4 text-left leading-normal">
+              <p className="text-[18px] mt-4 text-left leading-normal">
                 뻔한 아이디어보다는{" "}
                 <span className="font-bold">`왜 이걸 만들지?`</span>라는
                 질문으로 항상 시작해요. 고객에게 필요한 게 뭔지 직접 설문도 하고
@@ -107,7 +107,7 @@ export default function Detail() {
 
           {/* Positive */}
           <div
-            className={`group w-11/12 max-w-[400px] h-[260px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative transition-all duration-300 ${
+            className={`group w-11/12 max-w-[480px] h-[320px] sm:h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-5 sm:p-6 relative transition-all duration-300 ${
               activeCards["positive"] ? "ring-2 ring-[#F78535]" : ""
             }`}
             onClick={() => handleCardClick("positive")}
@@ -129,11 +129,11 @@ export default function Detail() {
               className="absolute top-2 xs:top-3 sm:top-4 left-2 xs:left-3 sm:left-4 w-12 xs:w-8 sm:w-12 h-12 xs:h-8 sm:h-12 z-10 pointer-events-none dark:invert"
             />
             <div className="mt-1 sm:mt-0 pointer-events-none">
-              <h3 className="text-2xl sm:text-3xl font-bold font-pretendard text-center">
+              <h3 className="text-3xl font-bold font-pretendard text-center">
                 POSITIVE
                 <div className="w-full h-[1px] bg-current opacity-50 mt-3"></div>
               </h3>
-              <p className="text-[15px] mt-4 text-left leading-normal">
+              <p className="text-[18px] mt-4 text-left leading-normal">
                 <span className="font-bold">`긍정토템`</span>이라는 별명이 있을
                 만큼 긍정적인 편이에요. 어려운 상황에서도 쉽게 지치지 않고
                 긍정적으로 생각하려고 노력하고, 덕분에 주변 사람들이랑도 더 쉽게
@@ -149,7 +149,7 @@ export default function Detail() {
 
           {/* Goal */}
           <div
-            className={`group w-11/12 max-w-[400px] h-[260px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative transition-all duration-300 ${
+            className={`group w-11/12 max-w-[480px] h-[320px] sm:h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-5 sm:p-6 relative transition-all duration-300 ${
               activeCards["goal"] ? "ring-2 ring-[#F78535]" : ""
             }`}
             onClick={() => handleCardClick("goal")}
@@ -171,11 +171,11 @@ export default function Detail() {
               className="absolute top-2 xs:top-3 sm:top-4 left-2 xs:left-3 sm:left-4 w-12 xs:w-8 sm:w-12 h-12 xs:h-8 sm:h-12 z-10 pointer-events-none dark:invert"
             />
             <div className="mt-1 sm:mt-0 pointer-events-none">
-              <h3 className="text-2xl sm:text-3xl font-bold font-pretendard text-center">
+              <h3 className="text-3xl font-bold font-pretendard text-center">
                 GOAL
                 <div className="w-full h-[1px] bg-current opacity-50 mt-3"></div>
               </h3>
-              <p className="text-[15px] mt-4 text-left leading-normal">
+              <p className="text-[18px] mt-4 text-left leading-normal">
                 무엇을 하든 목표부터 명확하게 정하고 시작해요. 비전공자로 개발을
                 시작했지만, 단계별 목표를 세우고 하나씩 성취하다 보니 최우수
                 교육생이 되기도 했어요.

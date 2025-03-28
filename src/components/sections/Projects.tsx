@@ -96,7 +96,7 @@ export default function Projects() {
 
               {/* 기술 스택 드롭다운 */}
               {openDropdown === "codinglarva" && (
-                <div className="lg:hidden absolute top-full left-0 -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10 animate-slideDown">
+                <div className="lg:hidden absolute top-full left-[-90px] -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10 animate-slideDown">
                   <div className="flex flex-col gap-2">
                     <NextChip />
                     <TypescriptChip />
@@ -231,7 +231,7 @@ export default function Projects() {
 
               {/* 기술 스택 드롭다운 */}
               {openDropdown === "eum" && (
-                <div className="lg:hidden absolute top-full left-0 -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10 animate-slideDown">
+                <div className="lg:hidden absolute top-full left-[-90px] -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10 animate-slideDown">
                   <div className="flex flex-col gap-2">
                     <ReactNativeChip />
                     <TypescriptChip />
@@ -365,7 +365,7 @@ export default function Projects() {
 
               {/* 기술 스택 드롭다운 */}
               {openDropdown === "newlearn" && (
-                <div className="lg:hidden absolute top-full left-0 -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10 animate-slideDown">
+                <div className="lg:hidden absolute top-full left-[-90px] -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10 animate-slideDown">
                   <div className="flex flex-col gap-2">
                     <ReactChip />
                     <TypescriptChip />
@@ -500,7 +500,7 @@ export default function Projects() {
 
               {/* 기술 스택 드롭다운 */}
               {openDropdown === "crewin" && (
-                <div className="lg:hidden absolute top-full left-0 -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10 animate-slideDown">
+                <div className="lg:hidden absolute top-full left-[-90px] -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10 animate-slideDown">
                   <div className="flex flex-col gap-2">
                     <ReactChip />
                     <TypescriptChip />
@@ -634,7 +634,7 @@ export default function Projects() {
 
               {/* 기술 스택 드롭다운 */}
               {openDropdown === "honeymoney" && (
-                <div className="lg:hidden absolute top-full left-0 -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10 animate-slideDown">
+                <div className="lg:hidden absolute top-full left-[-90px] -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10 animate-slideDown">
                   <div className="flex flex-col gap-2">
                     <VueChip />
                     <JavascriptChip />
