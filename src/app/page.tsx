@@ -10,9 +10,7 @@ import Footer from "@/components/layout/Footer";
 export default function Home() {
   return (
     <main className="pt-16 sm:pt-24">
-      <div className="pb-16 sm:pb-24">
-        <About />
-      </div>
+      <About />
       <div className="pb-16 sm:pb-24">
         <Detail />
       </div>
