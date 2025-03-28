@@ -4,7 +4,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="min-h-[400px] md:min-h-[600px] flex flex-col items-center justify-center px-4 sm:px-8 pt-8"
+      className="min-h-[400px] md:min-h-[500px] flex flex-col items-center justify-center px-4 sm:px-8 pt-8"
     >
       <div className="w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 lg:gap-32">
         {/* 왼쪽 텍스트 */}
