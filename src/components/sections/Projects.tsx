@@ -322,9 +322,7 @@ export default function Projects() {
                 className="w-12 h-12 md:w-14 md:h-14"
               />
               <div className="flex flex-col">
-                <p className="text-sm text-gray-500">
-                  빅데이터 추천
-                </p>
+                <p className="text-sm text-gray-500">빅데이터 추천</p>
                 <div className="flex flex-col gap-8">
                   <div className="flex items-center gap-4">
                     <h3 className="text-xl md:text-2xl font-bold text-[#9CAEEB]">
