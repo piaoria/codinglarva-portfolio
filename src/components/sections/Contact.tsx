@@ -58,7 +58,9 @@ export default function Contact() {
             <span className="text-xs xs:text-sm text-gray-400 font-light">
               학교
             </span>
-            <span className="text-xs md:text-lg font-bold">중앙대학교</span>
+            <span className="text-xs md:text-lg font-bold">
+              Chung-Ang Univ.
+            </span>
           </div>
         </div>
 
