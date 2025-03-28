@@ -73,7 +73,7 @@ export default function Projects() {
             {/* 오른쪽: 버튼들 */}
             <div className="flex items-center gap-2 relative">
               <button
-                className="lg:hidden px-2 py-1.5 text-white rounded-lg text-xs hover:bg-[#F78535] transition-colors flex items-center sm:gap-1"
+                className="lg:hidden px-2 py-1.5 rounded-lg text-xs hover:bg-[#F78535] transition-colors flex items-center sm:gap-1"
                 onClick={() => toggleDropdown("codinglarva")}
               >
                 기술 스택
@@ -96,7 +96,7 @@ export default function Projects() {
 
               {/* 기술 스택 드롭다운 */}
               {openDropdown === "codinglarva" && (
-                <div className="lg:hidden absolute top-full left-0 -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10">
+                <div className="lg:hidden absolute top-full left-0 -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10 animate-slideDown">
                   <div className="flex flex-col gap-2">
                     <NextChip />
                     <TypescriptChip />
@@ -208,7 +208,7 @@ export default function Projects() {
             {/* 오른쪽: 버튼들 */}
             <div className="flex items-center gap-2 relative">
               <button
-                className="lg:hidden px-2 py-1.5 text-white rounded-lg text-xs hover:bg-[#A59CCF] transition-colors flex items-center sm:gap-1"
+                className="lg:hidden px-2 py-1.5 rounded-lg text-xs hover:bg-[#A59CCF] transition-colors flex items-center sm:gap-1"
                 onClick={() => toggleDropdown("eum")}
               >
                 기술 스택
@@ -231,7 +231,7 @@ export default function Projects() {
 
               {/* 기술 스택 드롭다운 */}
               {openDropdown === "eum" && (
-                <div className="lg:hidden absolute top-full left-0 -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10">
+                <div className="lg:hidden absolute top-full left-0 -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10 animate-slideDown">
                   <div className="flex flex-col gap-2">
                     <ReactNativeChip />
                     <TypescriptChip />
@@ -342,7 +342,7 @@ export default function Projects() {
             {/* 오른쪽: 버튼들 */}
             <div className="flex items-center gap-2 relative">
               <button
-                className="lg:hidden px-2 py-1.5 text-white rounded-lg text-xs hover:bg-[#9CAEEB] transition-colors flex items-center sm:gap-1"
+                className="lg:hidden px-2 py-1.5 rounded-lg text-xs hover:bg-[#9CAEEB] transition-colors flex items-center sm:gap-1"
                 onClick={() => toggleDropdown("newlearn")}
               >
                 기술 스택
@@ -365,7 +365,7 @@ export default function Projects() {
 
               {/* 기술 스택 드롭다운 */}
               {openDropdown === "newlearn" && (
-                <div className="lg:hidden absolute top-full left-0 -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10">
+                <div className="lg:hidden absolute top-full left-0 -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10 animate-slideDown">
                   <div className="flex flex-col gap-2">
                     <ReactChip />
                     <TypescriptChip />
@@ -477,7 +477,7 @@ export default function Projects() {
             {/* 오른쪽: 버튼들 */}
             <div className="flex items-center gap-2 relative">
               <button
-                className="lg:hidden px-2 py-1.5 text-white rounded-lg text-xs hover:bg-[#B6B9C5] transition-colors flex items-center sm:gap-1"
+                className="lg:hidden px-2 py-1.5 rounded-lg text-xs hover:bg-[#B6B9C5] transition-colors flex items-center sm:gap-1"
                 onClick={() => toggleDropdown("crewin")}
               >
                 기술 스택
@@ -500,7 +500,7 @@ export default function Projects() {
 
               {/* 기술 스택 드롭다운 */}
               {openDropdown === "crewin" && (
-                <div className="lg:hidden absolute top-full left-0 -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10">
+                <div className="lg:hidden absolute top-full left-0 -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10 animate-slideDown">
                   <div className="flex flex-col gap-2">
                     <ReactChip />
                     <TypescriptChip />
@@ -611,7 +611,7 @@ export default function Projects() {
             {/* 오른쪽: 버튼들 */}
             <div className="flex items-center gap-2 relative">
               <button
-                className="lg:hidden px-2 py-1.5 text-white rounded-lg text-xs hover:bg-[#FFCC5C] transition-colors flex items-center sm:gap-1"
+                className="lg:hidden px-2 py-1.5 rounded-lg text-xs hover:bg-[#FFCC5C] transition-colors flex items-center sm:gap-1"
                 onClick={() => toggleDropdown("honeymoney")}
               >
                 기술 스택
@@ -634,7 +634,7 @@ export default function Projects() {
 
               {/* 기술 스택 드롭다운 */}
               {openDropdown === "honeymoney" && (
-                <div className="lg:hidden absolute top-full left-0 -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10">
+                <div className="lg:hidden absolute top-full left-0 -translate-x-16 mt-2 bg-[var(--box-color)] rounded-lg shadow-lg p-4 z-10 animate-slideDown">
                   <div className="flex flex-col gap-2">
                     <VueChip />
                     <JavascriptChip />
