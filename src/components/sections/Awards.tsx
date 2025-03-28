@@ -189,7 +189,7 @@ export default function Awards() {
       </div>
 
       {/* 모바일 버전 */}
-      <div className="relative w-11/12 max-w-[500px] mx-auto px-4 sm:hidden">
+      <div className="relative w-11/12 max-w-[500px] mx-auto px-4 sm:hidden overflow-hidden">
         <div className="relative h-[400px]">
           {awards.map((award, index) => (
             <div
