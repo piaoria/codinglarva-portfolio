@@ -5,6 +5,7 @@ import Projects from "@/components/sections/Projects";
 import Awards from "@/components/sections/Awards";
 import Archive from "@/components/sections/Archive";
 import Contact from "@/components/sections/Contact";
+import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
       <div className="mb-12">
         <Contact />
       </div>
+      <Footer />
     </main>
   );
 }
