@@ -114,9 +114,9 @@ export default function Awards() {
       {/* 데스크톱 버전 */}
       <div className="relative w-11/12 max-w-[1000px] mx-auto px-4 hidden sm:block">
         {/* 중앙 세로선 */}
-        <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--award-line-color)] transform -translate-x-1/2 overflow-hidden">
+        <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-[var(--award-line-color)] transform -translate-x-1/2 overflow-hidden rounded-full">
           <div
-            className={`absolute top-0 left-0 w-full bg-[#F78535] transition-all duration-1000 ${
+            className={`absolute top-0 left-0 w-full bg-[#F78535] transition-all duration-1000 rounded-full ${
               isAllRead ? "h-full" : "h-0"
             }`}
           />
@@ -146,21 +146,25 @@ export default function Awards() {
                 >
                   {/* 연결선 */}
                   <div
-                    className={`absolute top-1/2 w-8 h-0.5 bg-[var(--award-line-color)] transform -translate-y-1/2 overflow-hidden ${
+                    className={`absolute top-1/2 w-8 h-1 bg-[var(--award-line-color)] transform -translate-y-1/2 overflow-hidden rounded-full ${
                       award.isLeft ? "-right-8" : "-left-8"
                     }`}
                   >
                     <div
-                      className={`absolute top-0 left-0 w-full bg-[#F78535] transition-all duration-1000 ${
-                        readAwards.includes(award.id) ? "h-full" : "h-0"
+                      className={`absolute top-0 w-full h-full bg-[#F78535] transition-transform duration-1000 rounded-full ${
+                        award.isLeft ? "origin-left" : "origin-right"
+                      } ${
+                        readAwards.includes(award.id)
+                          ? "scale-x-100"
+                          : "scale-x-0"
                       }`}
                     />
                   </div>
 
                   {/* 원 */}
                   <div
-                    className={`absolute top-1/2 w-4 h-4 rounded-full transform -translate-y-1/2 transition-colors duration-300 ${
-                      award.isLeft ? "-right-10" : "-left-10"
+                    className={`absolute top-1/2 w-6 h-6 rounded-full transform -translate-y-1/2 transition-colors duration-300 ${
+                      award.isLeft ? "-right-12" : "-left-12"
                     } ${
                       readAwards.includes(award.id)
                         ? "bg-[#F78535]"
@@ -168,7 +172,7 @@ export default function Awards() {
                     }`}
                   >
                     <div
-                      className={`w-2 h-2 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-colors duration-300 ${
+                      className={`w-3 h-3 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-colors duration-300 ${
                         readAwards.includes(award.id)
                           ? "bg-[var(--background-color)]"
                           : "bg-[#F78535]"
