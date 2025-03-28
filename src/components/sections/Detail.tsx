@@ -17,17 +17,17 @@ export default function Detail() {
 
   return (
     <section id="detail" className="min-h-[500px] flex flex-col items-center">
-      <h2 className="text-6xl font-regular mt-6 sm:mt-10 text-center">
+      <h2 className="text-3xl sm:text-5xl md:text-6xl font-regular mt-6 sm:mt-10 text-center">
         <span>저는 이런 사람 입니다</span>
         <span className="text-[#F78535] font-black">.</span>
       </h2>
 
       {/* Cards 리스트 */}
       <div className="mx-auto px-4 mt-8 sm:mt-16 font-light">
-        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-8 justify-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-8 justify-items-center">
           {/* Team */}
           <div
-            className={`group w-[300px] sm:w-[400px] h-[260px] lg:w-[350px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative transition-all duration-300 ${
+            className={`group w-11/12 max-w-[400px] h-[260px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative transition-all duration-300 ${
               activeCards["team"] ? "ring-2 ring-[#F78535]" : ""
             }`}
             onClick={() => handleCardClick("team")}
@@ -67,7 +67,7 @@ export default function Detail() {
 
           {/* Idea */}
           <div
-            className={`group w-[300px] sm:w-[400px] h-[260px] lg:w-[350px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative transition-all duration-300 ${
+            className={`group w-11/12 max-w-[400px] h-[260px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative transition-all duration-300 ${
               activeCards["idea"] ? "ring-2 ring-[#F78535]" : ""
             }`}
             onClick={() => handleCardClick("idea")}
@@ -107,7 +107,7 @@ export default function Detail() {
 
           {/* Positive */}
           <div
-            className={`group w-[300px] sm:w-[400px] h-[260px] lg:w-[350px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative transition-all duration-300 ${
+            className={`group w-11/12 max-w-[400px] h-[260px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative transition-all duration-300 ${
               activeCards["positive"] ? "ring-2 ring-[#F78535]" : ""
             }`}
             onClick={() => handleCardClick("positive")}
@@ -149,7 +149,7 @@ export default function Detail() {
 
           {/* Goal */}
           <div
-            className={`group w-[300px] sm:w-[400px] h-[260px] lg:w-[350px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative transition-all duration-300 ${
+            className={`group w-11/12 max-w-[400px] h-[260px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-3 xs:p-4 sm:p-6 relative transition-all duration-300 ${
               activeCards["goal"] ? "ring-2 ring-[#F78535]" : ""
             }`}
             onClick={() => handleCardClick("goal")}

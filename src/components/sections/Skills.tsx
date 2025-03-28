@@ -38,7 +38,7 @@ export default function Skills() {
         <span>SKILLS</span>
       </h2>
 
-      <div className="w-full max-w-[1000px] mx-auto px-4 sm:px-8 mt-16">
+      <div className="w-11/12 max-w-[1000px] mx-auto px-4 sm:px-8 mt-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Frontend */}
           <div className="flex flex-col">
