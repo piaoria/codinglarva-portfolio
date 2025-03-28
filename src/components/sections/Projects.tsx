@@ -32,12 +32,12 @@ export default function Projects() {
 
   return (
     <section id="projects" className="min-h-[300px] flex flex-col items-center">
-      <h2 className="text-6xl font-bungee text-[#F78535] mt-6 sm:mt-10 text-center">
+      <h2 className="text-6xl font-bungee text-[#F78535] mt-6 sm:mt-10 text-center sm:pb-16">
         <span>PROJECTS</span>
       </h2>
 
       {/* 프로젝트 리스트 */}
-      <div className="w-11/12 max-w-[1000px] px-2 mt-1.5 sm:mt-16 space-y-6">
+      <div className="w-11/12 max-w-[1000px] px-2 space-y-6">
         {/* CodingLarva */}
         <div className="w-full h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 relative">
           {/* 헤더 */}
