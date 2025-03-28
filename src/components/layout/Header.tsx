@@ -53,7 +53,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 h-16 sm:h-24 px-4 sm:px-8 flex items-center z-50 bg-[var(--dropdown-bg)] shadow-md">
-      <div className="w-full max-w-[1440px] mx-auto flex items-center">
+      <div className="w-full max-w-[1200px] mx-auto flex items-center">
         <Logo />
         <ThemeSwitch />
         <div className="flex-1"></div>
