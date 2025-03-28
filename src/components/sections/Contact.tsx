@@ -111,7 +111,7 @@ export default function Contact() {
             <span className="text-xs xs:text-sm text-gray-400 font-light">
               전화번호
             </span>
-            <span className="text-xs md:text-lg font-bold">010.3319.9765</span>
+            <span className="text-xs md:text-lg font-bold">0502-1925-9765</span>
           </div>
         </div>
       </div>
