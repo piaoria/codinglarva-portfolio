@@ -15,7 +15,6 @@ export default function Awards() {
   const [visibleAwards, setVisibleAwards] = useState<number[]>([]);
   const [readAwards, setReadAwards] = useState<number[]>([]);
   const [isAllRead, setIsAllRead] = useState(false);
-  const [currentCardIndex, setCurrentCardIndex] = useState(0);
 
   useEffect(() => {
     // 수상 내역 추가 영역
@@ -60,6 +59,8 @@ export default function Awards() {
     ];
 
     setAwards(sampleAwards);
+    // 초기에 모든 카드를 보이게 설정
+    setVisibleAwards(sampleAwards.map((award) => award.id));
   }, []);
 
   useEffect(() => {
@@ -68,12 +69,18 @@ export default function Awards() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const id = Number(entry.target.getAttribute("data-award-id"));
-            setVisibleAwards((prev) => [...prev, id]);
+            setVisibleAwards((prev) => {
+              if (!prev.includes(id)) {
+                return [...prev, id];
+              }
+              return prev;
+            });
           }
         });
       },
       {
         threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
       }
     );
 
@@ -95,14 +102,6 @@ export default function Awards() {
     if (!readAwards.includes(id)) {
       setReadAwards((prev) => [...prev, id]);
     }
-  };
-
-  const nextCard = () => {
-    setCurrentCardIndex((prev) => (prev + 1) % awards.length);
-  };
-
-  const prevCard = () => {
-    setCurrentCardIndex((prev) => (prev - 1 + awards.length) % awards.length);
   };
 
   return (
@@ -193,44 +192,72 @@ export default function Awards() {
       </div>
 
       {/* 모바일 버전 */}
-      <div className="relative w-11/12 max-w-[500px] mx-auto px-4 sm:hidden overflow-hidden">
-        <div className="relative h-[400px]">
-          {awards.map((award, index) => (
+      <div className="relative w-11/12 max-w-[600px] mx-auto px-4 sm:hidden">
+        {/* 왼쪽 세로선 */}
+        <div className="absolute left-8 top-0 bottom-0 w-1 bg-[var(--award-line-color)] overflow-hidden rounded-full">
+          <div
+            className={`absolute top-0 left-0 w-full bg-[#F78535] transition-all duration-1000 rounded-full ${
+              isAllRead ? "h-full" : "h-0"
+            }`}
+          />
+        </div>
+
+        <div className="relative space-y-6 ml-[46px]">
+          {awards.map((award) => (
             <div
               key={award.id}
-              className={`absolute w-full transition-all duration-500 transform ${
-                index === currentCardIndex
-                  ? "opacity-100 translate-x-0 z-10"
-                  : index < currentCardIndex
-                    ? "opacity-0 -translate-x-full z-0"
-                    : "opacity-0 translate-x-full z-0"
-              }`}
+              data-award-id={award.id}
+              className="relative flex items-center"
             >
-              <div className="bg-[var(--award-color)] rounded-lg shadow-lg p-6">
-                <div className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                  {award.date}
+              {/* 카드 */}
+              <div
+                className={`w-full transform transition-all duration-1000 ${
+                  visibleAwards.includes(award.id)
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-10"
+                }`}
+              >
+                <div
+                  className="bg-[var(--award-color)] rounded-lg shadow-lg p-6 relative"
+                  onClick={() => handleCardHover(award.id)}
+                >
+                  {/* 연결선 */}
+                  <div className="absolute top-1/2 -left-8 w-8 h-1 bg-[var(--award-line-color)] transform -translate-y-1/2 overflow-hidden rounded-full">
+                    <div
+                      className={`absolute top-0 w-full h-full bg-[#F78535] transition-transform duration-1000 rounded-full origin-right ${
+                        readAwards.includes(award.id)
+                          ? "scale-x-100"
+                          : "scale-x-0"
+                      }`}
+                    />
+                  </div>
+
+                  {/* 원 */}
+                  <div
+                    className={`absolute top-1/2 w-6 h-6 rounded-full transform -translate-y-1/2 transition-colors duration-300 -left-10 ${
+                      readAwards.includes(award.id)
+                        ? "bg-[#F78535]"
+                        : "bg-[var(--award-line-color)]"
+                    }`}
+                  >
+                    <div
+                      className={`w-3 h-3 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-colors duration-300 ${
+                        readAwards.includes(award.id)
+                          ? "bg-[var(--background-color)]"
+                          : "bg-[#F78535]"
+                      }`}
+                    />
+                  </div>
+
+                  <div className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                    {award.date}
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">{award.title}</h3>
+                  <p>{award.description}</p>
                 </div>
-                <h3 className="text-xl font-bold mb-2">{award.title}</h3>
-                <p>{award.description}</p>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* 네비게이션 버튼 */}
-        <div className="flex justify-center gap-4 mt-8">
-          <button
-            onClick={prevCard}
-            className="p-2 rounded-full bg-[#F78535] text-white hover:bg-[#e67a2f] transition-colors"
-          >
-            ←
-          </button>
-          <button
-            onClick={nextCard}
-            className="p-2 rounded-full bg-[#F78535] text-white hover:bg-[#e67a2f] transition-colors"
-          >
-            →
-          </button>
         </div>
       </div>
     </section>
