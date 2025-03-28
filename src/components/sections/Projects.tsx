@@ -39,7 +39,7 @@ export default function Projects() {
       {/* 프로젝트 리스트 */}
       <div className="w-11/12 max-w-[1000px] px-2 mt-1.5 sm:mt-16 space-y-6">
         {/* CodingLarva */}
-        <div className="w-full h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-6 relative">
+        <div className="w-full h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 relative">
           {/* 헤더 */}
           <div className="flex items-start justify-between items-center">
             {/* 왼쪽: 아이콘과 설명 */}
@@ -52,9 +52,7 @@ export default function Projects() {
                 className="w-12 h-12 md:w-14 md:h-14"
               />
               <div className="flex flex-col">
-                <p className="text-sm text-gray-500">
-                  디자인부터 배포까지 Self 포트폴리오
-                </p>
+                <p className="text-sm text-gray-500">포트폴리오</p>
                 <div className="flex flex-col gap-8">
                   <div className="flex items-center gap-4">
                     <h3 className="text-xl md:text-2xl font-bold text-[#F78535]">
@@ -75,7 +73,7 @@ export default function Projects() {
             {/* 오른쪽: 버튼들 */}
             <div className="flex items-center gap-2 relative">
               <button
-                className="lg:hidden px-2 py-1.5 text-white rounded-lg text-xs hover:bg-[#F78535] transition-colors flex items-center gap-1"
+                className="lg:hidden px-2 py-1.5 text-white rounded-lg text-xs hover:bg-[#F78535] transition-colors flex items-center sm:gap-1"
                 onClick={() => toggleDropdown("codinglarva")}
               >
                 기술 스택
@@ -117,7 +115,7 @@ export default function Projects() {
             <h4 className="text-md md:text-lg font-semibold">
               디자인부터 배포까지 Self 포트폴리오
             </h4>
-            <div className="flex items-center gap-4">
+            <div className="hidden sm:flex items-center gap-4">
               <div className="flex items-center gap-1">
                 <Image
                   src="/svgs/clock-icon.svg"
@@ -144,19 +142,41 @@ export default function Projects() {
             <p className="text-gray-600">내용이 채워질 영역입니다.</p>
           </div>
 
-          {/* sm 레이아웃에서 하단에 표시되는 버튼들 */}
-          <div className="sm:hidden flex items-center justify-end gap-2 mt-4">
-            <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#F78535] transition-colors">
-              README
-            </button>
-            <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#F78535] transition-colors">
-              FIGMA
-            </button>
+          {/* sm 레이아웃에서 하단에 표시되는 요소들 */}
+          <div className="sm:hidden flex items-center justify-between mt-4">
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-1">
+                <Image
+                  src="/svgs/clock-icon.svg"
+                  alt="Clock Icon"
+                  width={16}
+                  height={16}
+                />
+                <span className="text-sm text-gray-500">~ing</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Image
+                  src="/svgs/profile-icon.svg"
+                  alt="Profile Icon"
+                  width={16}
+                  height={16}
+                />
+                <span className="text-sm text-gray-500">1명</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#F78535] transition-colors">
+                README
+              </button>
+              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#F78535] transition-colors">
+                FIGMA
+              </button>
+            </div>
           </div>
         </div>
 
         {/* EUM */}
-        <div className="w-full h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-6 relative">
+        <div className="w-full h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 relative">
           {/* 헤더 */}
           <div className="flex items-start justify-between items-center">
             {/* 왼쪽: 아이콘과 설명 */}
@@ -169,7 +189,7 @@ export default function Projects() {
                 className="w-12 h-12 md:w-14 md:h-14"
               />
               <div className="flex flex-col">
-                <p className="text-sm text-gray-500">실시간 필기 공유 서비스</p>
+                <p className="text-sm text-gray-500">실시간 필기 공유</p>
                 <div className="flex flex-col gap-8">
                   <div className="flex items-center gap-4">
                     <h3 className="text-xl md:text-2xl font-bold text-[#A59CCF]">
@@ -188,7 +208,7 @@ export default function Projects() {
             {/* 오른쪽: 버튼들 */}
             <div className="flex items-center gap-2 relative">
               <button
-                className="lg:hidden px-2 py-1.5 text-white rounded-lg text-xs hover:bg-[#A59CCF] transition-colors flex items-center gap-1"
+                className="lg:hidden px-2 py-1.5 text-white rounded-lg text-xs hover:bg-[#A59CCF] transition-colors flex items-center sm:gap-1"
                 onClick={() => toggleDropdown("eum")}
               >
                 기술 스택
@@ -228,7 +248,7 @@ export default function Projects() {
             <h4 className="text-md md:text-lg font-semibold">
               실시간 필기 공유 서비스
             </h4>
-            <div className="flex items-center gap-4">
+            <div className="hidden sm:flex items-center gap-4">
               <div className="flex items-center gap-1">
                 <Image
                   src="/svgs/clock-icon.svg"
@@ -255,19 +275,41 @@ export default function Projects() {
             <p className="text-gray-600">내용이 채워질 영역입니다.</p>
           </div>
 
-          {/* sm 레이아웃에서 하단에 표시되는 버튼들 */}
-          <div className="sm:hidden flex items-center justify-end gap-2 mt-4">
-            <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#A59CCF] transition-colors">
-              README
-            </button>
-            <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#A59CCF] transition-colors">
-              SUMMARY
-            </button>
+          {/* sm 레이아웃에서 하단에 표시되는 요소들 */}
+          <div className="sm:hidden flex items-center justify-between mt-4">
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-1">
+                <Image
+                  src="/svgs/clock-icon.svg"
+                  alt="Clock Icon"
+                  width={16}
+                  height={16}
+                />
+                <span className="text-sm text-gray-500">6주</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Image
+                  src="/svgs/profile-icon.svg"
+                  alt="Profile Icon"
+                  width={16}
+                  height={16}
+                />
+                <span className="text-sm text-gray-500">6명</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#A59CCF] transition-colors">
+                README
+              </button>
+              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#A59CCF] transition-colors">
+                SUMMARY
+              </button>
+            </div>
           </div>
         </div>
 
         {/* NewLearn */}
-        <div className="w-full h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-6 relative">
+        <div className="w-full h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 relative">
           {/* 헤더 */}
           <div className="flex items-start justify-between items-center">
             {/* 왼쪽: 아이콘과 설명 */}
@@ -281,7 +323,7 @@ export default function Projects() {
               />
               <div className="flex flex-col">
                 <p className="text-sm text-gray-500">
-                  국내 뉴스 기반 영어 학습 플랫폼
+                  빅데이터 추천
                 </p>
                 <div className="flex flex-col gap-8">
                   <div className="flex items-center gap-4">
@@ -302,7 +344,7 @@ export default function Projects() {
             {/* 오른쪽: 버튼들 */}
             <div className="flex items-center gap-2 relative">
               <button
-                className="lg:hidden px-2 py-1.5 text-white rounded-lg text-xs hover:bg-[#9CAEEB] transition-colors flex items-center gap-1"
+                className="lg:hidden px-2 py-1.5 text-white rounded-lg text-xs hover:bg-[#9CAEEB] transition-colors flex items-center sm:gap-1"
                 onClick={() => toggleDropdown("newlearn")}
               >
                 기술 스택
@@ -343,7 +385,7 @@ export default function Projects() {
             <h4 className="text-md md:text-lg font-semibold">
               국내 뉴스 기반 영어 학습 플랫폼
             </h4>
-            <div className="flex items-center gap-4">
+            <div className="hidden sm:flex items-center gap-4">
               <div className="flex items-center gap-1">
                 <Image
                   src="/svgs/clock-icon.svg"
@@ -370,19 +412,41 @@ export default function Projects() {
             <p className="text-gray-600">내용이 채워질 영역입니다.</p>
           </div>
 
-          {/* sm 레이아웃에서 하단에 표시되는 버튼들 */}
-          <div className="sm:hidden flex items-center justify-end gap-2 mt-4">
-            <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#9CAEEB] transition-colors">
-              README
-            </button>
-            <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#9CAEEB] transition-colors">
-              SUMMARY
-            </button>
+          {/* sm 레이아웃에서 하단에 표시되는 요소들 */}
+          <div className="sm:hidden flex items-center justify-between mt-4">
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-1">
+                <Image
+                  src="/svgs/clock-icon.svg"
+                  alt="Clock Icon"
+                  width={16}
+                  height={16}
+                />
+                <span className="text-sm text-gray-500">6주</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Image
+                  src="/svgs/profile-icon.svg"
+                  alt="Profile Icon"
+                  width={16}
+                  height={16}
+                />
+                <span className="text-sm text-gray-500">6명</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#9CAEEB] transition-colors">
+                README
+              </button>
+              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#9CAEEB] transition-colors">
+                SUMMARY
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Crewin */}
-        <div className="w-full h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-6 relative">
+        <div className="w-full h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 relative">
           {/* 헤더 */}
           <div className="flex items-start justify-between items-center">
             {/* 왼쪽: 아이콘과 설명 */}
@@ -395,7 +459,7 @@ export default function Projects() {
                 className="w-12 h-12 md:w-14 md:h-14"
               />
               <div className="flex flex-col">
-                <p className="text-sm text-gray-500">러닝 크루 관리 플랫폼</p>
+                <p className="text-sm text-gray-500">러닝 크루 관리</p>
                 <div className="flex flex-col gap-8">
                   <div className="flex items-center gap-4">
                     <h3 className="text-xl md:text-2xl font-bold text-[#B6B9C5]">
@@ -415,7 +479,7 @@ export default function Projects() {
             {/* 오른쪽: 버튼들 */}
             <div className="flex items-center gap-2 relative">
               <button
-                className="lg:hidden px-2 py-1.5 text-white rounded-lg text-xs hover:bg-[#B6B9C5] transition-colors flex items-center gap-1"
+                className="lg:hidden px-2 py-1.5 text-white rounded-lg text-xs hover:bg-[#B6B9C5] transition-colors flex items-center sm:gap-1"
                 onClick={() => toggleDropdown("crewin")}
               >
                 기술 스택
@@ -456,7 +520,7 @@ export default function Projects() {
             <h4 className="text-md md:text-lg font-semibold">
               러닝 크루 관리 플랫폼
             </h4>
-            <div className="flex items-center gap-4">
+            <div className="hidden sm:flex items-center gap-4">
               <div className="flex items-center gap-1">
                 <Image
                   src="/svgs/clock-icon.svg"
@@ -483,19 +547,41 @@ export default function Projects() {
             <p className="text-gray-600">내용이 채워질 영역입니다.</p>
           </div>
 
-          {/* sm 레이아웃에서 하단에 표시되는 버튼들 */}
-          <div className="sm:hidden flex items-center justify-end gap-2 mt-4">
-            <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#B6B9C5] transition-colors">
-              README
-            </button>
-            <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#B6B9C5] transition-colors">
-              SUMMARY
-            </button>
+          {/* sm 레이아웃에서 하단에 표시되는 요소들 */}
+          <div className="sm:hidden flex items-center justify-between mt-4">
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-1">
+                <Image
+                  src="/svgs/clock-icon.svg"
+                  alt="Clock Icon"
+                  width={16}
+                  height={16}
+                />
+                <span className="text-sm text-gray-500">6주</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Image
+                  src="/svgs/profile-icon.svg"
+                  alt="Profile Icon"
+                  width={16}
+                  height={16}
+                />
+                <span className="text-sm text-gray-500">6명</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#B6B9C5] transition-colors">
+                README
+              </button>
+              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#B6B9C5] transition-colors">
+                SUMMARY
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Honeymoney */}
-        <div className="w-full h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-6 relative">
+        <div className="w-full h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 relative">
           {/* 헤더 */}
           <div className="flex items-start justify-between items-center">
             {/* 왼쪽: 아이콘과 설명 */}
@@ -508,7 +594,7 @@ export default function Projects() {
                 className="w-12 h-12 md:w-14 md:h-14"
               />
               <div className="flex flex-col">
-                <p className="text-sm text-gray-500">금융 상품 추천 서비스</p>
+                <p className="text-sm text-gray-500">금융 상품 추천</p>
                 <div className="flex flex-col gap-8">
                   <div className="flex items-center gap-4">
                     <h3 className="text-xl md:text-2xl font-bold text-[#FFCC5C]">
@@ -527,7 +613,7 @@ export default function Projects() {
             {/* 오른쪽: 버튼들 */}
             <div className="flex items-center gap-2 relative">
               <button
-                className="lg:hidden px-2 py-1.5 text-white rounded-lg text-xs hover:bg-[#FFCC5C] transition-colors flex items-center gap-1"
+                className="lg:hidden px-2 py-1.5 text-white rounded-lg text-xs hover:bg-[#FFCC5C] transition-colors flex items-center sm:gap-1"
                 onClick={() => toggleDropdown("honeymoney")}
               >
                 기술 스택
@@ -567,7 +653,7 @@ export default function Projects() {
             <h4 className="text-md md:text-lg font-semibold">
               금융 상품 추천 서비스
             </h4>
-            <div className="flex items-center gap-4">
+            <div className="hidden sm:flex items-center gap-4">
               <div className="flex items-center gap-1">
                 <Image
                   src="/svgs/clock-icon.svg"
@@ -594,14 +680,36 @@ export default function Projects() {
             <p className="text-gray-600">내용이 채워질 영역입니다.</p>
           </div>
 
-          {/* sm 레이아웃에서 하단에 표시되는 버튼들 */}
-          <div className="sm:hidden flex items-center justify-end gap-2 mt-4">
-            <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#FFCC5C] transition-colors">
-              README
-            </button>
-            <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#FFCC5C] transition-colors">
-              SUMMARY
-            </button>
+          {/* sm 레이아웃에서 하단에 표시되는 요소들 */}
+          <div className="sm:hidden flex items-center justify-between mt-4">
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-1">
+                <Image
+                  src="/svgs/clock-icon.svg"
+                  alt="Clock Icon"
+                  width={16}
+                  height={16}
+                />
+                <span className="text-sm text-gray-500">2주</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Image
+                  src="/svgs/profile-icon.svg"
+                  alt="Profile Icon"
+                  width={16}
+                  height={16}
+                />
+                <span className="text-sm text-gray-500">2명</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#FFCC5C] transition-colors">
+                README
+              </button>
+              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#FFCC5C] transition-colors">
+                SUMMARY
+              </button>
+            </div>
           </div>
         </div>
       </div>
