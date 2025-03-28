@@ -45,6 +45,7 @@ body {
   transition:
     color 0.2s ease,
     background-color 0.8s ease;
+  letter-spacing: -0.03em;
 }
 
 /* 데스크톱에서만 커스텀 커서 적용 */
