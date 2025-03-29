@@ -32,7 +32,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="min-h-[300px] flex flex-col items-center">
-      <h2 className="text-6xl font-bungee text-[#F78535] mt-6 sm:mt-10 text-center sm:pb-16">
+      <h2 className="text-6xl font-bungee text-[#F78535] mt-6 sm:mt-10 text-center pb-16">
         <span>PROJECTS</span>
       </h2>
 
