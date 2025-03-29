@@ -13,7 +13,7 @@
 :root {
   --font-color: #2c2c31;
   --background-color: #fdfdfd;
-  --background-color2: #F9F9F9;
+  --background-color2: #f9f9f9;
   --box-color: #f0f0f0;
   --header-color: #2c2c31;
   --dropdown-bg: #ffffff;
@@ -28,7 +28,7 @@
 .dark:root {
   --font-color: #fdfdfd;
   --background-color: #2c2c31;
-  --background-color2: #2D2E33;
+  --background-color2: #2d2e33;
   --box-color: #38383f;
   --header-color: #2c2c31;
   --dropdown-bg: #2c2c31;
@@ -185,4 +185,29 @@ header {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* 섹션 페이드인 애니메이션 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.3s ease-out,
+    transform 0.3s ease-out;
+}
+
+.section-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }

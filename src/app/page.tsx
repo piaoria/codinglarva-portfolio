@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import About from "@/components/sections/About";
 import Detail from "@/components/sections/Detail";
 import Skills from "@/components/sections/Skills";
@@ -13,7 +13,10 @@ import { useHeaderColor } from "@/contexts/HeaderColorContext";
 
 export default function Home() {
   const { setHeaderColor } = useHeaderColor();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const [visibleSections, setVisibleSections] = useState<string[]>([]);
+  const headerObserverRef = useRef<IntersectionObserver | null>(null);
+  const fadeObserverRef = useRef<IntersectionObserver | null>(null);
+
   const sectionRefs = {
     about: useRef<HTMLDivElement>(null),
     detail: useRef<HTMLDivElement>(null),
@@ -24,74 +27,118 @@ export default function Home() {
     contact: useRef<HTMLDivElement>(null),
   };
 
+  // 헤더 색상 변경을 위한 observer
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const sectionId = entry.target.id;
-            // 배경색이 다른 섹션에 도달했을 때 헤더 색상 변경
-            if (["skills", "awards", "contact"].includes(sectionId)) {
-              setHeaderColor("dark");
-            } else {
-              setHeaderColor("light");
-            }
+    const handleHeaderIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          if (["skills", "awards", "contact"].includes(sectionId)) {
+            setHeaderColor("dark");
+          } else {
+            setHeaderColor("light");
           }
-        });
-      },
+        }
+      });
+    };
+
+    headerObserverRef.current = new IntersectionObserver(
+      handleHeaderIntersection,
       {
-        threshold: 0.7,
+        threshold: 0.3,
       }
     );
 
-    // 각 섹션 관찰 시작
     Object.values(sectionRefs).forEach((ref) => {
       if (ref.current) {
-        observer.observe(ref.current);
+        headerObserverRef.current?.observe(ref.current);
       }
     });
 
     return () => {
-      Object.values(sectionRefs).forEach((ref) => {
-        if (ref.current) {
-          observer.unobserve(ref.current);
+      headerObserverRef.current?.disconnect();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setHeaderColor]);
+
+  // 섹션 페이드인을 위한 observer
+  useEffect(() => {
+    const handleFadeIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          if (!visibleSections.includes(sectionId)) {
+            setVisibleSections((prev) => [...new Set([...prev, sectionId])]);
+            fadeObserverRef.current?.unobserve(entry.target);
+          }
         }
       });
     };
-  }, [sectionRefs, setHeaderColor]);
+
+    fadeObserverRef.current = new IntersectionObserver(handleFadeIntersection, {
+      threshold: 0.3,
+    });
+
+    Object.values(sectionRefs).forEach((ref) => {
+      if (ref.current) {
+        fadeObserverRef.current?.observe(ref.current);
+      }
+    });
+
+    return () => {
+      fadeObserverRef.current?.disconnect();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visibleSections]);
 
   return (
     <main className="pt-16 sm:pt-24">
-      <div ref={sectionRefs.about} id="about">
+      <div
+        ref={sectionRefs.about}
+        id="about"
+        className={`section-fade-in ${visibleSections.includes("about") ? "visible" : ""}`}
+      >
         <About />
       </div>
-      <div ref={sectionRefs.detail} id="detail" className="pb-16 sm:pb-24">
+      <div
+        ref={sectionRefs.detail}
+        id="detail"
+        className={`section-fade-in pb-16 sm:pb-24 ${visibleSections.includes("detail") ? "visible" : ""}`}
+      >
         <Detail />
       </div>
       <div
         ref={sectionRefs.skills}
         id="skills"
-        className="bg-[var(--background-color2)]"
+        className={`section-fade-in bg-[var(--background-color2)] ${visibleSections.includes("skills") ? "visible" : ""}`}
       >
         <Skills />
       </div>
-      <div ref={sectionRefs.projects} id="projects" className="pb-16 sm:pb-24">
+      <div
+        ref={sectionRefs.projects}
+        id="projects"
+        className={`section-fade-in pb-16 sm:pb-24 ${visibleSections.includes("projects") ? "visible" : ""}`}
+      >
         <Projects />
       </div>
       <div
         ref={sectionRefs.awards}
         id="awards"
-        className="bg-[var(--background-color2)]"
+        className={`section-fade-in bg-[var(--background-color2)] ${visibleSections.includes("awards") ? "visible" : ""}`}
       >
         <Awards />
       </div>
-      <div ref={sectionRefs.archive} id="archive" className="pb-16 sm:pb-24">
+      <div
+        ref={sectionRefs.archive}
+        id="archive"
+        className={`section-fade-in pb-16 sm:pb-24 ${visibleSections.includes("archive") ? "visible" : ""}`}
+      >
         <Archive />
       </div>
       <div
         ref={sectionRefs.contact}
         id="contact"
-        className="bg-[var(--background-color2)]"
+        className={`section-fade-in bg-[var(--background-color2)] ${visibleSections.includes("contact") ? "visible" : ""}`}
       >
         <Contact />
       </div>
