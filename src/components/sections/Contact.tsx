@@ -4,7 +4,10 @@ import Image from "next/image";
 
 export default function Contact() {
   return (
-    <section id="contact" className="min-h-[300px] flex flex-col items-center">
+    <section
+      id="contact"
+      className="min-h-[300px] flex flex-col items-center pb-16 sm:pb-24"
+    >
       <h2 className="text-6xl font-bungee text-[#F78535] mt-6 sm:mt-10 text-center">
         <span>CONTACT</span>
       </h2>

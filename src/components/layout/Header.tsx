@@ -4,8 +4,10 @@ import Logo from "./Logo";
 import ThemeSwitch from "./ThemeSwitch";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import { useHeaderColor } from "@/contexts/HeaderColorContext";
 
 export default function Header() {
+  const { headerColor } = useHeaderColor();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -52,7 +54,13 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 h-16 sm:h-24 px-4 sm:px-8 flex items-center z-50 bg-[var(--dropdown-bg)] shadow-md">
+    <header
+      className={`fixed top-0 left-0 right-0 h-16 sm:h-24 px-4 sm:px-8 flex items-center z-50 transition-colors duration-500 ${
+        headerColor === "light"
+          ? "bg-[var(--background-color)]"
+          : "bg-[var(--background-color2)]"
+      }`}
+    >
       <div className="w-full max-w-[1200px] mx-auto flex items-center">
         <Logo />
         <ThemeSwitch />

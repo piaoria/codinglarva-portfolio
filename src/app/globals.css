@@ -13,6 +13,7 @@
 :root {
   --font-color: #2c2c31;
   --background-color: #fdfdfd;
+  --background-color2: #F9F9F9;
   --box-color: #f0f0f0;
   --header-color: #2c2c31;
   --dropdown-bg: #ffffff;
@@ -27,6 +28,7 @@
 .dark:root {
   --font-color: #fdfdfd;
   --background-color: #2c2c31;
+  --background-color2: #2D2E33;
   --box-color: #38383f;
   --header-color: #2c2c31;
   --dropdown-bg: #2c2c31;

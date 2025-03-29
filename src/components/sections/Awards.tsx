@@ -105,7 +105,10 @@ export default function Awards() {
   };
 
   return (
-    <section id="awards" className="min-h-[300px] flex flex-col items-center">
+    <section
+      id="awards"
+      className="min-h-[300px] flex flex-col items-center pb-16 sm:pb-24"
+    >
       <h2 className="text-6xl font-bungee text-[#F78535] mt-6 sm:mt-10 text-center mb-16">
         <span>AWARDS</span>
       </h2>
