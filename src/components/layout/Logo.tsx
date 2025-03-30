@@ -47,19 +47,19 @@ export default function Logo() {
       {/* 첫 번째 원 */}
       <div
         className={`absolute left-0 top-4 xs:top-3 w-8 h-8 xs:w-10 xs:h-10 rounded-full shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition-colors duration-300 ${
-          visitCount >= 1 ? "bg-[#F78535]" : "bg-[#333333]"
+          visitCount >= 1 ? "bg-[var(--primary-color)]" : "bg-[#333333]"
         }`}
       />
       {/* 두 번째 원 */}
       <div
         className={`absolute left-5 top-4 xs:top-3 w-8 h-8 xs:w-10 xs:h-10 rounded-full shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition-colors duration-300 ${
-          visitCount >= 2 ? "bg-[#F78535]" : "bg-[#333333]"
+          visitCount >= 2 ? "bg-[var(--primary-color)]" : "bg-[#333333]"
         }`}
       />
       {/* 세 번째 원 */}
       <div
         className={`absolute left-10 top-4 xs:top-3 w-8 h-8 xs:w-10 xs:h-10 rounded-full shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition-colors duration-300 ${
-          visitCount >= 3 ? "bg-[#F78535]" : "bg-[#333333]"
+          visitCount >= 3 ? "bg-[var(--primary-color)]" : "bg-[#333333]"
         }`}
       />
 

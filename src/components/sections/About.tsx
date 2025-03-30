@@ -12,16 +12,17 @@ export default function About() {
           <div className="text-4xl sm:text-5xl md:text-6xl leading-tight font-thin space-y-4 md:space-y-6">
             <div>
               안녕하세요
-              <span className="text-[#F78535] font-black">!</span>
+              <span className="text-[var(--primary-color)] font-black">!</span>
             </div>
             <div>
-              <span className="text-[#F78535] font-black">F</span>
+              <span className="text-[var(--primary-color)] font-black">F</span>
               ront
-              <span className="text-[#F78535] font-black">E</span>nd 개발자
+              <span className="text-[var(--primary-color)] font-black">E</span>
+              nd 개발자
             </div>
             <div>
               <span className="font-black">박효진</span> 입니다
-              <span className="text-[#F78535] font-black">.</span>
+              <span className="text-[var(--primary-color)] font-black">.</span>
             </div>
           </div>
         </div>
@@ -30,7 +31,7 @@ export default function About() {
         <div className="flex-[2] relative mt-6 md:mt-0">
           {/* 배경 텍스트 */}
           <div className="absolute inset-0 flex items-center justify-center mb-24 md:mb-48">
-            <h2 className="text-[50px] sm:text-[75px] lg:text-[100px] z-10 font-bungee text-[#F78535] leading-none">
+            <h2 className="text-[50px] sm:text-[75px] lg:text-[100px] z-10 font-bungee text-[var(--primary-color)] leading-none">
               FRONT
               <br />
               END

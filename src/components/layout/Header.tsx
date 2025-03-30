@@ -73,7 +73,9 @@ export default function Header() {
               className="text-base sm:text-xl"
               onClick={() => scrollToSection(item.id)}
             >
-              <span className="text-[#F78535] font-black">{item.label[0]}</span>
+              <span className="text-[var(--primary-color)] font-black">
+                {item.label[0]}
+              </span>
               <span className="font-light">{item.label.slice(1)}</span>
             </button>
           ))}
@@ -120,7 +122,9 @@ export default function Header() {
                   : "none",
               }}
             >
-              <span className="text-[#F78535] font-black">{item.label[0]}</span>
+              <span className="text-[var(--primary-color)] font-black">
+                {item.label[0]}
+              </span>
               <span className="font-light">{item.label.slice(1)}</span>
             </button>
           ))}

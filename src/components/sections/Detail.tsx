@@ -19,7 +19,7 @@ export default function Detail() {
     <section id="detail" className="min-h-[500px] flex flex-col items-center">
       <h2 className="pt-8 text-3xl sm:text-4xl md:text-6xl font-regular text-center">
         <span>저는 이런 사람 입니다</span>
-        <span className="text-[#F78535] font-black">.</span>
+        <span className="text-[var(--primary-color)] font-black">.</span>
       </h2>
 
       {/* Cards 리스트 */}
@@ -28,13 +28,13 @@ export default function Detail() {
           {/* Team */}
           <div
             className={`group w-11/12 max-w-[480px] h-[300px] sm:h-[280px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-5 sm:p-6 relative transition-all duration-300 ${
-              activeCards["team"] ? "ring-2 ring-[#F78535]" : ""
+              activeCards["team"] ? "ring-2 ring-[var(--primary-color)]" : ""
             }`}
             onClick={() => handleCardClick("team")}
             data-clickable="true"
           >
             <div
-              className={`absolute top-4 xs:top-5 sm:top-6 left-4 xs:left-5 sm:left-6 w-8 xs:w-6 sm:w-8 h-8 xs:h-6 sm:h-8 rounded-full bg-[#F78535] transition-opacity duration-300 z-0 translate-x-2 translate-y-2 pointer-events-none ${
+              className={`absolute top-4 xs:top-5 sm:top-6 left-4 xs:left-5 sm:left-6 w-8 xs:w-6 sm:w-8 h-8 xs:h-6 sm:h-8 rounded-full bg-[var(--primary-color)] transition-opacity duration-300 z-0 translate-x-2 translate-y-2 pointer-events-none ${
                 activeCards["team"]
                   ? "opacity-100"
                   : "opacity-0 group-hover:opacity-70"
@@ -68,13 +68,13 @@ export default function Detail() {
           {/* Idea */}
           <div
             className={`group w-11/12 max-w-[480px] h-[300px] sm:h-[280px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-5 sm:p-6 relative transition-all duration-300 ${
-              activeCards["idea"] ? "ring-2 ring-[#F78535]" : ""
+              activeCards["idea"] ? "ring-2 ring-[var(--primary-color)]" : ""
             }`}
             onClick={() => handleCardClick("idea")}
             data-clickable="true"
           >
             <div
-              className={`absolute top-4 xs:top-5 sm:top-6 left-4 xs:left-5 sm:left-6 w-8 xs:w-6 sm:w-8 h-8 xs:h-6 sm:h-8 rounded-full bg-[#F78535] transition-opacity duration-300 z-0 translate-x-2 translate-y-2 ${
+              className={`absolute top-4 xs:top-5 sm:top-6 left-4 xs:left-5 sm:left-6 w-8 xs:w-6 sm:w-8 h-8 xs:h-6 sm:h-8 rounded-full bg-[var(--primary-color)] transition-opacity duration-300 z-0 translate-x-2 translate-y-2 ${
                 activeCards["idea"]
                   ? "opacity-100"
                   : "opacity-0 group-hover:opacity-70"
@@ -108,13 +108,15 @@ export default function Detail() {
           {/* Positive */}
           <div
             className={`group w-11/12 max-w-[480px] h-[300px] sm:h-[280px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-5 sm:p-6 relative transition-all duration-300 ${
-              activeCards["positive"] ? "ring-2 ring-[#F78535]" : ""
+              activeCards["positive"]
+                ? "ring-2 ring-[var(--primary-color)]"
+                : ""
             }`}
             onClick={() => handleCardClick("positive")}
             data-clickable="true"
           >
             <div
-              className={`absolute top-4 xs:top-5 sm:top-6 left-4 xs:left-5 sm:left-6 w-8 xs:w-6 sm:w-8 h-8 xs:h-6 sm:h-8 rounded-full bg-[#F78535] transition-opacity duration-300 z-0 translate-x-2 translate-y-2 ${
+              className={`absolute top-4 xs:top-5 sm:top-6 left-4 xs:left-5 sm:left-6 w-8 xs:w-6 sm:w-8 h-8 xs:h-6 sm:h-8 rounded-full bg-[var(--primary-color)] transition-opacity duration-300 z-0 translate-x-2 translate-y-2 ${
                 activeCards["positive"]
                   ? "opacity-100"
                   : "opacity-0 group-hover:opacity-70"
@@ -150,13 +152,13 @@ export default function Detail() {
           {/* Goal */}
           <div
             className={`group w-11/12 max-w-[480px] h-[300px] sm:h-[280px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-5 sm:p-6 relative transition-all duration-300 ${
-              activeCards["goal"] ? "ring-2 ring-[#F78535]" : ""
+              activeCards["goal"] ? "ring-2 ring-[var(--primary-color)]" : ""
             }`}
             onClick={() => handleCardClick("goal")}
             data-clickable="true"
           >
             <div
-              className={`absolute top-4 xs:top-5 sm:top-6 left-4 xs:left-5 sm:left-6 w-8 xs:w-6 sm:w-8 h-8 xs:h-6 sm:h-8 rounded-full bg-[#F78535] transition-opacity duration-300 z-0 translate-x-2 translate-y-2 ${
+              className={`absolute top-4 xs:top-5 sm:top-6 left-4 xs:left-5 sm:left-6 w-8 xs:w-6 sm:w-8 h-8 xs:h-6 sm:h-8 rounded-full bg-[var(--primary-color)] transition-opacity duration-300 z-0 translate-x-2 translate-y-2 ${
                 activeCards["goal"]
                   ? "opacity-100"
                   : "opacity-0 group-hover:opacity-70"

@@ -109,7 +109,7 @@ export default function Awards() {
       id="awards"
       className="min-h-[300px] flex flex-col items-center pb-16 sm:pb-24"
     >
-      <h2 className="text-6xl font-bungee text-[#F78535] mt-6 sm:mt-10 text-center mb-16">
+      <h2 className="text-6xl font-bungee text-[var(--primary-color)] mt-6 sm:mt-10 text-center mb-16">
         <span>AWARDS</span>
       </h2>
 
@@ -118,7 +118,7 @@ export default function Awards() {
         {/* 중앙 세로선 */}
         <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-[var(--award-line-color)] transform -translate-x-1/2 overflow-hidden rounded-full">
           <div
-            className={`absolute top-0 left-0 w-full bg-[#F78535] transition-all duration-1000 rounded-full ${
+            className={`absolute top-0 left-0 w-full bg-[var(--primary-color)] transition-all duration-1000 rounded-full ${
               isAllRead ? "h-full" : "h-0"
             }`}
           />
@@ -153,7 +153,7 @@ export default function Awards() {
                     }`}
                   >
                     <div
-                      className={`absolute top-0 w-full h-full bg-[#F78535] transition-transform duration-1000 rounded-full ${
+                      className={`absolute top-0 w-full h-full bg-[var(--primary-color)] transition-transform duration-1000 rounded-full ${
                         award.isLeft ? "origin-left" : "origin-right"
                       } ${
                         readAwards.includes(award.id)
@@ -169,7 +169,7 @@ export default function Awards() {
                       award.isLeft ? "-right-12" : "-left-12"
                     } ${
                       readAwards.includes(award.id)
-                        ? "bg-[#F78535]"
+                        ? "bg-[var(--primary-color)]"
                         : "bg-[var(--award-line-color)]"
                     }`}
                   >
@@ -177,7 +177,7 @@ export default function Awards() {
                       className={`w-3 h-3 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-colors duration-300 ${
                         readAwards.includes(award.id)
                           ? "bg-[var(--background-color)]"
-                          : "bg-[#F78535]"
+                          : "bg-[var(--primary-color)]"
                       }`}
                     />
                   </div>
@@ -199,7 +199,7 @@ export default function Awards() {
         {/* 왼쪽 세로선 */}
         <div className="absolute left-8 top-0 bottom-0 w-1 bg-[var(--award-line-color)] overflow-hidden rounded-full">
           <div
-            className={`absolute top-0 left-0 w-full bg-[#F78535] transition-all duration-1000 rounded-full ${
+            className={`absolute top-0 left-0 w-full bg-[var(--primary-color)] transition-all duration-1000 rounded-full ${
               isAllRead ? "h-full" : "h-0"
             }`}
           />
@@ -227,7 +227,7 @@ export default function Awards() {
                   {/* 연결선 */}
                   <div className="absolute top-1/2 -left-8 w-8 h-1 bg-[var(--award-line-color)] transform -translate-y-1/2 overflow-hidden rounded-full">
                     <div
-                      className={`absolute top-0 w-full h-full bg-[#F78535] transition-transform duration-1000 rounded-full origin-right ${
+                      className={`absolute top-0 w-full h-full bg-[var(--primary-color)] transition-transform duration-1000 rounded-full origin-right ${
                         readAwards.includes(award.id)
                           ? "scale-x-100"
                           : "scale-x-0"
@@ -239,7 +239,7 @@ export default function Awards() {
                   <div
                     className={`absolute top-1/2 w-6 h-6 rounded-full transform -translate-y-1/2 transition-colors duration-300 -left-10 ${
                       readAwards.includes(award.id)
-                        ? "bg-[#F78535]"
+                        ? "bg-[var(--primary-color)]"
                         : "bg-[var(--award-line-color)]"
                     }`}
                   >
@@ -247,7 +247,7 @@ export default function Awards() {
                       className={`w-3 h-3 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-colors duration-300 ${
                         readAwards.includes(award.id)
                           ? "bg-[var(--background-color)]"
-                          : "bg-[#F78535]"
+                          : "bg-[var(--primary-color)]"
                       }`}
                     />
                   </div>

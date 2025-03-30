@@ -32,7 +32,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="min-h-[300px] flex flex-col items-center">
-      <h2 className="text-6xl font-bungee text-[#F78535] mt-6 sm:mt-10 text-center pb-16">
+      <h2 className="text-6xl font-bungee text-[var(--primary-color)] mt-6 sm:mt-10 text-center pb-16">
         <span>PROJECTS</span>
       </h2>
 
@@ -55,7 +55,7 @@ export default function Projects() {
                 <p className="text-sm text-gray-500">포트폴리오</p>
                 <div className="flex flex-col gap-8">
                   <div className="flex items-center gap-4">
-                    <h3 className="text-xl md:text-2xl font-bold text-[#F78535]">
+                    <h3 className="text-xl md:text-2xl font-bold text-[var(--primary-color)]">
                       CodingLarva
                     </h3>
                     <div className="hidden lg:flex gap-2">
@@ -73,7 +73,7 @@ export default function Projects() {
             {/* 오른쪽: 버튼들 */}
             <div className="flex items-center gap-2 relative">
               <button
-                className="lg:hidden px-2 py-1.5 rounded-lg text-xs hover:bg-[#F78535] transition-colors flex items-center sm:gap-1"
+                className="lg:hidden px-2 py-1.5 rounded-lg text-xs hover:bg-[var(--primary-color)] transition-colors flex items-center sm:gap-1"
                 onClick={() => toggleDropdown("codinglarva")}
               >
                 기술 스택
@@ -86,10 +86,10 @@ export default function Projects() {
                 />
               </button>
               <div className="hidden sm:flex items-center gap-2">
-                <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#F78535] transition-colors">
+                <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[var(--primary-color)] transition-colors">
                   README
                 </button>
-                <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#F78535] transition-colors">
+                <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[var(--primary-color)] transition-colors">
                   FIGMA
                 </button>
               </div>
@@ -165,10 +165,10 @@ export default function Projects() {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#F78535] transition-colors">
+              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[var(--primary-color)] transition-colors">
                 README
               </button>
-              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#F78535] transition-colors">
+              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[var(--primary-color)] transition-colors">
                 FIGMA
               </button>
             </div>
