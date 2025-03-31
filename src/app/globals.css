@@ -12,19 +12,19 @@
 /* 기본 테마 설정 */
 :root {
   --font-color: #2c2c31;
-  --background-color: #ffffff;
-  --background-color2: #fbfffb;
-  --box-color: #e2ebdd;
+  --background-color: #fdfdfd;
+  --background-color2: #F9F9F9;
+  --box-color: #f0f0f0;
   --header-color: #2c2c31;
   --dropdown-bg: #ffffff;
   --dropdown-hover: #f5f5f5;
   --svg-color: #2c2c31;
   --hint-color: #00009c;
-  --award-color: #ddecda;
+  --award-color: #ebebeb;
   --award-line-color: #ebebeb;
-  --primary-color: #368800;
-  --primary-color-hover: #43a70080;
-  --primary-color-selection: #43a70094;
+  --primary-color: #f78535;
+  --primary-color-hover: rgba(247, 133, 53, 0.5);
+  --primary-color-selection: #f7863594;
 }
 
 /* 다크모드 테마 설정 */
