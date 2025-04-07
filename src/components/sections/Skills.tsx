@@ -228,25 +228,6 @@ export default function Skills() {
     ],
   };
 
-  const getLevelColor = (level: number) => {
-    if (level >= 4) return "text-red-500";
-    if (level >= 3) return "text-green-500";
-    return "text-blue-500";
-  };
-
-  const getTagColor = (tag: string) => {
-    switch (tag) {
-      case "주력":
-        return "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200";
-      case "중급":
-        return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200";
-      case "보조":
-        return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200";
-      default:
-        return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200";
-    }
-  };
-
   return (
     <section
       id="skills"

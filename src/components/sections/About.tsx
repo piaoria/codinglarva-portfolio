@@ -23,18 +23,18 @@ export default function About() {
   const [showImage, setShowImage] = useState(false);
 
   useEffect(() => {
-    const timers = showTexts.map((_, index) =>
-      setTimeout(
+    const timers = showTexts.map((_, index) => {
+      return setTimeout(
         () => {
-          setShowTexts((prev) => {
-            const newState = [...prev];
-            newState[index] = true;
-            return newState;
+          setShowTexts((prevTexts) => {
+            const newTexts = [...prevTexts];
+            newTexts[index] = true;
+            return newTexts;
           });
         },
         250 * (index + 1)
-      )
-    );
+      );
+    });
 
     // 왼쪽 텍스트가 모두 나타난 후 오른쪽 타이핑 시작
     const typingTimer = setTimeout(
@@ -46,6 +46,7 @@ export default function About() {
       timers.forEach((timer) => clearTimeout(timer));
       clearTimeout(typingTimer);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -56,7 +57,7 @@ export default function About() {
 
     const typeText = () => {
       if (currentIndex < fullText.length) {
-        setTypingText((prev) => fullText.slice(0, currentIndex + 1));
+        setTypingText(() => fullText.slice(0, currentIndex + 1));
         currentIndex++;
         typingTimeout = setTimeout(typeText, Math.random() * 50 + 50);
       } else {
@@ -71,7 +72,7 @@ export default function About() {
     return () => {
       clearTimeout(typingTimeout);
     };
-  }, [isTyping]);
+  }, [isTyping, fullText]);
 
   return (
     <section
