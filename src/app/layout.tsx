@@ -8,6 +8,7 @@ import "./globals.css";
 import { HeaderColorProvider } from "@/contexts/HeaderColorContext";
 import { ModalProvider } from "@/context/ModalContext";
 import SkillModal from "@/components/common/SkillModal";
+import { ToastProvider } from "@/context/ToastContext";
 
 const bungeeHairline = Bungee_Hairline({
   variable: "--font-bungee-hairline",
@@ -47,11 +48,13 @@ export default function RootLayout({
           <HeaderColorProvider>
             <CustomCursor />
             <ModalProvider>
-              <div className="min-h-screen flex flex-col">
-                <Header />
-                <main className="flex-grow">{children}</main>
-                <SkillModal />
-              </div>
+              <ToastProvider>
+                <div className="min-h-screen flex flex-col">
+                  <Header />
+                  <main className="flex-grow">{children}</main>
+                  <SkillModal />
+                </div>
+              </ToastProvider>
             </ModalProvider>
           </HeaderColorProvider>
         </ThemeProvider>

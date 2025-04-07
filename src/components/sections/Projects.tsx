@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
-// import Link from "next/link";
+import { useToast } from "@/context/ToastContext";
+import Link from "next/link";
 import {
   NextChip,
   TypescriptChip,
@@ -25,9 +26,15 @@ import {
 
 export default function Projects() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const { showToast } = useToast();
 
   const toggleDropdown = (projectId: string) => {
     setOpenDropdown(openDropdown === projectId ? null : projectId);
+  };
+
+  const handleComingSoonClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    showToast("작업 중 입니다. 기대해주세요!");
   };
 
   return (
@@ -86,10 +93,18 @@ export default function Projects() {
                 />
               </button>
               <div className="hidden sm:flex items-center gap-2">
-                <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[var(--primary-color)] transition-colors">
+                <Link
+                  href="https://github.com/piaoria/codinglarva-portfolio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[var(--primary-color)] transition-colors"
+                >
                   README
-                </button>
-                <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[var(--primary-color)] transition-colors">
+                </Link>
+                <button
+                  className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[var(--primary-color)] transition-colors"
+                  onClick={handleComingSoonClick}
+                >
                   FIGMA
                 </button>
               </div>
@@ -165,10 +180,18 @@ export default function Projects() {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[var(--primary-color)] transition-colors">
+              <Link
+                href="https://github.com/piaoria/codinglarva-portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[var(--primary-color)] transition-colors"
+              >
                 README
-              </button>
-              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[var(--primary-color)] transition-colors">
+              </Link>
+              <button
+                className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[var(--primary-color)] transition-colors"
+                onClick={handleComingSoonClick}
+              >
                 FIGMA
               </button>
             </div>
@@ -221,10 +244,18 @@ export default function Projects() {
                 />
               </button>
               <div className="hidden sm:flex items-center gap-2">
-                <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#A59CCF] transition-colors">
+                <Link
+                  href="https://github.com/eum-silvertown/eum"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#A59CCF] transition-colors"
+                >
                   README
-                </button>
-                <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#A59CCF] transition-colors">
+                </Link>
+                <button
+                  className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#A59CCF] transition-colors"
+                  onClick={handleComingSoonClick}
+                >
                   SUMMARY
                 </button>
               </div>
@@ -298,10 +329,18 @@ export default function Projects() {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#A59CCF] transition-colors">
+              <Link
+                href="https://github.com/eum-silvertown/eum"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#A59CCF] transition-colors"
+              >
                 README
-              </button>
-              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#A59CCF] transition-colors">
+              </Link>
+              <button
+                className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#A59CCF] transition-colors"
+                onClick={handleComingSoonClick}
+              >
                 SUMMARY
               </button>
             </div>
@@ -355,10 +394,18 @@ export default function Projects() {
                 />
               </button>
               <div className="hidden sm:flex items-center gap-2">
-                <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#9CAEEB] transition-colors">
+                <Link
+                  href="https://github.com/zozoclub/newlearn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#9CAEEB] transition-colors"
+                >
                   README
-                </button>
-                <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#9CAEEB] transition-colors">
+                </Link>
+                <button
+                  className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#9CAEEB] transition-colors"
+                  onClick={handleComingSoonClick}
+                >
                   SUMMARY
                 </button>
               </div>
@@ -433,10 +480,18 @@ export default function Projects() {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#9CAEEB] transition-colors">
+              <Link
+                href="https://github.com/zozoclub/newlearn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#9CAEEB] transition-colors"
+              >
                 README
-              </button>
-              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#9CAEEB] transition-colors">
+              </Link>
+              <button
+                className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#9CAEEB] transition-colors"
+                onClick={handleComingSoonClick}
+              >
                 SUMMARY
               </button>
             </div>
@@ -490,10 +545,18 @@ export default function Projects() {
                 />
               </button>
               <div className="hidden sm:flex items-center gap-2">
-                <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#B6B9C5] transition-colors">
+                <Link
+                  href="https://github.com/LuckyCoockie/CrewIn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#B6B9C5] transition-colors"
+                >
                   README
-                </button>
-                <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#B6B9C5] transition-colors">
+                </Link>
+                <button
+                  className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#B6B9C5] transition-colors"
+                  onClick={handleComingSoonClick}
+                >
                   SUMMARY
                 </button>
               </div>
@@ -568,10 +631,18 @@ export default function Projects() {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#B6B9C5] transition-colors">
+              <Link
+                href="https://github.com/LuckyCoockie/CrewIn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#B6B9C5] transition-colors"
+              >
                 README
-              </button>
-              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#B6B9C5] transition-colors">
+              </Link>
+              <button
+                className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#B6B9C5] transition-colors"
+                onClick={handleComingSoonClick}
+              >
                 SUMMARY
               </button>
             </div>
@@ -624,10 +695,18 @@ export default function Projects() {
                 />
               </button>
               <div className="hidden sm:flex items-center gap-2">
-                <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#FFCC5C] transition-colors">
+                <Link
+                  href="https://github.com/piaoria/HoneyMoney"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#FFCC5C] transition-colors"
+                >
                   README
-                </button>
-                <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#FFCC5C] transition-colors">
+                </Link>
+                <button
+                  className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#FFCC5C] transition-colors"
+                  onClick={handleComingSoonClick}
+                >
                   SUMMARY
                 </button>
               </div>
@@ -701,10 +780,18 @@ export default function Projects() {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#FFCC5C] transition-colors">
+              <Link
+                href="https://github.com/piaoria/HoneyMoney"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#FFCC5C] transition-colors"
+              >
                 README
-              </button>
-              <button className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#FFCC5C] transition-colors">
+              </Link>
+              <button
+                className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#FFCC5C] transition-colors"
+                onClick={handleComingSoonClick}
+              >
                 SUMMARY
               </button>
             </div>
