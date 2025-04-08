@@ -18,7 +18,7 @@ interface ProjectGifData {
 const PROJECT_DATA: Record<string, ProjectGifData> = {
   eum: {
     gifs: ["/projects/eum/1.gif", "/projects/eum/2.gif", "/projects/eum/3.gif"],
-    color: "#F78535",
+    color: "#A59CCF",
     description: "이음 프로젝트는... 내용이 채워질 영역입니다.",
   },
   newlearn: {
@@ -33,7 +33,7 @@ const PROJECT_DATA: Record<string, ProjectGifData> = {
       "/projects/newlearn/8.gif",
       "/projects/newlearn/9.gif",
     ],
-    color: "#FFB800",
+    color: "#9CAEEB",
     description: "newlaern 프로젝트는... 내용이 채워질 영역입니다.",
   },
   honeymoney: {
@@ -41,7 +41,7 @@ const PROJECT_DATA: Record<string, ProjectGifData> = {
     gifs: [
       // ... honeymoney gif
     ],
-    color: "#FFB800",
+    color: "#FFCC5C",
     description: "honeymoney 프로젝트는... 내용이 채워질 영역입니다.",
   },
 };
@@ -83,7 +83,7 @@ export default function ProjectModal({
       onClick={handleClose}
     >
       <div
-        className={`bg-[var(--background-color)] p-4 sm:p-6 rounded-lg w-full max-h-[90vh] overflow-y-auto transition-all duration-200 ${
+        className={`bg-[var(--background-color)] p-4 sm:p-6 rounded-lg w-full max-w-[1000px] max-h-[90vh] overflow-y-auto transition-all duration-200 ${
           isClosing
             ? "opacity-0 scale-95"
             : "opacity-100 scale-100 animate-scaleIn"
@@ -130,7 +130,7 @@ export default function ProjectModal({
         {/* 미디어 표시 */}
         {((projectData.description && currentPage > 0) ||
           !projectData.description) && (
-          <div className="relative w-full aspect-video bg-gray-100 dark:bg-gray-700 rounded-xl overflow-hidden my-2 sm:my-4">
+          <div className="relative w-full max-w-[1000px] mx-auto aspect-video bg-gray-100 dark:bg-gray-700 rounded-xl overflow-hidden my-2 sm:my-4">
             <div className="absolute inset-0 flex items-center justify-center">
               {projectData.gifs &&
                 currentPage - (projectData.description ? 1 : 0) <
@@ -143,7 +143,7 @@ export default function ProjectModal({
                     }
                     alt={`Project preview ${currentPage + 1}`}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1000px) 1000px"
                     priority
                     className="object-contain w-full h-full"
                   />
@@ -163,7 +163,7 @@ export default function ProjectModal({
                     loop
                     muted
                     playsInline
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain max-w-[1000px]"
                   />
                 )}
             </div>
@@ -183,7 +183,7 @@ export default function ProjectModal({
           >
             이전
           </button>
-          <span className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
+          <span className="text-sm sm:text-base ">
             {currentPage + 1} / {totalPages}
           </span>
           <button
