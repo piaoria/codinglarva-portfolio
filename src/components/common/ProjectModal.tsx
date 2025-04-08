@@ -145,6 +145,7 @@ export default function ProjectModal({
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1000px) 1000px"
                     priority
+                    unoptimized
                     className="object-contain w-full h-full"
                   />
                 )}
