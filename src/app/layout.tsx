@@ -28,15 +28,44 @@ const pretendard = localFont({
 export const metadata: Metadata = {
   title: "박효진 | Frontend Developer Portfolio",
   description:
-    "프론트엔드 개발자 박효진의 포트폴리오 웹사이트입니다. React, TypeScript, Next.js 등의 기술 스택을 사용한 프로젝트들을 확인해보세요.",
-  keywords:
-    "프론트엔드, 개발자, 포트폴리오, React, TypeScript, Next.js, 웹 개발",
+    "안녕하세요! 프론트엔드 개발자 박효진입니다. 사용자 경험을 중요시하며, 새로운 기술에 대한 열정을 가지고 있습니다.",
+  icons: {
+    icon: [
+      {
+        url: "/icon.png",
+        type: "image/png",
+        sizes: "192x192",
+      },
+    ],
+    apple: {
+      url: "/apple-icon.png",
+      type: "image/png",
+      sizes: "180x180",
+    },
+  },
   openGraph: {
     title: "박효진 | Frontend Developer Portfolio",
-    description: "프론트엔드 개발자 박효진의 포트폴리오 웹사이트입니다.",
-    type: "website",
-    locale: "ko_KR",
+    description:
+      "안녕하세요! 프론트엔드 개발자 박효진입니다. 사용자 경험을 중요시하며, 새로운 기술에 대한 열정을 가지고 있습니다.",
+    url: "https://codinglarva.site",
     siteName: "박효진 포트폴리오",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "박효진 포트폴리오",
+      },
+    ],
+    locale: "ko_KR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "박효진 | Frontend Developer Portfolio",
+    description:
+      "안녕하세요! 프론트엔드 개발자 박효진입니다. 사용자 경험을 중요시하며, 새로운 기술에 대한 열정을 가지고 있습니다.",
+    images: ["/og-image.png"],
   },
 };
 
