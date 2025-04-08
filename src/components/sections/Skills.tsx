@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { useModal } from "../../context/ModalContext";
+import { useModal } from "../../contexts/ModalContext";
 
 export default function Skills() {
   const { theme } = useTheme();

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { useToast } from "@/context/ToastContext";
+import { useToast } from "@/contexts/ToastContext";
 import Link from "next/link";
 import {
   NextChip,

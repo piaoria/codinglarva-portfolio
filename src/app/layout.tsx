@@ -6,9 +6,9 @@ import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import CustomCursor from "@/components/layout/CustomCursor";
 import "./globals.css";
 import { HeaderColorProvider } from "@/contexts/HeaderColorContext";
-import { ModalProvider } from "@/context/ModalContext";
+import { ModalProvider } from "@/contexts/ModalContext";
 import SkillModal from "@/components/common/SkillModal";
-import { ToastProvider } from "@/context/ToastContext";
+import { ToastProvider } from "@/contexts/ToastContext";
 import Script from "next/script";
 
 const bungeeHairline = Bungee_Hairline({

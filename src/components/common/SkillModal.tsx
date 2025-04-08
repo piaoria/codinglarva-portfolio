@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useModal } from "@/context/ModalContext";
+import { useModal } from "@/contexts/ModalContext";
 
 const getLevelColor = (level: number) => {
   if (level >= 4) return "text-red-500";
