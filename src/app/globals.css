@@ -13,7 +13,7 @@
 :root {
   --font-color: #2c2c31;
   --background-color: #fdfdfd;
-  --background-color2: #F9F9F9;
+  --background-color2: #f9f9f9;
   --box-color: #f0f0f0;
   --header-color: #2c2c31;
   --dropdown-bg: #ffffff;
@@ -216,4 +216,34 @@ header {
 .section-fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* 모달 페이드인 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 모달 스케일인 애니메이션 */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.2s ease-out forwards;
 }

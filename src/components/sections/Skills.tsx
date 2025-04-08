@@ -5,10 +5,22 @@ import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { useModal } from "../../contexts/ModalContext";
 
+interface Skill {
+  name: string;
+  icon: string;
+  darkIcon?: string;
+  description: string;
+  level: number;
+  experience: string;
+  projects: number;
+  proficiency: number;
+  tag: string;
+}
+
 export default function Skills() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const { setSelectedSkill } = useModal();
+  const { openModal } = useModal();
 
   useEffect(() => {
     setMounted(true);
@@ -228,6 +240,10 @@ export default function Skills() {
     ],
   };
 
+  const handleSkillClick = (skill: Skill) => {
+    openModal("skill", { skill });
+  };
+
   return (
     <section
       id="skills"
@@ -252,7 +268,7 @@ export default function Skills() {
                     animation: `fadeInUp 0.5s ease-in-out ${index * 0.1}s forwards`,
                     opacity: 0,
                   }}
-                  onClick={() => setSelectedSkill(skill)}
+                  onClick={() => handleSkillClick(skill)}
                 >
                   <Image
                     src={skill.icon}
@@ -286,7 +302,7 @@ export default function Skills() {
                     animation: `fadeInUp 0.5s ease-in-out ${index * 0.1}s forwards`,
                     opacity: 0,
                   }}
-                  onClick={() => setSelectedSkill(skill)}
+                  onClick={() => handleSkillClick(skill)}
                 >
                   <Image
                     src={skill.icon}
@@ -320,7 +336,7 @@ export default function Skills() {
                     animation: `fadeInUp 0.5s ease-in-out ${index * 0.1}s forwards`,
                     opacity: 0,
                   }}
-                  onClick={() => setSelectedSkill(skill)}
+                  onClick={() => handleSkillClick(skill)}
                 >
                   <Image
                     src={skill.icon}
@@ -354,7 +370,7 @@ export default function Skills() {
                     animation: `fadeInUp 0.5s ease-in-out ${index * 0.1}s forwards`,
                     opacity: 0,
                   }}
-                  onClick={() => setSelectedSkill(skill)}
+                  onClick={() => handleSkillClick(skill)}
                 >
                   <Image
                     src={

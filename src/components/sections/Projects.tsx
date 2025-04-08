@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useToast } from "@/contexts/ToastContext";
+import { useModal } from "@/contexts/ModalContext";
 import Link from "next/link";
 import {
   NextChip,
@@ -27,6 +28,7 @@ import {
 export default function Projects() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const { showToast } = useToast();
+  const { openModal } = useModal();
 
   const toggleDropdown = (projectId: string) => {
     setOpenDropdown(openDropdown === projectId ? null : projectId);
@@ -35,6 +37,10 @@ export default function Projects() {
   const handleComingSoonClick = (e: React.MouseEvent) => {
     e.preventDefault();
     showToast("작업 중 입니다. 기대해주세요!");
+  };
+
+  const handleSummaryClick = (projectId: string) => {
+    openModal("project", { projectId });
   };
 
   return (
@@ -254,7 +260,7 @@ export default function Projects() {
                 </Link>
                 <button
                   className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#A59CCF] transition-colors"
-                  onClick={handleComingSoonClick}
+                  onClick={() => handleSummaryClick("eum")}
                 >
                   SUMMARY
                 </button>
@@ -339,7 +345,7 @@ export default function Projects() {
               </Link>
               <button
                 className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#A59CCF] transition-colors"
-                onClick={handleComingSoonClick}
+                onClick={() => handleSummaryClick("eum")}
               >
                 SUMMARY
               </button>
@@ -705,7 +711,7 @@ export default function Projects() {
                 </Link>
                 <button
                   className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#FFCC5C] transition-colors"
-                  onClick={handleComingSoonClick}
+                  onClick={() => handleSummaryClick("honeymoney")}
                 >
                   SUMMARY
                 </button>

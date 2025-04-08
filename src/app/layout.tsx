@@ -7,7 +7,6 @@ import CustomCursor from "@/components/layout/CustomCursor";
 import "./globals.css";
 import { HeaderColorProvider } from "@/contexts/HeaderColorContext";
 import { ModalProvider } from "@/contexts/ModalContext";
-import SkillModal from "@/components/common/SkillModal";
 import { ToastProvider } from "@/contexts/ToastContext";
 import Script from "next/script";
 
@@ -26,6 +25,11 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://codinglarva.site"
+  ),
   title: "박효진 | Frontend Developer Portfolio",
   description:
     "안녕하세요! 프론트엔드 개발자 박효진입니다. 사용자 경험을 중요시하며, 새로운 기술에 대한 열정을 가지고 있습니다.",
@@ -107,7 +111,6 @@ export default function RootLayout({
                 <div className="min-h-screen flex flex-col">
                   <Header />
                   <main className="flex-grow">{children}</main>
-                  <SkillModal />
                 </div>
               </ToastProvider>
             </ModalProvider>

@@ -1,7 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useModal } from "@/contexts/ModalContext";
+
+interface Skill {
+  name: string;
+  icon: string;
+  darkIcon?: string;
+  description: string;
+  level: number;
+  experience: string;
+  projects: number;
+  proficiency: number;
+  tag: string;
+}
+
+interface SkillModalProps {
+  skill: Skill;
+  onClose: () => void;
+}
 
 const getLevelColor = (level: number) => {
   if (level >= 4) return "text-red-500";
@@ -22,24 +38,23 @@ const getTagColor = (tag: string) => {
   }
 };
 
-export default function SkillModal() {
-  const { selectedSkill, setSelectedSkill } = useModal();
+export default function SkillModal({ skill, onClose }: SkillModalProps) {
   const [isClosing, setIsClosing] = useState(false);
 
   useEffect(() => {
-    if (!selectedSkill) return;
+    if (!skill) return;
     setIsClosing(false);
-  }, [selectedSkill]);
+  }, [skill]);
 
   const handleClose = () => {
     setIsClosing(true);
     setTimeout(() => {
-      setSelectedSkill(null);
+      onClose();
       setIsClosing(false);
     }, 200);
   };
 
-  if (!selectedSkill && !isClosing) return null;
+  if (!skill && !isClosing) return null;
 
   return (
     <div
@@ -57,17 +72,17 @@ export default function SkillModal() {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-2xl font-bold">{selectedSkill?.name}</h3>
-          {selectedSkill?.tag && (
+          <h3 className="text-2xl font-bold">{skill.name}</h3>
+          {skill.tag && (
             <span
-              className={`px-2 py-1 rounded-full text-sm ${getTagColor(selectedSkill.tag)}`}
+              className={`px-2 py-1 rounded-full text-sm ${getTagColor(skill.tag)}`}
             >
-              {selectedSkill.tag}
+              {skill.tag}
             </span>
           )}
         </div>
         <p className="text-gray-600 dark:text-gray-300 mb-4">
-          {selectedSkill?.description}
+          {skill.description}
         </p>
 
         {/* 숙련도 정보 표시 */}
@@ -79,8 +94,8 @@ export default function SkillModal() {
                 <span
                   key={star}
                   className={`text-xl ${
-                    star <= (selectedSkill?.level ?? 0)
-                      ? getLevelColor(selectedSkill?.level ?? 0)
+                    star <= skill.level
+                      ? getLevelColor(skill.level)
                       : "text-gray-300"
                   }`}
                 >
@@ -93,7 +108,7 @@ export default function SkillModal() {
           <div>
             <p className="text-sm font-medium mb-1">프로젝트 경험</p>
             <p className="text-gray-600 dark:text-gray-300">
-              {selectedSkill?.projects}개 프로젝트 완료
+              {skill.projects}개 프로젝트 완료
             </p>
           </div>
 
@@ -102,11 +117,11 @@ export default function SkillModal() {
             <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
               <div
                 className="bg-blue-600 h-2.5 rounded-full transition-all duration-500"
-                style={{ width: `${selectedSkill?.proficiency}%` }}
+                style={{ width: `${skill.proficiency}%` }}
               ></div>
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
-              {selectedSkill?.proficiency}%
+              {skill.proficiency}%
             </p>
           </div>
         </div>
