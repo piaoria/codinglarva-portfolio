@@ -26,6 +26,7 @@
   --primary-color-hover: rgba(247, 133, 53, 0.5);
   --primary-color-selection: #f7863594;
   --progress-color: #f78535;
+  --modal-color: #fdfdfd;
 }
 
 /* 다크모드 테마 설정 */
@@ -45,6 +46,7 @@
   --primary-color-hover: rgba(247, 133, 53, 0.5);
   --primary-color-selection: #f7863594;
   --progress-color: #f78535;
+  --modal-color: #232328;
 }
 
 /* 기본 body 설정 */

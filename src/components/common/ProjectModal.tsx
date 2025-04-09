@@ -83,7 +83,7 @@ export default function ProjectModal({
       onClick={handleClose}
     >
       <div
-        className={`bg-[var(--background-color)] p-4 sm:p-6 rounded-lg w-full max-w-[1000px] max-h-[90vh] overflow-y-auto transition-all duration-200 ${
+        className={`bg-[var(--modal-color)] p-4 sm:p-6 rounded-lg w-full max-w-[1000px] max-h-[90vh] overflow-y-auto transition-all duration-200 ${
           isClosing
             ? "opacity-0 scale-95"
             : "opacity-100 scale-100 animate-scaleIn"
@@ -91,7 +91,7 @@ export default function ProjectModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* 닫기 버튼 */}
-        <div className="flex justify-end mb-2 sticky top-0 bg-[var(--background-color)] dark:bg-[var(--background-color)] z-10">
+        <div className="flex justify-end mb-2 sticky top-0 bg-[var(--modal-color)] z-10">
           <button
             className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 p-1"
             onClick={handleClose}

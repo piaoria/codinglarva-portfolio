@@ -83,16 +83,16 @@ export default function SkillModal({ skill, onClose }: SkillModalProps) {
       onClick={handleClose}
     >
       <div
-        className={`bg-white dark:bg-gray-800 p-4 rounded-lg max-w-2xl w-full mx-4 flex gap-8 transition-all duration-200 ${
+        className={`bg-[var(--modal-color)] p-5 rounded-lg max-w-sm w-full mx-4 transition-all duration-200 ${
           isClosing
             ? "opacity-0 scale-95"
             : "opacity-100 scale-100 animate-scaleIn"
         }`}
         onClick={(e: React.MouseEvent) => e.stopPropagation()}
       >
-        {/* 왼쪽 프로필 섹션 */}
-        <div className="flex flex-col items-center gap-4">
-          <div className="relative w-9 h-9">
+        {/* 상단 헤더 섹션 */}
+        <div className="flex items-start gap-3 mb-5">
+          <div className="relative w-10 h-10">
             <Image
               src={
                 mounted && skill.name === "Notion" && theme === "dark"
@@ -101,80 +101,84 @@ export default function SkillModal({ skill, onClose }: SkillModalProps) {
               }
               alt={skill.name}
               fill
-              sizes="width: 36px, height: 36px"
+              sizes="width: 40px, height: 40px"
               className="object-contain"
             />
           </div>
-          <span
-            className={`px-3 py-1 rounded-full text-sm ${getTagColor(skill.tag)}`}
-          >
-            {skill.tag}
-          </span>
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-1">
+              <h3 className="text-xl font-bold">{skill.name}</h3>
+              <span
+                className={`px-2 py-0.5 rounded-full text-xs ${getTagColor(skill.tag)}`}
+              >
+                {skill.tag}
+              </span>
+            </div>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              {skill.description}
+            </p>
+          </div>
+          {/* Progress Circle */}
+          <div className="relative w-14 h-14 flex-shrink-0">
+            <svg className="w-full h-full" viewBox="0 0 100 100">
+              {/* 배경 원 */}
+              <circle
+                className="text-gray-200 dark:text-gray-700"
+                strokeWidth="8"
+                stroke="currentColor"
+                fill="transparent"
+                r="40"
+                cx="50"
+                cy="50"
+              />
+              {/* 진행 원 */}
+              <circle
+                className="text-[var(--progress-color)]"
+                strokeWidth="8"
+                strokeLinecap="round"
+                stroke="currentColor"
+                fill="transparent"
+                r="40"
+                cx="50"
+                cy="50"
+                strokeDasharray={`${progress * 2.51} 251`}
+                strokeDashoffset="0"
+                transform="rotate(-90 50 50)"
+                style={{
+                  transition: "stroke-dasharray 0.05s ease-in-out",
+                }}
+              />
+            </svg>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-sm font-bold">{Math.round(progress)}%</span>
+            </div>
+          </div>
         </div>
 
-        {/* 오른쪽 컨텐츠 섹션 */}
-        <div className="flex-1">
-          <div className="flex justify-between items-start">
-            <div>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
-                {skill.description}
-              </p>
-              <h3 className="text-2xl font-bold">{skill.name}</h3>
-            </div>
-
-            {/* Progress Circle */}
-            <div className="relative w-16 h-16">
-              <svg className="w-full h-full" viewBox="0 0 100 100">
-                {/* 배경 원 */}
-                <circle
-                  className="text-gray-200 dark:text-gray-700"
-                  strokeWidth="8"
-                  stroke="currentColor"
-                  fill="transparent"
-                  r="40"
-                  cx="50"
-                  cy="50"
-                />
-                {/* 진행 원 */}
-                <circle
-                  className="text-[var(--progress-color)]"
-                  strokeWidth="8"
-                  strokeLinecap="round"
-                  stroke="currentColor"
-                  fill="transparent"
-                  r="40"
-                  cx="50"
-                  cy="50"
-                  strokeDasharray={`${progress * 2.51} 251`}
-                  strokeDashoffset="0"
-                  transform="rotate(-90 50 50)"
-                  style={{
-                    transition: "stroke-dasharray 0.05s ease-in-out",
-                  }}
-                />
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-md font-bold">
-                  {Math.round(progress)}%
+        {/* 주요 기능 리스트 */}
+        <div className="mb-6">
+          <h4 className="text-base font-semibold mb-3">주요 기능</h4>
+          <ul className="space-y-1.5">
+            {skill.capabilities.map((capability, index) => (
+              <li key={index} className="flex items-start">
+                <span className="text-[var(--primary-color)] mr-2">•</span>
+                <span className="text-sm text-gray-600 dark:text-gray-300">
+                  {capability}
                 </span>
-              </div>
-            </div>
-          </div>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          {/* 주요 기능 리스트 */}
-          <div className="mt-6">
-            <h4 className="text-lg font-semibold mb-3">주요 기능</h4>
-            <ul className="space-y-2">
-              {skill.capabilities.map((capability, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="text-blue-500 mr-2">•</span>
-                  <span className="text-gray-600 dark:text-gray-300">
-                    {capability}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        {/* 닫기 버튼 */}
+        <div className="flex justify-center">
+          <button
+            onClick={handleClose}
+            className="px-5 py-1.5 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-lg transition-colors duration-200 text-sm font-medium"
+            data-clickable="true"
+          >
+            닫기
+          </button>
         </div>
       </div>
     </div>
