@@ -12,8 +12,7 @@ interface Skill {
   darkIcon?: string;
   description: string;
   level: number;
-  experience: string;
-  projects: number;
+  capabilities: string[];
   proficiency: number;
   tag: string;
 }
