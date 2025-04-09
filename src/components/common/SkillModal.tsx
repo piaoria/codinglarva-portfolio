@@ -83,7 +83,7 @@ export default function SkillModal({ skill, onClose }: SkillModalProps) {
       onClick={handleClose}
     >
       <div
-        className={`bg-[var(--modal-color)] p-5 rounded-lg max-w-sm w-full mx-4 transition-all duration-200 ${
+        className={`bg-[var(--modal-color)] p-5 rounded-lg max-w-lg w-full mx-4 transition-all duration-200 ${
           isClosing
             ? "opacity-0 scale-95"
             : "opacity-100 scale-100 animate-scaleIn"

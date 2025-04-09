@@ -77,7 +77,7 @@ export default function ProjectModal({
 
   return (
     <div
-      className={`fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-200 p-4 ${
+      className={`fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 transition-opacity duration-200 p-4 ${
         isClosing ? "opacity-0" : "opacity-100 animate-fadeIn"
       }`}
       onClick={handleClose}
