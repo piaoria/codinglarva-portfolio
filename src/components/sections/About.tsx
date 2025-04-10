@@ -168,6 +168,13 @@ export default function About() {
           </div>
         </div>
       </div>
+      {/* <iframe
+        src="https://docs.google.com/presentation/d/1vqnNSLP_lI_ydWTVht81uY41HogWFbkEXWpFOXLxxAc/embed?start=false&loop=false&delayms=3000"
+        width="800"
+        height="600"
+        className="mt-8 rounded-lg shadow-lg"
+        allowFullScreen
+      ></iframe> */}
     </section>
   );
 }
