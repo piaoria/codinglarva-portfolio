@@ -75,11 +75,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="ko" className="overflow-y-scroll" suppressHydrationWarning>
+    <html lang="ko" suppressHydrationWarning>
       <head>
         {/* Google Analytics */}
         <Script
@@ -96,7 +96,8 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${bungeeHairline.variable} ${pretendard.variable} antialiased`}
+        className={`${bungeeHairline.variable} ${pretendard.variable} antialiased overflow-y-scroll`}
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"
