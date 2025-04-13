@@ -3,11 +3,16 @@
 # 오류 발생 시 즉시 종료
 set -e
 
+echo "🔍 환경 변수 확인 중..."
+echo "현재 설정된 환경 변수:"
+env | grep -E "NOTION|DISCORD"
+
 # 필수 환경 변수 확인
 if [ -z "$NOTION_API_KEY" ] || [ -z "$NOTION_DATABASE_ID" ]; then
     echo "❌ 필수 환경 변수가 설정되지 않았습니다!"
     echo "NOTION_API_KEY: ${NOTION_API_KEY:+설정됨}"
     echo "NOTION_DATABASE_ID: ${NOTION_DATABASE_ID:+설정됨}"
+    echo "DISCORD_SECRET: ${DISCORD_SECRET:+설정됨}"
     exit 1
 fi
 
