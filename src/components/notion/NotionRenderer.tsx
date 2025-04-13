@@ -1,5 +1,3 @@
-"use client";
-
 import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import Image from "next/image";
 
@@ -8,7 +6,20 @@ interface NotionRendererProps {
 }
 
 export default function NotionRenderer({ initialBlocks }: NotionRendererProps) {
+  console.log("=== NotionRenderer 시작 ===");
+  console.log("블록 개수:", initialBlocks.length);
+  console.log(
+    "첫 번째 블록:",
+    initialBlocks[0]
+      ? {
+          id: initialBlocks[0].id,
+          type: initialBlocks[0].type,
+        }
+      : "없음"
+  );
+
   if (initialBlocks.length === 0) {
+    console.log("블록이 없습니다.");
     return <div className="animate-pulse">로딩 중...</div>;
   }
 
@@ -22,8 +33,16 @@ export default function NotionRenderer({ initialBlocks }: NotionRendererProps) {
 }
 
 function NotionBlock({ block }: { block: BlockObjectResponse }) {
+  console.log("=== NotionBlock 렌더링 ===");
+  console.log("블록 타입:", block.type);
+  console.log("블록 ID:", block.id);
+
   switch (block.type) {
     case "paragraph":
+      console.log("문단 블록:", {
+        rich_text_length: block.paragraph.rich_text.length,
+        first_text: block.paragraph.rich_text[0]?.plain_text,
+      });
       return (
         <p className="mb-4">
           {block.paragraph.rich_text.map((text, index) => (
