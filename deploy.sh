@@ -1,3 +1,16 @@
+#!/bin/bash
+
+# 오류 발생 시 즉시 종료
+set -e
+
+# 필수 환경 변수 확인
+if [ -z "$NOTION_API_KEY" ] || [ -z "$NOTION_DATABASE_ID" ]; then
+    echo "❌ 필수 환경 변수가 설정되지 않았습니다!"
+    echo "NOTION_API_KEY: ${NOTION_API_KEY:+설정됨}"
+    echo "NOTION_DATABASE_ID: ${NOTION_DATABASE_ID:+설정됨}"
+    exit 1
+fi
+
 # 디스코드 Webhook 주소
 WEBHOOK_URL="$DISCORD_SECRET"
 
@@ -10,10 +23,13 @@ git pull origin master || {
 }
 
 echo "🔨 Docker 이미지 빌드 시작..."
-docker build -t codinglarva-portfolio . || {
+# 빌드 로그를 파일로 저장
+docker build -t codinglarva-portfolio . 2>&1 | tee docker-build.log || {
     echo "❌ Docker 빌드 실패!"
+    echo "빌드 로그:"
+    cat docker-build.log
     curl -H "Content-Type: application/json" -X POST \
-      -d '{"content":"❌ Docker build 실패!"}' "$WEBHOOK_URL"
+      -d '{"content":"❌ Docker build 실패!\n로그: '"$(cat docker-build.log)"'"}' "$WEBHOOK_URL"
     exit 1
 }
 
