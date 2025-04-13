@@ -1,4 +1,4 @@
-FROM node:22.14.0-alpine
+FROM node:22-slim
 
 WORKDIR /app
 
@@ -9,13 +9,13 @@ ENV HOSTNAME=0.0.0.0
 
 # 의존성 설치
 COPY package*.json ./
-RUN npm install --verbose
+RUN npm install
 
 # 소스 코드 복사
 COPY . .
 
 # 빌드 실행
-RUN npm run build --verbose
+RUN npm run build
 
 EXPOSE 3000
 
