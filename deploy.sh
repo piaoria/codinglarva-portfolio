@@ -1,8 +1,3 @@
-#!/bin/bash
-
-# 오류 발생 시 즉시 종료
-set -e
-
 # 디스코드 Webhook 주소
 WEBHOOK_URL="$DISCORD_SECRET"
 
