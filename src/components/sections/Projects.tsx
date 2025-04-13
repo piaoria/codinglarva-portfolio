@@ -561,7 +561,7 @@ export default function Projects() {
                 </Link>
                 <button
                   className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#B6B9C5] transition-colors"
-                  onClick={handleComingSoonClick}
+                  onClick={() => handleSummaryClick("crewin")}
                 >
                   SUMMARY
                 </button>
@@ -647,7 +647,7 @@ export default function Projects() {
               </Link>
               <button
                 className="px-2 py-1.5 bg-[#5E5E5E] text-white rounded-lg text-xs hover:bg-[#B6B9C5] transition-colors"
-                onClick={handleComingSoonClick}
+                onClick={() => handleSummaryClick("crewin")}
               >
                 SUMMARY
               </button>
