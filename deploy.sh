@@ -15,7 +15,7 @@ git pull origin master || {
 }
 
 # Docker 이미지 빌드
-docker build -t portfolio . || {
+docker build -t codinglarva-portfolio . || {
   curl -H "Content-Type: application/json" -X POST \
     -d '{"content":"❌ Docker build 실패!"}' "$WEBHOOK_URL"
   exit 1
@@ -29,9 +29,8 @@ if [ -n "$PORT_IN_USE" ]; then
   docker rm "$PORT_IN_USE"
 fi
 
-# 기존 컨테이너 중지 및 제거
-docker stop portfolio || true
-docker rm portfolio || true
+# 이름이 codinglarva인 기존 컨테이너 제거 (중복 제거)
+docker rm -f codinglarva 2>/dev/null || true
 
 # 새 컨테이너 실행
 docker run -d \
@@ -39,7 +38,7 @@ docker run -d \
   -p 3000:3000 \
   -e NOTION_API_KEY="$NOTION_API_KEY" \
   -e NOTION_DATABASE_ID="$NOTION_DATABASE_ID" \
-  portfolio || {
+  codinglarva-portfolio || {
   curl -H "Content-Type: application/json" -X POST \
     -d '{"content":"❌ Docker run 실패! (포트 중복 또는 기타 문제)"}' "$WEBHOOK_URL"
   exit 1
