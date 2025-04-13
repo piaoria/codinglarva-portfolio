@@ -79,7 +79,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" suppressHydrationWarning>
+    <html lang="ko" className="overflow-y-scroll" suppressHydrationWarning>
       <head>
         {/* Google Analytics */}
         <Script

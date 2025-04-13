@@ -10,6 +10,7 @@ import Archive from "@/components/sections/Archive";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 import { useHeaderColor } from "@/contexts/HeaderColorContext";
+import Header from "@/components/layout/Header";
 
 export default function Home() {
   const { setHeaderColor } = useHeaderColor();
@@ -92,57 +93,60 @@ export default function Home() {
   }, [visibleSections]);
 
   return (
-    <main className="pt-16 sm:pt-24">
-      <div
-        ref={sectionRefs.about}
-        id="about"
-        className={`section-fade-in ${visibleSections.includes("about") ? "visible" : ""}`}
-      >
-        <About />
-      </div>
-      <div
-        ref={sectionRefs.detail}
-        id="detail"
-        className={`section-fade-in pb-16 sm:pb-24 ${visibleSections.includes("detail") ? "visible" : ""}`}
-      >
-        <Detail />
-      </div>
-      <div
-        ref={sectionRefs.skills}
-        id="skills"
-        className={`section-fade-in bg-[var(--background-color2)] ${visibleSections.includes("skills") ? "visible" : ""}`}
-      >
-        <Skills />
-      </div>
-      <div
-        ref={sectionRefs.projects}
-        id="projects"
-        className={`section-fade-in pb-16 sm:pb-24 ${visibleSections.includes("projects") ? "visible" : ""}`}
-      >
-        <Projects />
-      </div>
-      <div
-        ref={sectionRefs.awards}
-        id="awards"
-        className={`section-fade-in bg-[var(--background-color2)] ${visibleSections.includes("awards") ? "visible" : ""}`}
-      >
-        <Awards />
-      </div>
-      <div
-        ref={sectionRefs.archive}
-        id="archive"
-        className={`section-fade-in pb-16 sm:pb-24 ${visibleSections.includes("archive") ? "visible" : ""}`}
-      >
-        <Archive />
-      </div>
-      <div
-        ref={sectionRefs.contact}
-        id="contact"
-        className={`section-fade-in bg-[var(--background-color2)] ${visibleSections.includes("contact") ? "visible" : ""}`}
-      >
-        <Contact />
-      </div>
+    <div className="min-h-screen">
+      <Header />
+      <main className="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-6rem)] pt-16 sm:pt-24">
+        <div
+          ref={sectionRefs.about}
+          id="about"
+          className={`section-fade-in ${visibleSections.includes("about") ? "visible" : ""}`}
+        >
+          <About />
+        </div>
+        <div
+          ref={sectionRefs.detail}
+          id="detail"
+          className={`section-fade-in pb-16 sm:pb-24 ${visibleSections.includes("detail") ? "visible" : ""}`}
+        >
+          <Detail />
+        </div>
+        <div
+          ref={sectionRefs.skills}
+          id="skills"
+          className={`section-fade-in bg-[var(--background-color2)] ${visibleSections.includes("skills") ? "visible" : ""}`}
+        >
+          <Skills />
+        </div>
+        <div
+          ref={sectionRefs.projects}
+          id="projects"
+          className={`section-fade-in pb-16 sm:pb-24 ${visibleSections.includes("projects") ? "visible" : ""}`}
+        >
+          <Projects />
+        </div>
+        <div
+          ref={sectionRefs.awards}
+          id="awards"
+          className={`section-fade-in bg-[var(--background-color2)] ${visibleSections.includes("awards") ? "visible" : ""}`}
+        >
+          <Awards />
+        </div>
+        <div
+          ref={sectionRefs.archive}
+          id="archive"
+          className={`section-fade-in pb-16 sm:pb-24 ${visibleSections.includes("archive") ? "visible" : ""}`}
+        >
+          <Archive />
+        </div>
+        <div
+          ref={sectionRefs.contact}
+          id="contact"
+          className={`section-fade-in bg-[var(--background-color2)] ${visibleSections.includes("contact") ? "visible" : ""}`}
+        >
+          <Contact />
+        </div>
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 }

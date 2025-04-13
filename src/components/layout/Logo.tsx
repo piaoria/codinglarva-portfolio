@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Logo() {
+  const router = useRouter();
   const [visitCount, setVisitCount] = useState(0);
   const [showHint, setShowHint] = useState(false);
   const [hintPosition, setHintPosition] = useState({ x: 0, y: 0 });
@@ -40,6 +42,7 @@ export default function Logo() {
   return (
     <div
       className="relative w-[80px] h-[64px]"
+      onClick={() => router.push("/")}
       onMouseEnter={() => setShowHint(true)}
       onMouseLeave={() => setShowHint(false)}
       onMouseMove={handleMouseMove}
