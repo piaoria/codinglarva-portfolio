@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getDocs } from "@/lib/notion";
 import Link from "next/link";
 import {

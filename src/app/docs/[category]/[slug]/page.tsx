@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getDocBySlug } from "@/lib/notion";
 import NotionRenderer from "@/components/notion/NotionRenderer";
 import { notFound } from "next/navigation";
