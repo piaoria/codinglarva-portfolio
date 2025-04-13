@@ -10,9 +10,9 @@ export const notion = new Client({
 
 export async function getDocs() {
   try {
-    console.log("데이터베이스 ID:", process.env.NOTION_DATABASE_ID);
+    console.log("데이터베이스 ID:", NOTION_DATABASE_ID);
     const response = await notion.databases.query({
-      database_id: process.env.NOTION_DATABASE_ID!,
+      database_id: NOTION_DATABASE_ID!,
       sorts: [
         {
           property: "Order",
