@@ -194,13 +194,22 @@ export default async function DocsPage() {
     );
   } catch (error) {
     console.error("문서를 불러오는 중 오류가 발생했습니다:", error);
+    if (error instanceof Error) {
+      console.error("에러 메시지:", error.message);
+      console.error("에러 스택:", error.stack);
+    }
     return (
       <div className="min-h-screen pt-32 pb-16 px-4 sm:px-8">
         <div className="max-w-[1200px] mx-auto">
           <h1 className="text-3xl font-bold mb-8">문서</h1>
-          <p className="text-red-500">
-            문서를 불러오는 중 오류가 발생했습니다.
-          </p>
+          <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg">
+            <p className="text-red-600 dark:text-red-400 font-medium">
+              문서를 불러오는 중 오류가 발생했습니다.
+            </p>
+            <p className="text-sm text-red-500 dark:text-red-400 mt-2">
+              잠시 후 다시 시도해주세요.
+            </p>
+          </div>
         </div>
       </div>
     );

@@ -9,34 +9,28 @@ export const notion = new Client({
 });
 
 export async function getDocs() {
-  if (!NOTION_API_KEY || !NOTION_DATABASE_ID) {
-    throw new Error(
-      "Missing Notion environment variables. Please check your .env.local file."
-    );
+  try {
+    console.log("데이터베이스 ID:", process.env.NOTION_DATABASE_ID);
+    const response = await notion.databases.query({
+      database_id: process.env.NOTION_DATABASE_ID!,
+      sorts: [
+        {
+          property: "Order",
+          direction: "ascending",
+        },
+      ],
+    });
+
+    console.log("문서 개수:", response.results.length);
+    return response.results;
+  } catch (error) {
+    console.error("Notion API 에러:", error);
+    if (error instanceof Error) {
+      console.error("에러 메시지:", error.message);
+      console.error("에러 스택:", error.stack);
+    }
+    throw error;
   }
-
-  console.log("Fetching docs from database:", NOTION_DATABASE_ID);
-
-  const response = await notion.databases.query({
-    database_id: NOTION_DATABASE_ID as string,
-    filter: {
-      property: "Published",
-      checkbox: {
-        equals: true,
-      },
-    },
-    sorts: [
-      {
-        property: "Order",
-        direction: "ascending",
-      },
-    ],
-  });
-
-  console.log("Found documents:", response.results.length);
-  console.log("Documents:", response.results);
-
-  return response.results as PageObjectResponse[];
 }
 
 export async function getDocBySlug(slug: string) {
