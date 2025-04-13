@@ -11,7 +11,7 @@ env | grep -E "NOTION|DISCORD"
 if [ -z "$NOTION_API_KEY" ] || [ -z "$NOTION_DATABASE_ID" ]; then
     echo "❌ 필수 환경 변수가 설정되지 않았습니다!"
     echo "NOTION_API_KEY: ${NOTION_API_KEY:+설정됨}"
-    echo "NOTION_DATABASE_ID: ${NOTION_DATABASE_ID:+설정됨}"
+    echo "NOTION_DOCS_DATABASE_ID: ${NOTION_DOCS_DATABASE_ID:+설정됨}"
     echo "DISCORD_SECRET: ${DISCORD_SECRET:+설정됨}"
     exit 1
 fi
