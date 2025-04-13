@@ -1,18 +1,23 @@
-#!/bin/bash
-
-# 오류 발생 시 즉시 종료
-set -e
-
 echo "🔍 환경 변수 확인 중..."
 echo "현재 설정된 환경 변수:"
 env | grep -E "NOTION|DISCORD"
 
 # 필수 환경 변수 확인
-if [ -z "$NOTION_API_KEY" ] || [ -z "$NOTION_DATABASE_ID" ]; then
-    echo "❌ 필수 환경 변수가 설정되지 않았습니다!"
-    echo "NOTION_API_KEY: ${NOTION_API_KEY:+설정됨}"
-    echo "NOTION_DOCS_DATABASE_ID: ${NOTION_DOCS_DATABASE_ID:+설정됨}"
-    echo "DISCORD_SECRET: ${DISCORD_SECRET:+설정됨}"
+MISSING_ENV=false
+if [ -z "$NOTION_API_KEY" ]; then
+    echo "❌ NOTION_API_KEY가 설정되지 않았습니다!"
+    MISSING_ENV=true
+fi
+if [ -z "$NOTION_DOCS_DATABASE_ID" ]; then
+    echo "❌ NOTION_DOCS_DATABASE_ID가 설정되지 않았습니다!"
+    MISSING_ENV=true
+fi
+if [ -z "$DISCORD_SECRET" ]; then
+    echo "❌ DISCORD_SECRET이 설정되지 않았습니다!"
+    MISSING_ENV=true
+fi
+
+if [ "$MISSING_ENV" = true ]; then
     exit 1
 fi
 
@@ -59,7 +64,7 @@ docker run -d \
     --name codinglarva \
     -p 3000:3000 \
     -e NOTION_API_KEY="$NOTION_API_KEY" \
-    -e NOTION_DATABASE_ID="$NOTION_DATABASE_ID" \
+    -e NOTION_DATABASE_ID="$NOTION_DOCS_DATABASE_ID" \
     codinglarva-portfolio || {
     echo "❌ Docker 컨테이너 실행 실패!"
     curl -H "Content-Type: application/json" -X POST \
