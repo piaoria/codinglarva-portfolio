@@ -60,6 +60,10 @@ docker rm codinglarva || true
 
 # 새 컨테이너 실행
 echo "🚀 새 컨테이너 실행..."
+echo "전달되는 환경 변수:"
+echo "NOTION_API_KEY: ${NOTION_API_KEY:+설정됨}"
+echo "NOTION_DOCS_DATABASE_ID: ${NOTION_DOCS_DATABASE_ID:+설정됨}"
+
 docker run -d \
     --name codinglarva \
     -p 3000:3000 \
