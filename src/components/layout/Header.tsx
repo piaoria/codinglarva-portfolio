@@ -43,7 +43,7 @@ export default function Header() {
 
     const element = document.getElementById(sectionId);
     if (element) {
-      const headerHeight = window.innerWidth >= 768 ? 96 : 64; // 브레이크포인트 기준
+      const headerHeight = window.innerWidth >= 768 ? 96 : 64;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - headerHeight;
 
