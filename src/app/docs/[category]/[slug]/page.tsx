@@ -5,20 +5,28 @@ import { notion } from "@/lib/notion";
 import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import Link from "next/link";
 
+// 동적 라우팅 설정
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 type DocPageProps = {
-  params: Promise<{
+  params: {
     category: string;
     slug: string;
-  }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
 };
 
 export default async function DocPage({ params }: DocPageProps) {
   try {
-    const { slug } = await params;
+    console.log("=== 문서 페이지 렌더링 시작 ===");
+    console.log("params:", params);
+
+    const { slug } = params;
     const doc = await getDocBySlug(slug);
 
     if (!doc) {
+      console.log("문서를 찾을 수 없습니다:", slug);
       notFound();
     }
 
