@@ -10,16 +10,20 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 type DocPageProps = {
-  params: {
+  params: Promise<{
     category: string;
     slug: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
+  }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export default async function DocPage({ params }: DocPageProps) {
   try {
-    const { slug } = params;
+    console.log("=== 문서 페이지 렌더링 시작 ===");
+    const resolvedParams = await params;
+    console.log("params:", resolvedParams);
+
+    const { slug } = resolvedParams;
     const doc = await getDocBySlug(slug);
 
     if (!doc) {
