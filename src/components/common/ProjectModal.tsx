@@ -105,7 +105,7 @@ export default function ProjectModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* 닫기 버튼 */}
-        <div className="flex justify-end mb-2 sticky top-0 bg-[var(--modal-color)] z-10">
+        <div className="flex justify-end mb-2 sticky top-0 z-10">
           <button
             className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 p-1"
             onClick={handleClose}

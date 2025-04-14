@@ -2,7 +2,6 @@ import { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   logging: {
     fetches: {
       fullUrl: true,
@@ -12,8 +11,8 @@ const nextConfig: NextConfig = {
     serverActions: {
       bodySizeLimit: "2mb",
     },
-    serverComponentsExternalPackages: ["@notionhq/client"],
   },
+  serverExternalPackages: ["@notionhq/client"],
   images: {
     remotePatterns: [
       {
