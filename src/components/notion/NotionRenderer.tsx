@@ -1,5 +1,8 @@
+"use client";
+
 import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import Image from "next/image";
+import { useState } from "react";
 
 interface NotionRendererProps {
   initialBlocks: BlockObjectResponse[];
@@ -31,6 +34,8 @@ export default function NotionRenderer({ initialBlocks }: NotionRendererProps) {
 }
 
 function NotionBlock({ block }: { block: BlockObjectResponse }) {
+  const [imageSize, setImageSize] = useState({ width: 1, height: 1 });
+
   switch (block.type) {
     case "paragraph":
       console.log("문단 블록:", {
@@ -94,14 +99,39 @@ function NotionBlock({ block }: { block: BlockObjectResponse }) {
         block.image.type === "external"
           ? block.image.external.url
           : block.image.file.url;
+
+      console.log("이미지 블록 속성:", {
+        id: block.id,
+        type: block.type,
+        image: block.image,
+      });
+
+      const imageSizeStyles = {
+        width: imageSize.width > 768 ? "100%" : imageSize.width,
+        height: imageSize.height < 30 ? 30 : imageSize.height,
+      };
+
       return (
-        <div className="relative w-full aspect-video">
+        <div
+          style={imageSizeStyles}
+          className="relative my-4 flex justify-center mx-auto"
+        >
           <Image
             src={imageUrl}
             alt={block.image.caption?.[0]?.plain_text || "이미지"}
             fill
-            className="object-cover rounded-lg"
+            className="object-contain rounded-lg"
+            sizes="100%"
+            priority={false}
+            onLoadingComplete={({ naturalWidth, naturalHeight }) => {
+              setImageSize({ width: naturalWidth, height: naturalHeight });
+            }}
           />
+          {block.image.caption?.[0]?.plain_text && (
+            <p className="text-sm text-gray-500 mt-2 text-center">
+              {block.image.caption[0].plain_text}
+            </p>
+          )}
         </div>
       );
     default:

@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     serverActions: {
-      bodySizeLimit: "5mb",
+      bodySizeLimit: "20mb",
     },
   },
   serverExternalPackages: ["@notionhq/client"],
@@ -24,11 +24,18 @@ const nextConfig: NextConfig = {
     ],
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
+    domains: [
+      "prod-files-secure.s3.us-west-2.amazonaws.com",
+      "s3.us-west-2.amazonaws.com",
+      "prod-files-secure.s3.amazonaws.com",
+    ],
   },
   webpack: (config, { isServer }) => {
     if (isServer) {
       config.externals.push({
         "@notionhq/client": "commonjs @notionhq/client",
+        bufferutil: "bufferutil",
+        "utf-8-validate": "utf-8-validate",
       });
     }
     config.module.rules.push({
