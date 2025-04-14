@@ -85,7 +85,6 @@ const isStatusProperty = (
 
 export default async function DocsPage() {
   try {
-    console.log("=== Docs 페이지 렌더링 시작 ===");
     const docs = await getDocs();
     console.log("가져온 문서 수:", docs.length);
 
@@ -164,7 +163,7 @@ export default async function DocsPage() {
                     key={doc.id}
                     href={`/docs/${categoryName}/${slugText}`}
                     prefetch={true}
-                    className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                    className="p-6 bg-[var(--modal-color)] rounded-lg shadow-md hover:shadow-lg transition-shadow"
                   >
                     <div className="space-y-4">
                       <div className="flex justify-between items-start">

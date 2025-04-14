@@ -19,9 +19,6 @@ type DocPageProps = {
 
 export default async function DocPage({ params }: DocPageProps) {
   try {
-    console.log("=== 문서 페이지 렌더링 시작 ===");
-    console.log("params:", params);
-
     const { slug } = params;
     const doc = await getDocBySlug(slug);
 

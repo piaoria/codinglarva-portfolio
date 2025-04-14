@@ -6,8 +6,6 @@ interface NotionRendererProps {
 }
 
 export default function NotionRenderer({ initialBlocks }: NotionRendererProps) {
-  console.log("=== NotionRenderer 시작 ===");
-  console.log("블록 개수:", initialBlocks.length);
   console.log(
     "첫 번째 블록:",
     initialBlocks[0]
@@ -33,10 +31,6 @@ export default function NotionRenderer({ initialBlocks }: NotionRendererProps) {
 }
 
 function NotionBlock({ block }: { block: BlockObjectResponse }) {
-  console.log("=== NotionBlock 렌더링 ===");
-  console.log("블록 타입:", block.type);
-  console.log("블록 ID:", block.id);
-
   switch (block.type) {
     case "paragraph":
       console.log("문단 블록:", {

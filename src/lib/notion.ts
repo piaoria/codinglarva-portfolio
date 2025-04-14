@@ -34,16 +34,6 @@ export const notion = new Client({
 
 export async function getDocs() {
   try {
-    console.log("=== getDocs 시작 ===");
-    console.log("현재 환경:", process.env.NODE_ENV);
-    console.log("데이터베이스 ID:", databaseId);
-    console.log("API Key 존재 여부:", !!apiKey);
-    console.log("전체 환경 변수:", {
-      NODE_ENV: process.env.NODE_ENV,
-      NOTION_API_KEY: !!process.env.NOTION_API_KEY,
-      NOTION_DOCS_DATABASE_ID: !!process.env.NOTION_DOCS_DATABASE_ID,
-    });
-
     const response = await notion.databases.query({
       database_id: databaseId,
       sorts: [
@@ -93,11 +83,6 @@ export async function getDocBySlug(slug: string) {
     console.error("필수 환경 변수가 설정되지 않았습니다.");
     throw new Error("필수 환경 변수가 설정되지 않았습니다.");
   }
-
-  console.log("=== getDocBySlug 시작 ===");
-  console.log("slug:", slug);
-  console.log("Database ID:", databaseId);
-  console.log("API Key 존재 여부:", !!apiKey);
 
   try {
     const response = await notion.databases.query({

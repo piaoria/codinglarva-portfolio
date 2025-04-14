@@ -10,7 +10,6 @@ import Archive from "@/components/sections/Archive";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 import { useHeaderColor } from "@/contexts/HeaderColorContext";
-import Header from "@/components/layout/Header";
 
 export default function Home() {
   const { setHeaderColor } = useHeaderColor();
@@ -94,7 +93,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <Header />
       <main className="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-6rem)] pt-16 sm:pt-24">
         <div
           ref={sectionRefs.about}
