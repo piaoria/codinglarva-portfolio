@@ -1,6 +1,19 @@
 import { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "2mb",
+    },
+    serverComponentsExternalPackages: ["@notionhq/client"],
+  },
   images: {
     remotePatterns: [
       {
@@ -13,7 +26,12 @@ const nextConfig: NextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
   },
-  webpack(config) {
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.externals.push({
+        "@notionhq/client": "commonjs @notionhq/client",
+      });
+    }
     config.module.rules.push({
       test: /\.svg$/,
       use: ["@svgr/webpack"],

@@ -14,12 +14,12 @@ import {
 // 환경 변수 가져오기
 const getNotionConfig = () => {
   const apiKey = process.env.NOTION_API_KEY;
-  const databaseId = process.env.NOTION_DATABASE_ID;
+  const databaseId = process.env.NOTION_DOCS_DATABASE_ID;
 
   if (!apiKey || !databaseId) {
     console.error("=== 환경 변수 에러 ===");
     console.error("NOTION_API_KEY:", !!apiKey);
-    console.error("NOTION_DATABASE_ID:", !!databaseId);
+    console.error("NOTION_DOCS_DATABASE_ID:", !!databaseId);
     throw new Error("필수 환경 변수가 설정되지 않았습니다.");
   }
 
@@ -35,8 +35,14 @@ export const notion = new Client({
 export async function getDocs() {
   try {
     console.log("=== getDocs 시작 ===");
+    console.log("현재 환경:", process.env.NODE_ENV);
     console.log("데이터베이스 ID:", databaseId);
     console.log("API Key 존재 여부:", !!apiKey);
+    console.log("전체 환경 변수:", {
+      NODE_ENV: process.env.NODE_ENV,
+      NOTION_API_KEY: !!process.env.NOTION_API_KEY,
+      NOTION_DOCS_DATABASE_ID: !!process.env.NOTION_DOCS_DATABASE_ID,
+    });
 
     const response = await notion.databases.query({
       database_id: databaseId,
@@ -76,6 +82,7 @@ export async function getDocs() {
       "에러 스택:",
       error instanceof Error ? error.stack : "스택 없음"
     );
+    console.error("에러 상세:", error);
     throw error;
   }
 }
