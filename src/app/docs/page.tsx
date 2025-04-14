@@ -12,9 +12,9 @@ import {
   StatusPropertyItemObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 
-// 정적 생성 설정
-export const dynamic = "force-static";
-export const revalidate = 3600; // 1시간마다 재검증
+// 동적 렌더링 설정
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 const isTitleProperty = (
   property: PropertyItemObjectResponse

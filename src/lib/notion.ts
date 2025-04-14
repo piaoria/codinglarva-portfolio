@@ -11,25 +11,35 @@ import {
   PropertyItemObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 
-const NOTION_API_KEY = "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";
-const NOTION_DATABASE_ID = "1d4e0e377a1e8053b7a5c924eb3da9de";
+// 환경 변수 가져오기
+const getNotionConfig = () => {
+  const apiKey = process.env.NOTION_API_KEY;
+  const databaseId = process.env.NOTION_DATABASE_ID;
 
+  if (!apiKey || !databaseId) {
+    console.error("=== 환경 변수 에러 ===");
+    console.error("NOTION_API_KEY:", !!apiKey);
+    console.error("NOTION_DATABASE_ID:", !!databaseId);
+    throw new Error("필수 환경 변수가 설정되지 않았습니다.");
+  }
+
+  return { apiKey, databaseId };
+};
+
+// Notion 클라이언트 초기화
+const { apiKey, databaseId } = getNotionConfig();
 export const notion = new Client({
-  auth: NOTION_API_KEY,
+  auth: apiKey,
 });
 
 export async function getDocs() {
   try {
-    if (!NOTION_API_KEY || !NOTION_DATABASE_ID) {
-      console.error("필수 환경 변수가 설정되지 않았습니다.");
-      throw new Error("필수 환경 변수가 설정되지 않았습니다.");
-    }
-
     console.log("=== getDocs 시작 ===");
-    console.log("데이터베이스 ID:", NOTION_DATABASE_ID);
+    console.log("데이터베이스 ID:", databaseId);
+    console.log("API Key 존재 여부:", !!apiKey);
 
     const response = await notion.databases.query({
-      database_id: NOTION_DATABASE_ID,
+      database_id: databaseId,
       sorts: [
         {
           property: "Order",
@@ -71,7 +81,7 @@ export async function getDocs() {
 }
 
 export async function getDocBySlug(slug: string) {
-  if (!NOTION_API_KEY || !NOTION_DATABASE_ID) {
+  if (!apiKey || !databaseId) {
     console.error("=== getDocBySlug 에러 ===");
     console.error("필수 환경 변수가 설정되지 않았습니다.");
     throw new Error("필수 환경 변수가 설정되지 않았습니다.");
@@ -79,12 +89,12 @@ export async function getDocBySlug(slug: string) {
 
   console.log("=== getDocBySlug 시작 ===");
   console.log("slug:", slug);
-  console.log("Database ID:", NOTION_DATABASE_ID);
-  console.log("API Key 존재 여부:", !!NOTION_API_KEY);
+  console.log("Database ID:", databaseId);
+  console.log("API Key 존재 여부:", !!apiKey);
 
   try {
     const response = await notion.databases.query({
-      database_id: NOTION_DATABASE_ID as string,
+      database_id: databaseId as string,
       filter: {
         and: [
           {
