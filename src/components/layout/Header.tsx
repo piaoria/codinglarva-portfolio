@@ -35,12 +35,15 @@ export default function Header() {
 
   const isDocsPage = pathname?.startsWith("/docs");
 
-  const scrollToSection = (sectionId: string) => {
+  const handleMenuClick = (sectionId: string) => {
     if (sectionId === "docs") {
       router.push("/docs");
       return;
     }
+    scrollToSection(sectionId);
+  };
 
+  const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       const headerHeight = window.innerWidth >= 768 ? 96 : 64;
@@ -84,7 +87,7 @@ export default function Header() {
                 <button
                   key={item.id}
                   className="text-base sm:text-xl"
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => handleMenuClick(item.id)}
                 >
                   <span className="text-[var(--primary-color)] font-black">
                     {item.label[0]}
@@ -131,7 +134,7 @@ export default function Header() {
               <button
                 key={item.id}
                 className="px-4 py-3 text-left hover:bg-[var(--dropdown-hover)] transition-colors opacity-0"
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleMenuClick(item.id)}
                 style={{
                   animation: isMenuOpen
                     ? `slideDown 0.3s ease forwards ${index * 0.1}s`
