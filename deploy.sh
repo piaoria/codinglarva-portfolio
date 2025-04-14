@@ -2,17 +2,6 @@ echo "🔍 환경 변수 확인 중..."
 echo "현재 설정된 환경 변수:"
 env | grep -E "NOTION|DISCORD"
 
-# .env 파일 생성
-echo "📝 .env 파일 생성 중..."
-cat > .env << EOF
-NOTION_API_KEY=$NOTION_API_KEY
-NOTION_DATABASE_ID=$NOTION_DOCS_DATABASE_ID
-NODE_ENV=production
-EOF
-
-echo "✅ .env 파일 생성 완료"
-cat .env
-
 # 필수 환경 변수 확인
 MISSING_ENV=false
 if [ -z "$NOTION_API_KEY" ]; then

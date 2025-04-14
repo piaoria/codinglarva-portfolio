@@ -11,15 +11,8 @@ import {
   PropertyItemObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 
-const NOTION_API_KEY = process.env.NOTION_API_KEY;
-const NOTION_DATABASE_ID = process.env.NOTION_DOCS_DATABASE_ID;
-
-// 환경 변수 확인 로그 추가
-console.log("=== Notion API 초기화 ===");
-console.log("NOTION_API_KEY 존재 여부:", !!NOTION_API_KEY);
-console.log("NOTION_DOCS_DATABASE_ID 존재 여부:", !!NOTION_DATABASE_ID);
-console.log("NOTION_DOCS_DATABASE_ID 값:", NOTION_DATABASE_ID);
-console.log("환경:", process.env.NODE_ENV);
+const NOTION_API_KEY = "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";
+const NOTION_DATABASE_ID = "1d4e0e377a1e8053b7a5c924eb3da9de";
 
 export const notion = new Client({
   auth: NOTION_API_KEY,
