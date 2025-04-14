@@ -5,10 +5,11 @@ import ThemeSwitch from "./ThemeSwitch";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { useHeaderColor } from "@/contexts/HeaderColorContext";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
   const { headerColor } = useHeaderColor();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -35,6 +36,11 @@ export default function Header() {
   const isDocsPage = pathname?.startsWith("/docs");
 
   const scrollToSection = (sectionId: string) => {
+    if (sectionId === "docs") {
+      router.push("/docs");
+      return;
+    }
+
     const element = document.getElementById(sectionId);
     if (element) {
       const headerHeight = window.innerWidth >= 768 ? 96 : 64; // 브레이크포인트 기준
@@ -55,6 +61,7 @@ export default function Header() {
     { id: "projects", label: "Projects" },
     { id: "awards", label: "Awards" },
     { id: "archive", label: "Archive" },
+    { id: "docs", label: "Docs" },
   ];
 
   return (
