@@ -68,7 +68,7 @@ docker run -d \
     --name codinglarva \
     -p 3000:3000 \
     -e NOTION_API_KEY="$NOTION_API_KEY" \
-    -e NOTION_DATABASE_ID="$NOTION_DOCS_DATABASE_ID" \
+    -e NOTION_DOCS_DATABASE_ID="$NOTION_DOCS_DATABASE_ID" \
     codinglarva-portfolio || {
     echo "❌ Docker 컨테이너 실행 실패!"
     curl -H "Content-Type: application/json" -X POST \
