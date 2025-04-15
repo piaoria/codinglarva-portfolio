@@ -46,17 +46,33 @@ docker build -t codinglarva-portfolio . 2>&1 | tee docker-build.log || {
 echo "✅ Docker 이미지 빌드 완료"
 
 # 포트 3000을 점유하고 있는 컨테이너가 있으면 중지 및 제거
-PORT_IN_USE=$(docker ps --format "{{.ID}} {{.Ports}}" | grep "0.0.0.0:3000" | awk '{print $1}')
+echo "🔍 포트 3000 사용 중인 컨테이너 확인..."
+PORT_IN_USE=$(docker ps -a --format "{{.ID}} {{.Ports}}" | grep "0.0.0.0:3000" | awk '{print $1}')
 if [ -n "$PORT_IN_USE" ]; then
   echo "⚠️ 포트 3000 사용 중인 컨테이너 정리: $PORT_IN_USE"
-  docker stop "$PORT_IN_USE"
-  docker rm "$PORT_IN_USE"
+  docker stop "$PORT_IN_USE" 2>/dev/null || true
+  docker rm "$PORT_IN_USE" 2>/dev/null || true
 fi
 
 # 기존 컨테이너 중지 및 제거
 echo "🗑️ 기존 컨테이너 정리..."
-docker stop codinglarva || true
-docker rm codinglarva || true
+docker stop codinglarva 2>/dev/null || true
+docker rm codinglarva 2>/dev/null || true
+
+# 컨테이너가 실제로 삭제되었는지 확인
+if docker ps -a | grep -q codinglarva; then
+  echo "❌ 컨테이너 삭제 실패! 강제 삭제 시도..."
+  docker rm -f codinglarva 2>/dev/null || true
+fi
+
+# Docker 캐시 정리
+echo "🧹 Docker 캐시 정리..."
+docker system prune -f
+docker builder prune -f
+
+# Next.js 캐시 정리
+rm -rf .next/cache
+rm -rf .next/static
 
 # 새 컨테이너 실행
 echo "🚀 새 컨테이너 실행..."
