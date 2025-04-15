@@ -2,10 +2,6 @@ echo "🔍 환경 변수 확인 중..."
 echo "현재 설정된 환경 변수:"
 env | grep -E "NOTION|DISCORD"
 
-# 환경 변수 값 직접 출력
-echo "NOTION_API_KEY: $NOTION_API_KEY"
-echo "NOTION_DOCS_DATABASE_ID: $NOTION_DOCS_DATABASE_ID"
-
 # 시스템 정보 출력
 echo "🔍 시스템 정보 확인"
 echo "Node.js 버전:"
@@ -50,10 +46,6 @@ echo "[🚀 빌드 시작] $(date)"
 echo "🗑️ 기존 컨테이너 정리..."
 docker stop codinglarva-portfolio || true
 docker rm codinglarva-portfolio || true
-docker stop portfolio || true
-docker rm portfolio || true
-docker stop codinglarva || true
-docker rm codinglarva || true
 
 # 포트 3000을 점유하고 있는 컨테이너가 있으면 중지 및 제거
 PORT_IN_USE=$(docker ps --format "{{.ID}} {{.Ports}}" | grep "0.0.0.0:3000" | awk '{print $1}')
