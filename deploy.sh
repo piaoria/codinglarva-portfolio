@@ -34,7 +34,7 @@ git pull origin master || {
 
 echo "🔨 Docker 이미지 빌드 시작..."
 # 빌드 로그를 파일로 저장
-docker build -t codinglarva-portfolio . 2>&1 | tee docker-build.log || {
+docker build -t codinglarva . 2>&1 | tee docker-build.log || {
     echo "❌ Docker 빌드 실패!"
     echo "빌드 로그:"
     cat docker-build.log
@@ -56,13 +56,13 @@ fi
 
 # 기존 컨테이너 중지 및 제거
 echo "🗑️ 기존 컨테이너 정리..."
-docker stop codinglarva 2>/dev/null || true
-docker rm codinglarva 2>/dev/null || true
+docker stop codinglarva-portfolio 2>/dev/null || true
+docker rm codinglarva-portfolio 2>/dev/null || true
 
 # 컨테이너가 실제로 삭제되었는지 확인
-if docker ps -a | grep -q codinglarva; then
+if docker ps -a | grep -q codinglarva-portfolio; then
   echo "❌ 컨테이너 삭제 실패! 강제 삭제 시도..."
-  docker rm -f codinglarva 2>/dev/null || true
+  docker rm -f codinglarva-portfolio 2>/dev/null || true
 fi
 
 # Docker 캐시 정리
@@ -81,7 +81,7 @@ echo "NOTION_API_KEY: ${NOTION_API_KEY:+설정됨}"
 echo "NOTION_DOCS_DATABASE_ID: ${NOTION_DOCS_DATABASE_ID:+설정됨}"
 
 docker run -d \
-    --name codinglarva \
+    --name codinglarva-portfolio \
     -p 3000:3000 \
     -e NOTION_API_KEY="$NOTION_API_KEY" \
     -e NOTION_DOCS_DATABASE_ID="$NOTION_DOCS_DATABASE_ID" \
@@ -98,7 +98,7 @@ docker run -d \
 
 # 컨테이너 로그 확인
 echo "📝 컨테이너 로그 확인 중..."
-docker logs codinglarva --tail 50
+docker logs codinglarva-portfolio --tail 50
 
 # 성공 알림
 curl -H "Content-Type: application/json" -X POST \
