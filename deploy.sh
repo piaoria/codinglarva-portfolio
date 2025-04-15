@@ -55,8 +55,8 @@ fi
 
 # 기존 컨테이너 중지 및 제거
 echo "🗑️ 기존 컨테이너 정리..."
-docker stop codinglarva-portfolio || true
-docker rm codinglarva-portfolio || true
+docker stop codinglarva || true
+docker rm codinglarva || true
 
 # 새 컨테이너 실행
 echo "🚀 새 컨테이너 실행..."
@@ -65,24 +65,16 @@ echo "NOTION_API_KEY: ${NOTION_API_KEY:+설정됨}"
 echo "NOTION_DOCS_DATABASE_ID: ${NOTION_DOCS_DATABASE_ID:+설정됨}"
 
 docker run -d \
-    --name codinglarva-portfolio \
+    --name codinglarva \
     -p 3000:3000 \
     -e NOTION_API_KEY="$NOTION_API_KEY" \
-    -e NOTION_DOCS_DATABASE_ID="$NOTION_DOCS_DATABASE_ID" \
-    -e NODE_ENV=production \
-    --log-driver=json-file \
-    --log-opt max-size=10m \
-    --log-opt max-file=3 \
+    -e NOTION_DATABASE_ID="$NOTION_DOCS_DATABASE_ID" \
     codinglarva-portfolio || {
     echo "❌ Docker 컨테이너 실행 실패!"
     curl -H "Content-Type: application/json" -X POST \
       -d '{"content":"❌ Docker run 실패! (포트 중복 또는 기타 문제)"}' "$WEBHOOK_URL"
     exit 1
 }
-
-# 컨테이너 로그 확인
-echo "📝 컨테이너 로그 확인 중..."
-docker logs codinglarva-portfolio --tail 50
 
 # 성공 알림
 curl -H "Content-Type: application/json" -X POST \
