@@ -11,29 +11,62 @@ import {
   PropertyItemObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 
+// 환경 변수 타입 정의
+interface NotionConfig {
+  apiKey: string;
+  databaseId: string;
+}
+
 // 환경 변수 가져오기
-const getNotionConfig = () => {
-  const apiKey = process.env.NOTION_API_KEY;
-  const databaseId = process.env.NOTION_DOCS_DATABASE_ID;
+const getNotionConfig = (): NotionConfig => {
+  console.log("=== 환경 변수 확인 ===");
+
+  const apiKey = process.env.NOTION_API_KEY?.trim();
+  const databaseId = process.env.NOTION_DOCS_DATABASE_ID?.trim();
+
+  console.log("환경 변수 상태:", {
+    NOTION_API_KEY: apiKey ? "설정됨" : "설정되지 않음",
+    NOTION_DOCS_DATABASE_ID: databaseId ? "설정됨" : "설정되지 않음",
+  });
 
   if (!apiKey || !databaseId) {
-    console.error("=== 환경 변수 에러 ===");
-    console.error("NOTION_API_KEY:", !!apiKey);
-    console.error("NOTION_DOCS_DATABASE_ID:", !!databaseId);
-    throw new Error("필수 환경 변수가 설정되지 않았습니다.");
+    const missingVars = [];
+    if (!apiKey) missingVars.push("NOTION_API_KEY");
+    if (!databaseId) missingVars.push("NOTION_DOCS_DATABASE_ID");
+
+    throw new Error(
+      `필수 환경 변수가 설정되지 않았습니다: ${missingVars.join(", ")}`
+    );
   }
 
   return { apiKey, databaseId };
 };
 
 // Notion 클라이언트 초기화
-const { apiKey, databaseId } = getNotionConfig();
-export const notion = new Client({
-  auth: apiKey,
-});
+let notionClient: Client | null = null;
 
+const initializeNotionClient = () => {
+  if (!notionClient) {
+    try {
+      const { apiKey } = getNotionConfig();
+      notionClient = new Client({ auth: apiKey });
+      console.log("Notion 클라이언트 초기화 성공");
+    } catch (error) {
+      console.error("Notion 클라이언트 초기화 실패:", error);
+      throw error;
+    }
+  }
+  return notionClient;
+};
+
+export const notion = initializeNotionClient();
+
+// 문서 조회 함수
 export async function getDocs() {
   try {
+    const { databaseId } = getNotionConfig();
+
+    console.log("문서 조회 시작");
     const response = await notion.databases.query({
       database_id: databaseId,
       sorts: [
@@ -44,49 +77,42 @@ export async function getDocs() {
       ],
     });
 
-    console.log("문서 개수:", response.results.length);
-    console.log(
-      "첫 번째 문서:",
-      response.results[0]
+    console.log("문서 조회 결과:", {
+      총_문서_개수: response.results.length,
+      첫번째_문서: response.results[0]
         ? {
             id: (response.results[0] as PageObjectResponse).id,
             properties: Object.keys(
               (response.results[0] as PageObjectResponse).properties
             ),
           }
-        : "없음"
-    );
+        : "없음",
+    });
 
     return response.results;
   } catch (error) {
     console.error("=== getDocs 에러 ===");
-    console.error(
-      "에러 타입:",
-      error instanceof Error ? error.constructor.name : typeof error
+    if (error instanceof Error) {
+      console.error("에러 타입:", error.constructor.name);
+      console.error("에러 메시지:", error.message);
+      console.error("에러 스택:", error.stack);
+    } else {
+      console.error("알 수 없는 에러:", error);
+    }
+    throw new Error(
+      `문서 조회 실패: ${error instanceof Error ? error.message : "알 수 없는 에러"}`
     );
-    console.error(
-      "에러 메시지:",
-      error instanceof Error ? error.message : "알 수 없는 에러"
-    );
-    console.error(
-      "에러 스택:",
-      error instanceof Error ? error.stack : "스택 없음"
-    );
-    console.error("에러 상세:", error);
-    throw error;
   }
 }
 
+// 슬러그로 문서 조회
 export async function getDocBySlug(slug: string) {
-  if (!apiKey || !databaseId) {
-    console.error("=== getDocBySlug 에러 ===");
-    console.error("필수 환경 변수가 설정되지 않았습니다.");
-    throw new Error("필수 환경 변수가 설정되지 않았습니다.");
-  }
-
   try {
+    const { databaseId } = getNotionConfig();
+
+    console.log(`슬러그로 문서 조회 시작: ${slug}`);
     const response = await notion.databases.query({
-      database_id: databaseId as string,
+      database_id: databaseId,
       filter: {
         and: [
           {
@@ -105,7 +131,8 @@ export async function getDocBySlug(slug: string) {
       },
     });
 
-    console.log("쿼리 결과:", {
+    console.log("슬러그 조회 결과:", {
+      슬러그: slug,
       결과_개수: response.results.length,
       첫번째_문서: response.results[0]
         ? {
@@ -118,26 +145,23 @@ export async function getDocBySlug(slug: string) {
     });
 
     if (!response.results[0]) {
-      console.log("문서를 찾을 수 없습니다.");
+      console.log(`문서를 찾을 수 없습니다: ${slug}`);
       return undefined;
     }
 
     return response.results[0] as PageObjectResponse;
   } catch (error) {
     console.error("=== getDocBySlug 에러 ===");
-    console.error(
-      "에러 타입:",
-      error instanceof Error ? error.constructor.name : typeof error
+    if (error instanceof Error) {
+      console.error("에러 타입:", error.constructor.name);
+      console.error("에러 메시지:", error.message);
+      console.error("에러 스택:", error.stack);
+    } else {
+      console.error("알 수 없는 에러:", error);
+    }
+    throw new Error(
+      `슬러그로 문서 조회 실패: ${error instanceof Error ? error.message : "알 수 없는 에러"}`
     );
-    console.error(
-      "에러 메시지:",
-      error instanceof Error ? error.message : "알 수 없는 에러"
-    );
-    console.error(
-      "에러 스택:",
-      error instanceof Error ? error.stack : "스택 없음"
-    );
-    throw error;
   }
 }
 
