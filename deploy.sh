@@ -57,6 +57,10 @@ fi
 echo "🗑️ 기존 컨테이너 정리..."
 docker stop codinglarva-portfolio || true
 docker rm codinglarva-portfolio || true
+docker stop portfolio || true
+docker rm portfolio || true
+docker stop codinglarva || true
+docker rm codinglarva || true
 
 # 새 컨테이너 실행
 echo "🚀 새 컨테이너 실행..."
