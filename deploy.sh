@@ -34,7 +34,7 @@ git pull origin master || {
 
 echo "🔨 Docker 이미지 빌드 시작..."
 # 빌드 로그를 파일로 저장
-docker build -t codinglarva . 2>&1 | tee docker-build.log || {
+docker build -t codinglarva-portfolio . 2>&1 | tee docker-build.log || {
     echo "❌ Docker 빌드 실패!"
     echo "빌드 로그:"
     cat docker-build.log
@@ -55,8 +55,8 @@ fi
 
 # 기존 컨테이너 중지 및 제거
 echo "🗑️ 기존 컨테이너 정리..."
-docker stop codinglarva || true
-docker rm codinglarva || true
+docker stop codinglarva-portfolio || true
+docker rm codinglarva-portfolio || true
 
 # 새 컨테이너 실행
 echo "🚀 새 컨테이너 실행..."
@@ -65,7 +65,7 @@ echo "NOTION_API_KEY: ${NOTION_API_KEY:+설정됨}"
 echo "NOTION_DOCS_DATABASE_ID: ${NOTION_DOCS_DATABASE_ID:+설정됨}"
 
 docker run -d \
-    --name codinglarva \
+    --name codinglarva-portfolio \
     -p 3000:3000 \
     -e NOTION_API_KEY="$NOTION_API_KEY" \
     -e NOTION_DOCS_DATABASE_ID="$NOTION_DOCS_DATABASE_ID" \
@@ -73,7 +73,7 @@ docker run -d \
     --log-driver=json-file \
     --log-opt max-size=10m \
     --log-opt max-file=3 \
-    codinglarva || {
+    codinglarva-portfolio || {
     echo "❌ Docker 컨테이너 실행 실패!"
     curl -H "Content-Type: application/json" -X POST \
       -d '{"content":"❌ Docker run 실패! (포트 중복 또는 기타 문제)"}' "$WEBHOOK_URL"
@@ -82,7 +82,7 @@ docker run -d \
 
 # 컨테이너 로그 확인
 echo "📝 컨테이너 로그 확인 중..."
-docker logs codinglarva --tail 50
+docker logs codinglarva-portfolio --tail 50
 
 # 성공 알림
 curl -H "Content-Type: application/json" -X POST \
