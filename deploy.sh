@@ -32,9 +32,31 @@ git pull origin master || {
   exit 1
 }
 
+# 모든 관련 컨테이너 중지 및 제거
+echo "🗑️ 기존 컨테이너 정리..."
+for container in codinglarva-portfolio codinglarva portfolio; do
+  echo "🔍 $container 컨테이너 정리 중..."
+  docker stop $container 2>/dev/null || true
+  docker rm $container 2>/dev/null || true
+done
+
+# Docker 캐시 정리
+echo "🧹 Docker 캐시 정리..."
+docker system prune -f
+docker builder prune -f
+
+# Next.js 캐시 정리
+echo "🧹 Next.js 캐시 정리..."
+rm -rf .next/cache
+rm -rf .next/static
+
+# 이전 이미지 제거
+echo "🗑️ 이전 이미지 정리..."
+docker rmi codinglarva-portfolio:latest 2>/dev/null || true
+
+# 새 이미지 빌드
 echo "🔨 Docker 이미지 빌드 시작..."
-# 빌드 로그를 파일로 저장
-docker build -t codinglarva . 2>&1 | tee docker-build.log || {
+docker build -t codinglarva-portfolio:$(date +%Y%m%d%H%M%S) . 2>&1 | tee docker-build.log || {
     echo "❌ Docker 빌드 실패!"
     echo "빌드 로그:"
     cat docker-build.log
@@ -52,21 +74,6 @@ if [ -n "$PORT_IN_USE" ]; then
   echo "⚠️ 포트 3000 사용 중인 컨테이너 정리: $PORT_IN_USE"
   docker stop "$PORT_IN_USE" 2>/dev/null || true
   docker rm "$PORT_IN_USE" 2>/dev/null || true
-fi
-
-# 기존 컨테이너 중지 및 제거
-echo "🗑️ 기존 컨테이너 정리..."
-docker stop codinglarva-portfolio 2>/dev/null || true
-docker rm codinglarva-portfolio 2>/dev/null || true
-docker stop codinglarva 2>/dev/null || true
-docker rm codinglarva 2>/dev/null || true
-docker stop portfolio 2>/dev/null || true
-docker rm portfolio 2>/dev/null || true
-
-# 컨테이너가 실제로 삭제되었는지 확인
-if docker ps -a | grep -q codinglarva-portfolio; then
-  echo "❌ 컨테이너 삭제 실패! 강제 삭제 시도..."
-  docker rm -f codinglarva-portfolio 2>/dev/null || true
 fi
 
 # 새 컨테이너 실행
