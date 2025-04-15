@@ -40,12 +40,10 @@ for container in codinglarva-portfolio codinglarva portfolio; do
   docker rm $container 2>/dev/null || true
 done
 
-# Docker 캐시 정리
 echo "🧹 Docker 캐시 정리..."
 docker system prune -f
 docker builder prune -f
 
-# Next.js 캐시 정리
 echo "🧹 Next.js 캐시 정리..."
 rm -rf .next/cache
 rm -rf .next/static
