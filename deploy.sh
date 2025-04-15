@@ -34,7 +34,7 @@ git pull origin master || {
 
 echo "🔨 Docker 이미지 빌드 시작..."
 # 빌드 로그를 파일로 저장
-docker build -t codinglarva-portfolio . 2>&1 | tee docker-build.log || {
+docker build -t codinglarva . 2>&1 | tee docker-build.log || {
     echo "❌ Docker 빌드 실패!"
     echo "빌드 로그:"
     cat docker-build.log
@@ -73,7 +73,7 @@ docker run -d \
     --log-driver=json-file \
     --log-opt max-size=10m \
     --log-opt max-file=3 \
-    codinglarva-portfolio || {
+    codinglarva || {
     echo "❌ Docker 컨테이너 실행 실패!"
     curl -H "Content-Type: application/json" -X POST \
       -d '{"content":"❌ Docker run 실패! (포트 중복 또는 기타 문제)"}' "$WEBHOOK_URL"
