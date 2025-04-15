@@ -21,6 +21,9 @@ if [ "$MISSING_ENV" = true ]; then
     exit 1
 fi
 
+export NOTION_API_KEY="$NOTION_API_KEY"
+export NOTION_DOCS_DATABASE_ID="$NOTION_DOCS_DATABASE_ID"
+
 # 디스코드 Webhook 주소
 WEBHOOK_URL="$DISCORD_SECRET"
 
