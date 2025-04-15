@@ -26,6 +26,23 @@ WEBHOOK_URL="$DISCORD_SECRET"
 
 echo "[🚀 빌드 시작] $(date)"
 
+# 기존 컨테이너 중지 및 제거
+echo "🗑️ 기존 컨테이너 정리..."
+docker stop codinglarva-portfolio || true
+docker rm codinglarva-portfolio || true
+docker stop portfolio || true
+docker rm portfolio || true
+docker stop codinglarva || true
+docker rm codinglarva || true
+
+# 포트 3000을 점유하고 있는 컨테이너가 있으면 중지 및 제거
+PORT_IN_USE=$(docker ps --format "{{.ID}} {{.Ports}}" | grep "0.0.0.0:3000" | awk '{print $1}')
+if [ -n "$PORT_IN_USE" ]; then
+  echo "⚠️ 포트 3000 사용 중인 컨테이너 정리: $PORT_IN_USE"
+  docker stop "$PORT_IN_USE"
+  docker rm "$PORT_IN_USE"
+fi
+
 git pull origin master || {
   curl -H "Content-Type: application/json" -X POST \
     -d '{"content":"❌ Git pull 실패!"}' "$WEBHOOK_URL"
@@ -44,23 +61,6 @@ docker build -t codinglarva-portfolio . 2>&1 | tee docker-build.log || {
 }
 
 echo "✅ Docker 이미지 빌드 완료"
-
-# 포트 3000을 점유하고 있는 컨테이너가 있으면 중지 및 제거
-PORT_IN_USE=$(docker ps --format "{{.ID}} {{.Ports}}" | grep "0.0.0.0:3000" | awk '{print $1}')
-if [ -n "$PORT_IN_USE" ]; then
-  echo "⚠️ 포트 3000 사용 중인 컨테이너 정리: $PORT_IN_USE"
-  docker stop "$PORT_IN_USE"
-  docker rm "$PORT_IN_USE"
-fi
-
-# 기존 컨테이너 중지 및 제거
-echo "🗑️ 기존 컨테이너 정리..."
-docker stop codinglarva-portfolio || true
-docker rm codinglarva-portfolio || true
-docker stop portfolio || true
-docker rm portfolio || true
-docker stop codinglarva || true
-docker rm codinglarva || true
 
 # 새 컨테이너 실행
 echo "🚀 새 컨테이너 실행..."
