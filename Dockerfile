@@ -3,7 +3,6 @@ FROM node:22-slim
 WORKDIR /app
 
 ENV TAILWIND_MODE=build
-ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
 
