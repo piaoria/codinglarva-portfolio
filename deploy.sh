@@ -32,33 +32,9 @@ git pull origin master || {
   exit 1
 }
 
-# 모든 관련 컨테이너 중지 및 제거
-echo "🗑️ 기존 컨테이너 정리..."
-for container in codinglarva-portfolio codinglarva portfolio; do
-  echo "🔍 $container 컨테이너 정리 중..."
-  docker stop $container 2>/dev/null || true
-  docker rm $container 2>/dev/null || true
-done
-
-# Docker 캐시 정리 (더 안전한 방식)
-echo "🧹 Docker 캐시 정리..."
-# 특정 이미지의 dangling 이미지만 삭제
-docker image prune -f --filter "dangling=true" --filter "label=maintainer=codinglarva-portfolio"
-# 특정 컨테이너의 빌드 캐시만 삭제
-docker builder prune -f --filter "label=maintainer=codinglarva-portfolio"
-
-# Next.js 캐시 정리
-echo "🧹 Next.js 캐시 정리..."
-rm -rf .next/cache
-rm -rf .next/static
-
-# 이전 이미지 제거
-echo "🗑️ 이전 이미지 정리..."
-docker rmi codinglarva-portfolio:latest 2>/dev/null || true
-
-# 새 이미지 빌드
 echo "🔨 Docker 이미지 빌드 시작..."
-docker build -t codinglarva-portfolio:$(date +%Y%m%d%H%M%S) . 2>&1 | tee docker-build.log || {
+# 빌드 로그를 파일로 저장
+docker build -t codinglarva-portfolio . 2>&1 | tee docker-build.log || {
     echo "❌ Docker 빌드 실패!"
     echo "빌드 로그:"
     cat docker-build.log
@@ -70,13 +46,17 @@ docker build -t codinglarva-portfolio:$(date +%Y%m%d%H%M%S) . 2>&1 | tee docker-
 echo "✅ Docker 이미지 빌드 완료"
 
 # 포트 3000을 점유하고 있는 컨테이너가 있으면 중지 및 제거
-echo "🔍 포트 3000 사용 중인 컨테이너 확인..."
-PORT_IN_USE=$(docker ps -a --format "{{.ID}} {{.Ports}}" | grep "0.0.0.0:3000" | awk '{print $1}')
+PORT_IN_USE=$(docker ps --format "{{.ID}} {{.Ports}}" | grep "0.0.0.0:3000" | awk '{print $1}')
 if [ -n "$PORT_IN_USE" ]; then
   echo "⚠️ 포트 3000 사용 중인 컨테이너 정리: $PORT_IN_USE"
-  docker stop "$PORT_IN_USE" 2>/dev/null || true
-  docker rm "$PORT_IN_USE" 2>/dev/null || true
+  docker stop "$PORT_IN_USE"
+  docker rm "$PORT_IN_USE"
 fi
+
+# 기존 컨테이너 중지 및 제거
+echo "🗑️ 기존 컨테이너 정리..."
+docker stop codinglarva || true
+docker rm codinglarva || true
 
 # 새 컨테이너 실행
 echo "🚀 새 컨테이너 실행..."
@@ -84,25 +64,8 @@ echo "전달되는 환경 변수:"
 echo "NOTION_API_KEY: ${NOTION_API_KEY:+설정됨}"
 echo "NOTION_DOCS_DATABASE_ID: ${NOTION_DOCS_DATABASE_ID:+설정됨}"
 
-# 포트 사용 확인
-if lsof -i :3000 > /dev/null 2>&1; then
-  echo "❌ 포트 3000이 이미 사용 중입니다!"
-  echo "사용 중인 프로세스:"
-  lsof -i :3000
-  exit 1
-fi
-
-# 최신 이미지 태그 확인
-LATEST_IMAGE=$(docker images codinglarva-portfolio --format "{{.Tag}}" | sort -r | head -n 1)
-if [ -z "$LATEST_IMAGE" ]; then
-  echo "❌ 사용 가능한 이미지를 찾을 수 없습니다!"
-  exit 1
-fi
-
-echo "📦 사용할 이미지 태그: $LATEST_IMAGE"
-
 docker run -d \
-    --name codinglarva-portfolio \
+    --name codinglarva \
     -p 3000:3000 \
     -e NOTION_API_KEY="$NOTION_API_KEY" \
     -e NOTION_DOCS_DATABASE_ID="$NOTION_DOCS_DATABASE_ID" \
@@ -110,27 +73,16 @@ docker run -d \
     --log-driver=json-file \
     --log-opt max-size=10m \
     --log-opt max-file=3 \
-    codinglarva-portfolio:$LATEST_IMAGE || {
+    codinglarva-portfolio || {
     echo "❌ Docker 컨테이너 실행 실패!"
-    echo "실패 원인 확인 중..."
-    docker logs codinglarva-portfolio --tail 50 2>/dev/null || true
     curl -H "Content-Type: application/json" -X POST \
-      -d '{"content":"❌ Docker run 실패!\n로그: '"$(docker logs codinglarva-portfolio --tail 50 2>/dev/null || echo '로그 없음')"'"}' "$WEBHOOK_URL"
+      -d '{"content":"❌ Docker run 실패! (포트 중복 또는 기타 문제)"}' "$WEBHOOK_URL"
     exit 1
 }
 
-# 컨테이너 상태 확인
-echo "🔍 컨테이너 상태 확인..."
-sleep 5
-if ! docker ps | grep -q codinglarva-portfolio; then
-  echo "❌ 컨테이너가 실행되지 않았습니다!"
-  docker logs codinglarva-portfolio --tail 50 2>/dev/null || true
-  exit 1
-fi
-
 # 컨테이너 로그 확인
 echo "📝 컨테이너 로그 확인 중..."
-docker logs codinglarva-portfolio --tail 50
+docker logs codinglarva --tail 50
 
 # 성공 알림
 curl -H "Content-Type: application/json" -X POST \
