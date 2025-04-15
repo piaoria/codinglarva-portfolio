@@ -20,3 +20,6 @@ RUN npm run build
 EXPOSE 3000
 
 CMD ["npm", "start"]
+
+# 이미지 메타데이터 추가
+LABEL maintainer="codinglarva-portfolio"

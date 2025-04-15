@@ -40,10 +40,14 @@ for container in codinglarva-portfolio codinglarva portfolio; do
   docker rm $container 2>/dev/null || true
 done
 
+# Docker 캐시 정리 (더 안전한 방식)
 echo "🧹 Docker 캐시 정리..."
-docker system prune -f
-docker builder prune -f
+# 특정 이미지의 dangling 이미지만 삭제
+docker image prune -f --filter "dangling=true" --filter "label=maintainer=codinglarva-portfolio"
+# 특정 컨테이너의 빌드 캐시만 삭제
+docker builder prune -f --filter "label=maintainer=codinglarva-portfolio"
 
+# Next.js 캐시 정리
 echo "🧹 Next.js 캐시 정리..."
 rm -rf .next/cache
 rm -rf .next/static
