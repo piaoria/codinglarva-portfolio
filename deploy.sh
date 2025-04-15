@@ -71,7 +71,10 @@ git pull origin master || {
 
 echo "🔨 Docker 이미지 빌드 시작..."
 # 빌드 로그를 파일로 저장
-docker build --no-cache -t codinglarva-portfolio . 2>&1 | tee docker-build.log || {
+docker build \
+  --build-arg NOTION_API_KEY="$NOTION_API_KEY" \
+  --build-arg NOTION_DOCS_DATABASE_ID="$NOTION_DOCS_DATABASE_ID" \
+  -t codinglarva-portfolio:latest . 2>&1 | tee docker-build.log || {
     echo "❌ Docker 빌드 실패!"
     echo "빌드 로그:"
     cat docker-build.log
