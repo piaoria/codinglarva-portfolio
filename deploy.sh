@@ -17,6 +17,11 @@ docker --version
 echo "디스크 공간:"
 df -h
 
+# Docker 캐시 정리
+echo "🧹 Docker 캐시 정리 중..."
+docker system prune -f
+docker builder prune -f
+
 # 필수 환경 변수 확인
 MISSING_ENV=false
 if [ -z "$NOTION_API_KEY" ]; then
@@ -66,7 +71,7 @@ git pull origin master || {
 
 echo "🔨 Docker 이미지 빌드 시작..."
 # 빌드 로그를 파일로 저장
-docker build -t codinglarva-portfolio . 2>&1 | tee docker-build.log || {
+docker build --no-cache -t codinglarva-portfolio . 2>&1 | tee docker-build.log || {
     echo "❌ Docker 빌드 실패!"
     echo "빌드 로그:"
     cat docker-build.log
