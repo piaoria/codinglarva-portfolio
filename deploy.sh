@@ -60,21 +60,14 @@ docker stop codinglarva-portfolio 2>/dev/null || true
 docker rm codinglarva-portfolio 2>/dev/null || true
 docker stop codinglarva 2>/dev/null || true
 docker rm codinglarva 2>/dev/null || true
+docker stop portfolio 2>/dev/null || true
+docker rm portfolio 2>/dev/null || true
 
 # 컨테이너가 실제로 삭제되었는지 확인
 if docker ps -a | grep -q codinglarva-portfolio; then
   echo "❌ 컨테이너 삭제 실패! 강제 삭제 시도..."
   docker rm -f codinglarva-portfolio 2>/dev/null || true
 fi
-
-# Docker 캐시 정리
-echo "🧹 Docker 캐시 정리..."
-docker system prune -f
-docker builder prune -f
-
-# Next.js 캐시 정리
-rm -rf .next/cache
-rm -rf .next/static
 
 # 새 컨테이너 실행
 echo "🚀 새 컨테이너 실행..."
