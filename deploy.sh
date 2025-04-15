@@ -58,6 +58,8 @@ fi
 echo "🗑️ 기존 컨테이너 정리..."
 docker stop codinglarva-portfolio 2>/dev/null || true
 docker rm codinglarva-portfolio 2>/dev/null || true
+docker stop codinglarva 2>/dev/null || true
+docker rm codinglarva 2>/dev/null || true
 
 # 컨테이너가 실제로 삭제되었는지 확인
 if docker ps -a | grep -q codinglarva-portfolio; then
