@@ -82,6 +82,23 @@ echo "전달되는 환경 변수:"
 echo "NOTION_API_KEY: ${NOTION_API_KEY:+설정됨}"
 echo "NOTION_DOCS_DATABASE_ID: ${NOTION_DOCS_DATABASE_ID:+설정됨}"
 
+# 포트 사용 확인
+if lsof -i :3000 > /dev/null 2>&1; then
+  echo "❌ 포트 3000이 이미 사용 중입니다!"
+  echo "사용 중인 프로세스:"
+  lsof -i :3000
+  exit 1
+fi
+
+# 최신 이미지 태그 확인
+LATEST_IMAGE=$(docker images codinglarva-portfolio --format "{{.Tag}}" | sort -r | head -n 1)
+if [ -z "$LATEST_IMAGE" ]; then
+  echo "❌ 사용 가능한 이미지를 찾을 수 없습니다!"
+  exit 1
+fi
+
+echo "📦 사용할 이미지 태그: $LATEST_IMAGE"
+
 docker run -d \
     --name codinglarva-portfolio \
     -p 3000:3000 \
@@ -91,12 +108,23 @@ docker run -d \
     --log-driver=json-file \
     --log-opt max-size=10m \
     --log-opt max-file=3 \
-    codinglarva-portfolio || {
+    codinglarva-portfolio:$LATEST_IMAGE || {
     echo "❌ Docker 컨테이너 실행 실패!"
+    echo "실패 원인 확인 중..."
+    docker logs codinglarva-portfolio --tail 50 2>/dev/null || true
     curl -H "Content-Type: application/json" -X POST \
-      -d '{"content":"❌ Docker run 실패! (포트 중복 또는 기타 문제)"}' "$WEBHOOK_URL"
+      -d '{"content":"❌ Docker run 실패!\n로그: '"$(docker logs codinglarva-portfolio --tail 50 2>/dev/null || echo '로그 없음')"'"}' "$WEBHOOK_URL"
     exit 1
 }
+
+# 컨테이너 상태 확인
+echo "🔍 컨테이너 상태 확인..."
+sleep 5
+if ! docker ps | grep -q codinglarva-portfolio; then
+  echo "❌ 컨테이너가 실행되지 않았습니다!"
+  docker logs codinglarva-portfolio --tail 50 2>/dev/null || true
+  exit 1
+fi
 
 # 컨테이너 로그 확인
 echo "📝 컨테이너 로그 확인 중..."
