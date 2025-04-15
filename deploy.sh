@@ -8,8 +8,8 @@ if [ -z "$NOTION_API_KEY" ]; then
     echo "❌ NOTION_API_KEY가 설정되지 않았습니다!"
     MISSING_ENV=true
 fi
-if [ -z "$NOTION_DATABASE_ID" ]; then
-    echo "❌ NOTION_DATABASE_ID가 설정되지 않았습니다!"
+if [ -z "$NOTION_DOCS_DATABASE_ID" ]; then
+    echo "❌ NOTION_DOCS_DATABASE_ID가 설정되지 않았습니다!"
     MISSING_ENV=true
 fi
 if [ -z "$DISCORD_SECRET" ]; then
@@ -25,8 +25,6 @@ fi
 WEBHOOK_URL="$DISCORD_SECRET"
 
 echo "[🚀 빌드 시작] $(date)"
-echo "NOTION_API_KEY: $NOTION_API_KEY"
-echo "NOTION_DATABASE_ID: $NOTION_DATABASE_ID"
 
 git pull origin master || {
   curl -H "Content-Type: application/json" -X POST \
@@ -57,20 +55,20 @@ fi
 
 # 기존 컨테이너 중지 및 제거
 echo "🗑️ 기존 컨테이너 정리..."
-docker stop codinglarva || true
-docker rm codinglarva || true
+docker stop codinglarva-portfolio || true
+docker rm codinglarva-portfolio || true
 
 # 새 컨테이너 실행
 echo "🚀 새 컨테이너 실행..."
 echo "전달되는 환경 변수:"
 echo "NOTION_API_KEY: ${NOTION_API_KEY:+설정됨}"
-echo "NOTION_DATABASE_ID: ${NOTION_DATABASE_ID:+설정됨}"
+echo "NOTION_DOCS_DATABASE_ID: ${NOTION_DOCS_DATABASE_ID:+설정됨}"
 
 docker run -d \
-    --name codinglarva \
+    --name codinglarva-portfolio \
     -p 3000:3000 \
     -e NOTION_API_KEY="$NOTION_API_KEY" \
-    -e NOTION_DATABASE_ID="$NOTION_DATABASE_ID" \
+    -e NOTION_DOCS_DATABASE_ID="$NOTION_DOCS_DATABASE_ID" \
     codinglarva-portfolio || {
     echo "❌ Docker 컨테이너 실행 실패!"
     curl -H "Content-Type: application/json" -X POST \
