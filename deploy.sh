@@ -2,6 +2,21 @@ echo "🔍 환경 변수 확인 중..."
 echo "현재 설정된 환경 변수:"
 env | grep -E "NOTION|DISCORD"
 
+# 환경 변수 값 직접 출력
+echo "NOTION_API_KEY: $NOTION_API_KEY"
+echo "NOTION_DOCS_DATABASE_ID: $NOTION_DOCS_DATABASE_ID"
+
+# 시스템 정보 출력
+echo "🔍 시스템 정보 확인"
+echo "Node.js 버전:"
+node -v
+echo "npm 버전:"
+npm -v
+echo "Docker 버전:"
+docker --version
+echo "디스크 공간:"
+df -h
+
 # 필수 환경 변수 확인
 MISSING_ENV=false
 if [ -z "$NOTION_API_KEY" ]; then
@@ -79,6 +94,11 @@ docker run -d \
       -d '{"content":"❌ Docker run 실패! (포트 중복 또는 기타 문제)"}' "$WEBHOOK_URL"
     exit 1
 }
+
+# 컨테이너 상태 확인
+echo "🔍 컨테이너 상태 확인"
+docker ps -a | grep codinglarva-portfolio
+docker logs codinglarva-portfolio
 
 # 성공 알림
 curl -H "Content-Type: application/json" -X POST \
