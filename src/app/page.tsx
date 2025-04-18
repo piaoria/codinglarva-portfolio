@@ -7,7 +7,7 @@ import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
 import Awards from "@/components/sections/Awards";
 import Archive from "@/components/sections/Archive";
-import Contact from "@/components/sections/Contact";
+// import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 import { useHeaderColor } from "@/contexts/HeaderColorContext";
 
@@ -24,7 +24,7 @@ export default function Home() {
     projects: useRef<HTMLDivElement>(null),
     awards: useRef<HTMLDivElement>(null),
     archive: useRef<HTMLDivElement>(null),
-    contact: useRef<HTMLDivElement>(null),
+    // contact: useRef<HTMLDivElement>(null),
   };
 
   // 헤더 색상 변경을 위한 observer
@@ -136,13 +136,13 @@ export default function Home() {
         >
           <Archive />
         </div>
-        <div
+        {/* <div
           ref={sectionRefs.contact}
           id="contact"
           className={`section-fade-in bg-[var(--background-color2)] ${visibleSections.includes("contact") ? "visible" : ""}`}
         >
           <Contact />
-        </div>
+        </div> */}
       </main>
       <Footer />
     </div>
