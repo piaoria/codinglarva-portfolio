@@ -94,8 +94,8 @@ TypeScript를 사용하는 경우, `tsconfig.json` 파일을 프로젝트 루트
       "@/*": ["./src/*"]
     }
   },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-    "exclude": ["node_modules"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }
 ```
 
@@ -111,4 +111,4 @@ ESLint를 사용하는 경우, `.eslintrc.json` 파일을 프로젝트 루트에
 
 ## 다음 단계
 
-이제 개발 환경이 준비되었습니다. 다음 섹션에서는 Next.js의 기본 개념을 알아보겠습니다. 
+이제 개발 환경이 준비되었습니다. 다음 섹션에서는 Next.js의 기본 개념을 알아보겠습니다.
