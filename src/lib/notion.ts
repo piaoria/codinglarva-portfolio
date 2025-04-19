@@ -19,15 +19,8 @@ interface NotionConfig {
 
 // 환경 변수 가져오기
 const getNotionConfig = (): NotionConfig => {
-  console.log("=== 환경 변수 확인 ===");
-
   const apiKey = process.env.NOTION_API_KEY?.trim();
   const databaseId = process.env.NOTION_DOCS_DATABASE_ID?.trim();
-
-  console.log("환경 변수 상태:", {
-    NOTION_API_KEY: apiKey ? "설정됨" : "설정되지 않음",
-    NOTION_DOCS_DATABASE_ID: databaseId ? "설정됨" : "설정되지 않음",
-  });
 
   if (!apiKey || !databaseId) {
     const missingVars = [];
@@ -50,7 +43,6 @@ const initializeNotionClient = () => {
     try {
       const { apiKey } = getNotionConfig();
       notionClient = new Client({ auth: apiKey });
-      console.log("Notion 클라이언트 초기화 성공");
     } catch (error) {
       console.error("Notion 클라이언트 초기화 실패:", error);
       throw error;
@@ -66,7 +58,6 @@ export async function getDocs() {
   try {
     const { databaseId } = getNotionConfig();
 
-    console.log("문서 조회 시작");
     const response = await notion.databases.query({
       database_id: databaseId,
       sorts: [
@@ -75,18 +66,6 @@ export async function getDocs() {
           direction: "ascending",
         },
       ],
-    });
-
-    console.log("문서 조회 결과:", {
-      총_문서_개수: response.results.length,
-      첫번째_문서: response.results[0]
-        ? {
-            id: (response.results[0] as PageObjectResponse).id,
-            properties: Object.keys(
-              (response.results[0] as PageObjectResponse).properties
-            ),
-          }
-        : "없음",
     });
 
     return response.results;
@@ -110,7 +89,6 @@ export async function getDocBySlug(slug: string) {
   try {
     const { databaseId } = getNotionConfig();
 
-    console.log(`슬러그로 문서 조회 시작: ${slug}`);
     const response = await notion.databases.query({
       database_id: databaseId,
       filter: {
@@ -131,21 +109,7 @@ export async function getDocBySlug(slug: string) {
       },
     });
 
-    console.log("슬러그 조회 결과:", {
-      슬러그: slug,
-      결과_개수: response.results.length,
-      첫번째_문서: response.results[0]
-        ? {
-            id: (response.results[0] as PageObjectResponse).id,
-            properties: Object.keys(
-              (response.results[0] as PageObjectResponse).properties
-            ),
-          }
-        : null,
-    });
-
     if (!response.results[0]) {
-      console.log(`문서를 찾을 수 없습니다: ${slug}`);
       return undefined;
     }
 
