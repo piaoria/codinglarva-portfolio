@@ -19,15 +19,12 @@ type DocPageProps = {
 
 export default async function DocPage({ params }: DocPageProps) {
   try {
-    console.log("=== 문서 페이지 렌더링 시작 ===");
     const resolvedParams = await params;
-    console.log("params:", resolvedParams);
 
     const { slug } = resolvedParams;
     const doc = await getDocBySlug(slug);
 
     if (!doc) {
-      console.log("문서를 찾을 수 없습니다:", slug);
       notFound();
     }
 

@@ -9,18 +9,7 @@ interface NotionRendererProps {
 }
 
 export default function NotionRenderer({ initialBlocks }: NotionRendererProps) {
-  console.log(
-    "첫 번째 블록:",
-    initialBlocks[0]
-      ? {
-          id: initialBlocks[0].id,
-          type: initialBlocks[0].type,
-        }
-      : "없음"
-  );
-
   if (initialBlocks.length === 0) {
-    console.log("블록이 없습니다.");
     return <div className="animate-pulse">로딩 중...</div>;
   }
 
@@ -38,10 +27,7 @@ function NotionBlock({ block }: { block: BlockObjectResponse }) {
 
   switch (block.type) {
     case "paragraph":
-      console.log("문단 블록:", {
-        rich_text_length: block.paragraph.rich_text.length,
-        first_text: block.paragraph.rich_text[0]?.plain_text,
-      });
+      console.log("문단 블록 생성");
       return (
         <p className="mb-4">
           {block.paragraph.rich_text.map((text, index) => (
@@ -99,12 +85,6 @@ function NotionBlock({ block }: { block: BlockObjectResponse }) {
         block.image.type === "external"
           ? block.image.external.url
           : block.image.file.url;
-
-      console.log("이미지 블록 속성:", {
-        id: block.id,
-        type: block.type,
-        image: block.image,
-      });
 
       const imageSizeStyles = {
         width: imageSize.width > 768 ? "100%" : imageSize.width,

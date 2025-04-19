@@ -86,7 +86,6 @@ const isStatusProperty = (
 export default async function DocsPage() {
   try {
     const docs = await getDocs();
-    console.log("가져온 문서 수:", docs.length);
 
     return (
       <div className="min-h-screen pt-32 pb-16 px-4 sm:px-8">
