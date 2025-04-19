@@ -1,5 +1,5 @@
-import { getWikiCategories } from '@/components/wiki/WikiData';
-import WikiNavigation from '@/components/wiki/WikiNavigation';
+import { getWikiCategories } from "@/components/wiki/WikiData";
+import WikiNavigation from "@/components/wiki/WikiNavigation";
 
 export default async function WikiLayout({
   children,
@@ -15,11 +15,9 @@ export default async function WikiLayout({
           <div className="w-64 flex-shrink-0">
             <WikiNavigation categories={categories} />
           </div>
-          <div className="flex-1">
-            {children}
-          </div>
+          <div className="flex-1">{children}</div>
         </div>
       </div>
     </div>
   );
-} 
+}

@@ -39,21 +39,22 @@ export async function getWikiCategories(): Promise<WikiCategory[]> {
           const source = fs.readFileSync(filePath, "utf8");
           const slug = file.replace(/\.md$/, "");
           const title = source.match(/^#\s+(.+)$/m)?.[1] || slug;
-          const headings = Array.from(source.matchAll(/^##\s+(.+)$/gm))
-            .map(match => match[1]);
+          const headings = Array.from(source.matchAll(/^##\s+(.+)$/gm)).map(
+            (match) => match[1]
+          );
 
           return {
             title,
             slug,
-            headings
+            headings,
           };
         })
       );
 
       return {
         name: category,
-        files: categoryFiles
+        files: categoryFiles,
       };
     })
   );
-} 
+}
