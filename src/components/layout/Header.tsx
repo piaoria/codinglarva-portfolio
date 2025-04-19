@@ -34,10 +34,14 @@ export default function Header() {
   }, []);
 
   const isDocsPage = pathname?.startsWith("/docs");
+  const isWikiPage = pathname?.startsWith("/wiki");
 
   const handleMenuClick = (sectionId: string) => {
     if (sectionId === "docs") {
       router.push("/docs");
+      return;
+    } else if (sectionId === "wiki") {
+      router.push("/wiki");
       return;
     }
     scrollToSection(sectionId);
@@ -64,6 +68,7 @@ export default function Header() {
     { id: "projects", label: "Projects" },
     { id: "awards", label: "Awards" },
     { id: "docs", label: "Docs" },
+    { id: "wiki", label: "Wiki" },
   ];
 
   return (
@@ -77,7 +82,7 @@ export default function Header() {
       <div className="w-full max-w-[1200px] mx-auto flex items-center">
         <Logo />
         <ThemeSwitch />
-        {!isDocsPage && (
+        {!isDocsPage && !isWikiPage && (
           <>
             <div className="flex-1"></div>
             {/* 데스크톱 */}
@@ -119,7 +124,7 @@ export default function Header() {
       </div>
 
       {/* 모바일 메뉴 */}
-      {!isDocsPage && (
+      {!isDocsPage && !isWikiPage && (
         <div
           ref={menuRef}
           className={`absolute top-16 sm:top-24 left-0 right-0 bg-[var(--dropdown-bg)] border-gray-200 dark:border-gray-800 md:hidden z-10 transition-all duration-300 ${
