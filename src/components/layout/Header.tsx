@@ -63,7 +63,6 @@ export default function Header() {
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
     { id: "awards", label: "Awards" },
-    { id: "archive", label: "Archive" },
     { id: "docs", label: "Docs" },
   ];
 

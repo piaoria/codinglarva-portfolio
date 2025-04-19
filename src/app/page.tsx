@@ -6,7 +6,6 @@ import Detail from "@/components/sections/Detail";
 import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
 import Awards from "@/components/sections/Awards";
-import Archive from "@/components/sections/Archive";
 // import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 import { useHeaderColor } from "@/contexts/HeaderColorContext";
@@ -23,7 +22,6 @@ export default function Home() {
     skills: useRef<HTMLDivElement>(null),
     projects: useRef<HTMLDivElement>(null),
     awards: useRef<HTMLDivElement>(null),
-    archive: useRef<HTMLDivElement>(null),
     // contact: useRef<HTMLDivElement>(null),
   };
 
@@ -128,13 +126,6 @@ export default function Home() {
           className={`section-fade-in bg-[var(--background-color2)] ${visibleSections.includes("awards") ? "visible" : ""}`}
         >
           <Awards />
-        </div>
-        <div
-          ref={sectionRefs.archive}
-          id="archive"
-          className={`section-fade-in pb-16 sm:pb-24 ${visibleSections.includes("archive") ? "visible" : ""}`}
-        >
-          <Archive />
         </div>
         {/* <div
           ref={sectionRefs.contact}
