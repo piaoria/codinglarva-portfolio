@@ -42,7 +42,9 @@ export default function WikiNavigation({ categories }: WikiNavigationProps) {
     }
   }, [pathname, targetHeading]);
 
-  const toggleCategory = (categoryName: string) => {
+  const toggleCategory = (e: React.MouseEvent, categoryName: string) => {
+    e.preventDefault();
+    e.stopPropagation();
     setExpandedCategories(prev => {
       const newSet = new Set(prev);
       if (newSet.has(categoryName)) {
@@ -81,27 +83,29 @@ export default function WikiNavigation({ categories }: WikiNavigationProps) {
           <div className="flex items-center justify-between mb-2">
             <Link
               href={`/wiki/${category.name}`}
-              onClick={() => setExpandedCategories(prev => {
-                const newSet = new Set(prev);
-                newSet.add(category.name);
-                return newSet;
-              })}
-              className={`text-lg font-semibold transition-colors duration-200 ${
+              onClick={(e) => {
+                setExpandedCategories(prev => {
+                  const newSet = new Set(prev);
+                  newSet.add(category.name);
+                  return newSet;
+                });
+              }}
+              className={`flex-1 flex items-center justify-between text-lg font-semibold px-3 py-2 rounded-md transition-colors duration-200 ${
                 pathname.startsWith(`/wiki/${category.name}`)
-                  ? 'text-blue-600 dark:text-blue-400'
-                  : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+                  ? 'text-blue-600 dark:text-blue-400 bg-slate-100 dark:bg-slate-800'
+                  : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-50 dark:hover:bg-slate-800/50'
               }`}
             >
-              {category.name}
+              <span>{category.name}</span>
+              <button
+                onClick={(e) => toggleCategory(e, category.name)}
+                className="relative z-10 px-2 py-1 -mr-2 text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-transform duration-200"
+              >
+                <span className={`inline-block transition-transform duration-200 ${expandedCategories.has(category.name) ? 'rotate-0' : '-rotate-90'}`}>
+                  ▼
+                </span>
+              </button>
             </Link>
-            <button
-              onClick={() => toggleCategory(category.name)}
-              className="text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-transform duration-200"
-            >
-              <span className={`inline-block transition-transform duration-200 ${expandedCategories.has(category.name) ? 'rotate-0' : '-rotate-90'}`}>
-                ▼
-              </span>
-            </button>
           </div>
           
           <div
