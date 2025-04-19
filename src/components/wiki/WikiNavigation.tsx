@@ -45,7 +45,9 @@ export default function WikiNavigation({ categories }: WikiNavigationProps) {
     }
   }, [pathname, targetHeading]);
 
-  const toggleCategory = (categoryName: string) => {
+  const toggleCategory = (e: React.MouseEvent, categoryName: string) => {
+    e.preventDefault();
+    e.stopPropagation();
     setExpandedCategories((prev) => {
       const newSet = new Set(prev);
       if (newSet.has(categoryName)) {
@@ -57,7 +59,12 @@ export default function WikiNavigation({ categories }: WikiNavigationProps) {
     });
   };
 
-  const handleHeadingClick = (category: string, heading: string) => {
+  const handleHeadingClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    category: string,
+    heading: string
+  ) => {
+    e.preventDefault();
     if (!pathname.startsWith(`/wiki/${category}`)) {
       setTargetHeading(heading);
       router.push(`/wiki/${category}`);
@@ -83,7 +90,8 @@ export default function WikiNavigation({ categories }: WikiNavigationProps) {
           <div className="flex items-center justify-between mb-2">
             <Link
               href={`/wiki/${category.name}`}
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 setExpandedCategories((prev) => {
                   const newSet = new Set(prev);
                   newSet.add(category.name);
@@ -98,7 +106,7 @@ export default function WikiNavigation({ categories }: WikiNavigationProps) {
             >
               <span>{category.name}</span>
               <button
-                onClick={() => toggleCategory(category.name)}
+                onClick={(e) => toggleCategory(e, category.name)}
                 className="relative z-10 px-2 py-1 -mr-2 text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-transform duration-200"
               >
                 <span
@@ -126,7 +134,9 @@ export default function WikiNavigation({ categories }: WikiNavigationProps) {
                 <div key={file.slug}>
                   <a
                     href={`#${file.slug}`}
-                    onClick={() => handleHeadingClick(category.name, file.slug)}
+                    onClick={(e) =>
+                      handleHeadingClick(e, category.name, file.slug)
+                    }
                     className={`block py-1 transition-colors duration-200 ${
                       pathname === `/wiki/${category.name}/${file.slug}`
                         ? "text-blue-600 dark:text-blue-400"
@@ -142,8 +152,8 @@ export default function WikiNavigation({ categories }: WikiNavigationProps) {
                         <a
                           key={index}
                           href={`#${heading}`}
-                          onClick={() =>
-                            handleHeadingClick(category.name, heading)
+                          onClick={(e) =>
+                            handleHeadingClick(e, category.name, heading)
                           }
                           className="block py-1 ml-4 text-sm text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
                         >
