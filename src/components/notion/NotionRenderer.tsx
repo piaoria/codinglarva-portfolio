@@ -2,7 +2,9 @@
 
 import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import "highlight.js/styles/github-dark.css";
+import hljs from "highlight.js";
 
 interface NotionRendererProps {
   initialBlocks: BlockObjectResponse[];
@@ -75,10 +77,66 @@ function NotionBlock({ block }: { block: BlockObjectResponse }) {
         </li>
       );
     case "code":
+      const codeText = block.code.rich_text[0]?.plain_text || "";
+      const codeLang = block.code.language || "text";
+      
+      // Notion 언어를 highlight.js 언어로 매핑
+      const langMap: { [key: string]: string } = {
+        "javascript": "javascript",
+        "typescript": "typescript",
+        "java": "java",
+        "python": "python",
+        "c": "c",
+        "cpp": "cpp",
+        "csharp": "csharp",
+        "go": "go",
+        "ruby": "ruby",
+        "php": "php",
+        "swift": "swift",
+        "kotlin": "kotlin",
+        "rust": "rust",
+        "shell": "bash",
+        "sql": "sql",
+        "html": "html",
+        "css": "css",
+        "json": "json",
+        "markdown": "markdown",
+        "plain text": "text"
+      };
+
+      const mappedLang = langMap[codeLang.toLowerCase()] || "text";
+      const lines = codeText.split("\n");
+      
+      // 코드 강조 적용
+      const highlightedCode = mappedLang !== "text" && hljs.getLanguage(mappedLang)
+        ? hljs.highlight(codeText, { language: mappedLang }).value
+        : codeText;
+      
+      const line = highlightedCode.split("\n")
+        .map((item: string, index: number) =>
+          `<tr data-line=${index + 1}>
+            <td class="line-number" data-number="${index + 1}">${index + 1}</td>
+            <td class="line-code" data-number=${index + 1}>${item}</td>
+          </tr>`
+        )
+        .join("");
+
       return (
-        <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto">
-          <code>{block.code.rich_text[0]?.plain_text}</code>
-        </pre>
+        <div className="codeblock">
+          <div className="top">
+            <p>{mappedLang.toUpperCase()}</p>
+            <div className="controls">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <pre className={`language-${mappedLang}`}>
+            <table>
+              <tbody dangerouslySetInnerHTML={{ __html: line }} />
+            </table>
+          </pre>
+        </div>
       );
     case "image":
       const imageUrl =
