@@ -27,6 +27,8 @@
   --primary-color-selection: #f7863594;
   --progress-color: #f78535;
   --modal-color: #fdfdfd;
+  --code-block-font-color: #888888;
+  --code-block-background-color: #f9f9f9;
 }
 
 /* 다크모드 테마 설정 */
@@ -47,6 +49,8 @@
   --primary-color-selection: #f7863594;
   --progress-color: #f78535;
   --modal-color: #232328;
+  --code-block-font-color: #e4e4e4;
+  --code-block-background-color: #2d2e33;
 }
 
 /* 기본 body 설정 */
@@ -250,4 +254,119 @@ header {
 
 .animate-scaleIn {
   animation: scaleIn 0.2s ease-out forwards;
+}
+
+.codeblock {
+  position: relative;
+  margin: 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.codeblock .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background-color: var(--box-color);
+}
+
+.codeblock .top p {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--font-color);
+}
+
+.codeblock .top .controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.codeblock .top .controls div {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+}
+
+.codeblock .top .controls div:nth-child(1) {
+  background-color: #ff5f56; /* 빨간색 - 닫기 */
+}
+
+.codeblock .top .controls div:nth-child(2) {
+  background-color: #ffbd2e; /* 노란색 - 최소화 */
+}
+
+.codeblock .top .controls div:nth-child(3) {
+  background-color: #27c93f; /* 초록색 - 최대화 */
+}
+
+.codeblock button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  color: var(--font-color);
+  cursor: pointer;
+}
+
+.codeblock button:hover {
+  background-color: var(--background-color2);
+}
+
+.codeblock pre {
+  margin: 0;
+  padding: 1rem 0;
+  overflow-x: auto;
+  background-color: var(--code-block-background-color);
+  color: var(--code-block-font-color);
+}
+
+.codeblock table {
+  width: 100%;
+  line-height: 0.1;
+  border-collapse: collapse;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-spacing: 0 !important;
+}
+
+.codeblock tbody {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.codeblock tr {
+  line-height: 1.5;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-spacing: 0 !important;
+  border-bottom: 1px solid var(--background-color2);
+}
+
+.codeblock tr:last-child {
+  border-bottom: none;
+}
+
+.codeblock .line-number {
+  width: 3.5rem;
+  padding-right: 0.75rem;
+  padding-left: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  text-align: right;
+  color: rgb(134, 134, 134);
+  opacity: 0.8;
+  user-select: none;
+  margin: 0 !important;
+  font-style: italic;
+}
+
+.codeblock .line-code {
+  padding-left: 1rem;
+  margin: 0 !important;
+  padding: 0 !important;
 }

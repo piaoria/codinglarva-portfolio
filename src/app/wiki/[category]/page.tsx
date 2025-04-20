@@ -12,19 +12,65 @@ declare module "marked" {
   }
 }
 
+// 지원할 언어 목록
+const supportedLanguages = [
+  "javascript",
+  "typescript",
+  "java",
+  "html",
+  "css",
+  "json",
+  "scss",
+  "sass",
+  "sql",
+  "batch",
+  "bash",
+];
+
+// 커스텀 렌더러 생성
+const renderer = new marked.Renderer();
+
+// 코드블럭 렌더링
+renderer.code = (code: { text: string; lang?: string }): string => {
+  const lang =
+    code.lang && supportedLanguages.includes(code.lang.toLowerCase())
+      ? code.lang
+      : "text";
+  const langClass = "language-" + lang;
+  const highlightedCode =
+    code.lang && renderer?.options?.highlight
+      ? (renderer.options.highlight(code.text, code.lang) as string)
+      : code.text;
+
+  const lines = highlightedCode.split("\n");
+  if (lines[lines.length - 1].trim() === "") {
+    lines.pop();
+  }
+
+  const line = lines
+    .map(
+      (item: string, index: number) =>
+        `<tr data-line=${index + 1}><td class="line-number" data-number="${index + 1}">${index + 1}</td><td class="line-code" data-number=${index + 1}>${item}</td></tr>`
+    )
+    .join("");
+
+  return `<div class="codeblock"><div class="top"><p>${lang.toUpperCase()}</p><div class="controls"><div></div><div></div><div></div></div></div><pre class="${langClass}"><table><tbody>${line}</tbody></table></pre></div>`;
+};
+
 // marked 옵션 설정
 marked.setOptions({
   breaks: true,
   gfm: true,
+  renderer: renderer,
   highlight: function (code: string, lang: string) {
     if (lang && hljs.getLanguage(lang)) {
       try {
-        return hljs.highlight(code, { language: lang }).value;
+        return hljs.highlight(code, { language: lang }).value.trimEnd();
       } catch (e) {
         console.error(e);
       }
     }
-    return hljs.highlightAuto(code).value;
+    return hljs.highlightAuto(code).value.trimEnd();
   },
 });
 
