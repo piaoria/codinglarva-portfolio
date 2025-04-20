@@ -52,7 +52,7 @@ export default function Projects() {
       {/* 프로젝트 리스트 */}
       <div className="w-11/12 max-w-[1000px] px-2 space-y-6">
         {/* CodingLarva */}
-        <div className="w-full h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 relative">
+        <div className="w-full h-[420px] xxs:h-[380px] xs:h-[360px] sm:h-[340px] md:h-[320px] lg:h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 relative">
           {/* 헤더 */}
           <div className="flex items-start justify-between items-center">
             {/* 왼쪽: 아이콘과 설명 */}
@@ -160,7 +160,40 @@ export default function Projects() {
 
           {/* 본문 */}
           <div className="mt-4">
-            <p className="text-gray-600">내용이 채워질 영역입니다.</p>
+            <div className="space-y-3">
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p className="text-gray-600">
+                  <span className="font-semibold">Next.js</span>와
+                  <span className="font-semibold">TypeScript</span>를 활용한 웹
+                  포트폴리오
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p className="text-gray-600">
+                  <span className="font-semibold">Notion API</span>를 활용한
+                  동적 콘텐츠 관리 시스템
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p className="text-gray-600">
+                  <span className="font-semibold">Docker</span>와{" "}
+                  <span className="font-semibold">Nginx</span>를 활용한 안정적인
+                  배포 환경
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p className="text-gray-600">
+                  <span className="font-semibold">다크모드</span>,
+                  <span className="font-semibold">반응형 디자인</span>,
+                  <span className="font-semibold">코드 하이라이팅</span> 등
+                  사용자 경험 최적화
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* sm 레이아웃에서 하단에 표시되는 요소들 */}
