@@ -344,7 +344,7 @@ header {
   margin: 0 !important;
   padding: 0 !important;
   border-spacing: 0 !important;
-  border-bottom: 1px solid var(--background-color2);
+  border-bottom: 0px;
 }
 
 .codeblock tr:last-child {
