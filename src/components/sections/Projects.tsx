@@ -163,7 +163,7 @@ export default function Projects() {
             <div className="space-y-3">
               <div className="flex items-start gap-2">
                 <span className="font-semibold">•</span>
-                <p className="text-gray-600">
+                <p>
                   <span className="font-semibold">Next.js</span>와
                   <span className="font-semibold">TypeScript</span>를 활용한 웹
                   포트폴리오
@@ -171,14 +171,14 @@ export default function Projects() {
               </div>
               <div className="flex items-start gap-2">
                 <span className="font-semibold">•</span>
-                <p className="text-gray-600">
+                <p>
                   <span className="font-semibold">Notion API</span>를 활용한
                   동적 콘텐츠 관리 시스템
                 </p>
               </div>
               <div className="flex items-start gap-2">
                 <span className="font-semibold">•</span>
-                <p className="text-gray-600">
+                <p>
                   <span className="font-semibold">Docker</span>와{" "}
                   <span className="font-semibold">Nginx</span>를 활용한 안정적인
                   배포 환경
@@ -186,7 +186,7 @@ export default function Projects() {
               </div>
               <div className="flex items-start gap-2">
                 <span className="font-semibold">•</span>
-                <p className="text-gray-600">
+                <p>
                   <span className="font-semibold">다크모드</span>,
                   <span className="font-semibold">반응형 디자인</span>,
                   <span className="font-semibold">코드 하이라이팅</span> 등
@@ -238,7 +238,7 @@ export default function Projects() {
         </div>
 
         {/* EUM */}
-        <div className="w-full h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 relative">
+        <div className="w-full bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 relative">
           {/* 헤더 */}
           <div className="flex items-start justify-between items-center">
             {/* 왼쪽: 아이콘과 설명 */}
@@ -251,7 +251,9 @@ export default function Projects() {
                 className="w-12 h-12 md:w-14 md:h-14"
               />
               <div className="flex flex-col">
-                <p className="text-sm text-gray-500">실시간 필기 공유</p>
+                <p className="text-sm text-gray-500">
+                  태블릿 기반 실시간 필기 공유
+                </p>
                 <div className="flex flex-col gap-8">
                   <div className="flex items-center gap-4">
                     <h3 className="text-xl md:text-2xl font-bold text-[#A59CCF]">
@@ -316,7 +318,7 @@ export default function Projects() {
           {/* 서브타이틀 */}
           <div className="flex items-center justify-between mt-6">
             <h4 className="text-md md:text-lg font-semibold">
-              실시간 필기 공유 서비스
+              태블릿 기반 실시간 필기 공유 서비스
             </h4>
             <div className="hidden sm:flex items-center gap-4">
               <div className="flex items-center gap-1">
@@ -342,7 +344,44 @@ export default function Projects() {
 
           {/* 본문 */}
           <div className="mt-4">
-            <p className="text-gray-600">내용이 채워질 영역입니다.</p>
+            <div className="space-y-3">
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>
+                  <span className="font-semibold">ReactNative</span>를 이용한
+                  태블릿에 적합한 환경 구축
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>
+                  <span className="font-semibold">Stompjs</span>와{" "}
+                  <span className="font-semibold">Sockjs</span>를 이용한 실시간
+                  Socket 구현
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>
+                  <span className="font-semibold">ReactNative Skia</span>를
+                  활용한 대시보드 구성
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>
+                  <span className="font-semibold">Skia Vector Data</span>를
+                  이용한 필기 데이터 활용
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>
+                  <span className="font-semibold">Merge 알고리즘</span>을 통한
+                  필기 데이터 최적화
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* sm 레이아웃에서 하단에 표시되는 요소들 */}
@@ -387,7 +426,7 @@ export default function Projects() {
         </div>
 
         {/* NewLearn */}
-        <div className="w-full h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 relative">
+        <div className="w-full bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 relative">
           {/* 헤더 */}
           <div className="flex items-start justify-between items-center">
             {/* 왼쪽: 아이콘과 설명 */}
@@ -538,7 +577,7 @@ export default function Projects() {
         </div>
 
         {/* Crewin */}
-        <div className="w-full h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 relative">
+        <div className="w-full bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 relative">
           {/* 헤더 */}
           <div className="flex items-start justify-between items-center">
             {/* 왼쪽: 아이콘과 설명 */}
@@ -689,7 +728,7 @@ export default function Projects() {
         </div>
 
         {/* Honeymoney */}
-        <div className="w-full h-[300px] bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 relative">
+        <div className="w-full bg-[var(--box-color)] rounded-[16px] xs:rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 relative">
           {/* 헤더 */}
           <div className="flex items-start justify-between items-center">
             {/* 왼쪽: 아이콘과 설명 */}
