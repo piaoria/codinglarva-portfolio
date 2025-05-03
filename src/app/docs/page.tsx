@@ -88,9 +88,12 @@ export default async function DocsPage() {
     const docs = await getDocs();
 
     return (
-      <div className="min-h-screen pt-32 pb-16 px-4 sm:px-8">
+      <div className="min-h-screen pt-24 pb-16 sm:px-8">
         <div className="max-w-[1200px] mx-auto">
-          <h1 className="text-3xl font-bold mb-8">문서</h1>
+          <h1 className="text-3xl font-bold mb-2">문서</h1>
+          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400 mb-4">
+            개발 관련 지식과 정보를 모아놓은 문서입니다.
+          </p>
           {docs.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-gray-600 dark:text-gray-400 mb-4">
