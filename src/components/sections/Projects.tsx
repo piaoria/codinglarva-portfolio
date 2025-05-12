@@ -164,33 +164,34 @@ export default function Projects() {
               <div className="flex items-start gap-2">
                 <span className="font-semibold">•</span>
                 <p>
-                  <span className="font-semibold">Next.js</span>와
-                  <span className="font-semibold">TypeScript</span>를 활용한 웹
-                  포트폴리오
-                </p>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="font-semibold">•</span>
-                <p>
-                  <span className="font-semibold">Notion API</span>를 활용한
-                  동적 콘텐츠 관리 시스템
-                </p>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="font-semibold">•</span>
-                <p>
+                  개인 PC 서버를 통해{" "}
                   <span className="font-semibold">Docker</span>와{" "}
-                  <span className="font-semibold">Nginx</span>를 활용한 안정적인
-                  배포 환경
+                  <span className="font-semibold">Jenkins</span>를 이용한 자동화
+                  배포
                 </p>
               </div>
               <div className="flex items-start gap-2">
                 <span className="font-semibold">•</span>
                 <p>
-                  <span className="font-semibold">다크모드</span>,
-                  <span className="font-semibold">반응형 디자인</span>,
-                  <span className="font-semibold">코드 하이라이팅</span> 등
-                  사용자 경험 최적화
+                  <span className="font-semibold">Next.js</span>를 이용한 SSR,
+                  CSR 페이지 별 적용
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>
+                  <span className="font-semibold">Notion API</span> DB 연결하여
+                  Study Docs 정리,{" "}
+                  <span className="font-semibold">MarkDown</span>을 이용한 개인
+                  Wiki 정리
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>
+                  <span className="font-semibold">Animation</span>과{" "}
+                  <span className="font-semibold">User Interaction</span>에
+                  특화된 UI Design, 반응형, 다크모드 지원
                 </p>
               </div>
             </div>
@@ -348,38 +349,29 @@ export default function Projects() {
               <div className="flex items-start gap-2">
                 <span className="font-semibold">•</span>
                 <p>
-                  <span className="font-semibold">ReactNative</span>를 이용한
-                  태블릿에 적합한 환경 구축
+                  태블릿 환경과{" "}
+                  <span className="font-semibold">React Native Skia</span>{" "}
+                  라이브러리를 이용한 SVG 기반 실시간 필기 데이터 처리
                 </p>
               </div>
               <div className="flex items-start gap-2">
                 <span className="font-semibold">•</span>
                 <p>
-                  <span className="font-semibold">Stompjs</span>와{" "}
-                  <span className="font-semibold">Sockjs</span>를 이용한 실시간
-                  Socket 구현
+                  <span className="font-semibold">Stomp.js</span>와{" "}
+                  <span className="font-semibold">Sock.js</span>를 활용한 Socket
+                  통신 및 실시간 데이터 동기화
                 </p>
               </div>
               <div className="flex items-start gap-2">
                 <span className="font-semibold">•</span>
                 <p>
-                  <span className="font-semibold">ReactNative Skia</span>를
-                  활용한 대시보드 구성
+                  Undo/Redo, 지우개, 펜 굵기, 색상 변경 등 필기 도구(Drawing)
+                  기능 구현
                 </p>
               </div>
               <div className="flex items-start gap-2">
                 <span className="font-semibold">•</span>
-                <p>
-                  <span className="font-semibold">Skia Vector Data</span>를
-                  이용한 필기 데이터 활용
-                </p>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="font-semibold">•</span>
-                <p>
-                  <span className="font-semibold">Merge 알고리즘</span>을 통한
-                  필기 데이터 최적화
-                </p>
+                <p>학생과 선생님을 위한 맞춤 대시보드 UI</p>
               </div>
             </div>
           </div>
@@ -532,7 +524,42 @@ export default function Projects() {
 
           {/* 본문 */}
           <div className="mt-4">
-            <p className="text-gray-600">내용이 채워질 영역입니다.</p>
+            <div className="space-y-3">
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>
+                  <span className="font-semibold">
+                    MS Azure Speech Service(AI SDK)
+                  </span>
+                  를 이용한 STT, TTS와 실시간 사용자 발음 테스트 구현
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>
+                  <span className="font-semibold">MediaQuery</span>를 이용한
+                  반응형과 다크모드 지원, Mobile 사용자 서비스 환경을 고려하여{" "}
+                  <span className="font-semibold">
+                    PWA(Progressive Web Application)
+                  </span>{" "}
+                  구현
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>
+                  사용자 Interaction Event를 이용한 학습 기능 구현 (Drag&Drop
+                  Event를 이용한 WordHunt, Collasible 기능이 추가된 영어 단어장)
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>
+                  <span className="font-semibold">Chart.js</span> 라이브러리를
+                  이용한 학습 결과 대시보드 UI
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* sm 레이아웃에서 하단에 표시되는 요소들 */}
@@ -683,7 +710,33 @@ export default function Projects() {
 
           {/* 본문 */}
           <div className="mt-4">
-            <p className="text-gray-600">내용이 채워질 영역입니다.</p>
+            <div className="space-y-3">
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>
+                  직접 경험하고 불편했던 점을 토대로 기획 및 개발 (Running Crew
+                  5년차)
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>
+                  UI/UX 설계, 기능 구체화, 사용자 설문조사 및 실사용 테스트
+                  피드백 QA 진행
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>Atomic Design Pattern 적용 및 공통 컴포넌트 구축 관리</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>
+                  생성한 세션에 대한 카카오톡 공유를 이용하여 Service Cold Start
+                  해결
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* sm 레이아웃에서 하단에 표시되는 요소들 */}
@@ -832,7 +885,30 @@ export default function Projects() {
 
           {/* 본문 */}
           <div className="mt-4">
-            <p className="text-gray-600">내용이 채워질 영역입니다.</p>
+            <div className="space-y-3">
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>
+                  돈 = 꿀, 저축하다 = 꿀통에 담는다, 꿀벌 = 일하다 등의 컨셉
+                  아이디어 제안 및 적용
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>Json 형태의 Prompt Engineering을 적용한 AI ChatBot 구현</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>카카오 맵 API를 이용한 주변 은행 지도 및 상품 검색 구현</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="font-semibold">•</span>
+                <p>
+                  <span className="font-semibold">Chart.js</span> 라이브러리를
+                  이용한 기간 별 금리, 금융 상품 비교 등 수치 데이터 시각화
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* sm 레이아웃에서 하단에 표시되는 요소들 */}
