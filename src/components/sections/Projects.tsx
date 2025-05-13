@@ -721,19 +721,23 @@ export default function Projects() {
               <div className="flex items-start gap-2">
                 <span className="font-semibold">•</span>
                 <p>
-                  UI/UX 설계, 기능 구체화, 사용자 설문조사 및 실사용 테스트
-                  피드백 QA 진행
+                  UI/UX 설계, 기능 구체화, 사용자 설문조사 및{" "}
+                  <span className="font-semibold">실사용 테스트</span> 피드백 QA
+                  진행
                 </p>
               </div>
               <div className="flex items-start gap-2">
                 <span className="font-semibold">•</span>
-                <p>Atomic Design Pattern 적용 및 공통 컴포넌트 구축 관리</p>
+                <p>
+                  <span className="font-semibold">Atomic Design Pattern</span>{" "}
+                  적용 및 공통 컴포넌트 구축 관리
+                </p>
               </div>
               <div className="flex items-start gap-2">
                 <span className="font-semibold">•</span>
                 <p>
-                  생성한 세션에 대한 카카오톡 공유를 이용하여 Service Cold Start
-                  해결
+                  생성한 세션에 대한 카카오톡 공유를 이용하여{" "}
+                  <span className="font-semibold">Service Cold Start</span> 해결
                 </p>
               </div>
             </div>
