@@ -139,6 +139,25 @@ function NotionBlock({ block }: { block: BlockObjectResponse }) {
           </pre>
         </div>
       );
+    case "quote":
+      return (
+        <blockquote className="border-l-4 border-gray-300 dark:border-gray-600 pl-4 bg-gray-50 dark:bg-gray-800 rounded-r">
+          <p className="text-gray-700 dark:text-gray-300 italic">
+            {block.quote.rich_text.map((text, index) => (
+              <span
+                key={index}
+                className={`${text.annotations.bold ? "font-bold" : ""} ${
+                  text.annotations.italic ? "italic" : ""
+                } ${text.annotations.strikethrough ? "line-through" : ""} ${
+                  text.annotations.underline ? "underline" : ""
+                } ${text.annotations.code ? "font-mono bg-gray-200 dark:bg-gray-700 px-1 rounded" : ""}`}
+              >
+                {text.plain_text}
+              </span>
+            ))}
+          </p>
+        </blockquote>
+      );
     case "image":
       const imageUrl =
         block.image.type === "external"
