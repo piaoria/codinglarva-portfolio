@@ -158,6 +158,10 @@ function NotionBlock({ block }: { block: BlockObjectResponse }) {
           </p>
         </blockquote>
       );
+    case "divider":
+      return (
+        <hr className="border-t border-gray-300 dark:border-gray-600 py-1"/>
+      );
     case "image":
       const imageUrl =
         block.image.type === "external"
