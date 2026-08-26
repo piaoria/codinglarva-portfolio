@@ -180,15 +180,6 @@ export default function Projects() {
               <div className="flex items-start gap-2">
                 <span className="font-semibold">•</span>
                 <p>
-                  <span className="font-semibold">Notion API</span> DB 연결하여
-                  Study Docs 정리,{" "}
-                  <span className="font-semibold">MarkDown</span>을 이용한 개인
-                  Wiki 정리
-                </p>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="font-semibold">•</span>
-                <p>
                   <span className="font-semibold">Animation</span>과{" "}
                   <span className="font-semibold">User Interaction</span>에
                   특화된 UI Design, 반응형, 다크모드 지원

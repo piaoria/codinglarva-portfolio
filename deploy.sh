@@ -1,6 +1,6 @@
 echo "🔍 환경 변수 확인 중..."
 echo "현재 설정된 환경 변수:"
-env | grep -E "NOTION|DISCORD"
+env | grep -E "DISCORD"
 
 # 시스템 정보 출력
 echo "🔍 시스템 정보 확인"
@@ -20,14 +20,6 @@ docker builder prune -f
 
 # 필수 환경 변수 확인
 MISSING_ENV=false
-if [ -z "$NOTION_API_KEY" ]; then
-    echo "❌ NOTION_API_KEY가 설정되지 않았습니다!"
-    MISSING_ENV=true
-fi
-if [ -z "$NOTION_DOCS_DATABASE_ID" ]; then
-    echo "❌ NOTION_DOCS_DATABASE_ID가 설정되지 않았습니다!"
-    MISSING_ENV=true
-fi
 if [ -z "$DISCORD_SECRET" ]; then
     echo "❌ DISCORD_SECRET이 설정되지 않았습니다!"
     MISSING_ENV=true
@@ -64,8 +56,6 @@ git pull origin master || {
 echo "🔨 Docker 이미지 빌드 시작..."
 # 빌드 로그를 파일로 저장
 docker build \
-  --build-arg NOTION_API_KEY="$NOTION_API_KEY" \
-  --build-arg NOTION_DOCS_DATABASE_ID="$NOTION_DOCS_DATABASE_ID" \
   -t codinglarva-portfolio:latest . 2>&1 | tee docker-build.log || {
     echo "❌ Docker 빌드 실패!"
     echo "빌드 로그:"
@@ -79,15 +69,10 @@ echo "✅ Docker 이미지 빌드 완료"
 
 # 새 컨테이너 실행
 echo "🚀 새 컨테이너 실행..."
-echo "전달되는 환경 변수:"
-echo "NOTION_API_KEY: ${NOTION_API_KEY:+설정됨}"
-echo "NOTION_DOCS_DATABASE_ID: ${NOTION_DOCS_DATABASE_ID:+설정됨}"
 
 docker run -d \
     --name codinglarva-portfolio \
     -p 3000:3000 \
-    -e NOTION_API_KEY="$NOTION_API_KEY" \
-    -e NOTION_DOCS_DATABASE_ID="$NOTION_DOCS_DATABASE_ID" \
     codinglarva-portfolio || {
     echo "❌ Docker 컨테이너 실행 실패!"
     curl -H "Content-Type: application/json" -X POST \
