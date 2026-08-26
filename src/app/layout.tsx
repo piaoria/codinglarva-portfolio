@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
 import { Bungee_Hairline } from "next/font/google";
 import localFont from "next/font/local";
-import Header from "@/components/layout/Header";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
-import CustomCursor from "@/components/layout/CustomCursor";
 import "./globals.css";
-import { HeaderColorProvider } from "@/contexts/HeaderColorContext";
-import { ModalProvider } from "@/contexts/ModalContext";
-import { ToastProvider } from "@/contexts/ToastContext";
 import Script from "next/script";
 
 const bungeeHairline = Bungee_Hairline({
@@ -105,17 +100,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange={false}
         >
-          <HeaderColorProvider>
-            <CustomCursor />
-            <ModalProvider>
-              <ToastProvider>
-                <div className="min-h-screen flex flex-col">
-                  <Header />
-                  <main className="flex-grow">{children}</main>
-                </div>
-              </ToastProvider>
-            </ModalProvider>
-          </HeaderColorProvider>
+          {children}
         </ThemeProvider>
       </body>
     </html>

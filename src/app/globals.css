@@ -53,35 +53,34 @@ body {
   letter-spacing: -0.03em;
 }
 
-/* 데스크톱에서만 커스텀 커서 적용 */
+/* 데스크톱에서만 커스텀 커서 적용 (홈 포트폴리오만) */
 @media (min-width: 475px) {
-  body {
+  .portfolio-shell {
     cursor: none;
-    /* 마우스 커서 커스텀 */
-    .custom-cursor {
-      width: 10px;
-      height: 10px;
-      background-color: var(--primary-color);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition:
-        width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-        height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-        background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-        border 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
   }
 
-  /* 호버 가능한 요소의 기본 커서 숨기기 */
-  button,
-  a,
-  [role="button"],
-  [onClick],
-  [data-clickable="true"] {
+  .portfolio-shell .custom-cursor {
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition:
+      width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      border 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .portfolio-shell button,
+  .portfolio-shell a,
+  .portfolio-shell [role="button"],
+  .portfolio-shell [onClick],
+  .portfolio-shell [data-clickable="true"] {
     cursor: none !important;
   }
 

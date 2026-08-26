@@ -1,0 +1,173 @@
+/**
+ * PHJ.AI Design Tokens
+ * Single source of truth for the portfolio's OS-style visual language.
+ * Only reference these tokens from components — never hard-code hex/px values.
+ */
+
+:root {
+  /* ── Surface / Background ─────────────────────────────────── */
+  --phj-bg-default: #07090d;
+  --phj-bg-elevated: #0d1117;
+  --phj-bg-panel: #12171f;
+  --phj-bg-overlay: rgba(7, 9, 13, 0.72);
+
+  /* ── Text ─────────────────────────────────────────────────── */
+  --phj-text-primary: #e6e8ee;
+  --phj-text-secondary: #a4acbb;
+  --phj-text-muted: #6b7387;
+  --phj-text-inverse: #0b0d12;
+
+  /* ── Border ───────────────────────────────────────────────── */
+  --phj-border-default: rgba(255, 255, 255, 0.06);
+  --phj-border-strong: rgba(255, 255, 255, 0.12);
+  --phj-border-glow: rgba(120, 160, 255, 0.35);
+
+  /* ── Status ───────────────────────────────────────────────── */
+  --phj-status-online: #4ade80;
+  --phj-status-offline: #6b7387;
+  --phj-status-warning: #f5c451;
+  --phj-status-error: #f87171;
+  --phj-status-pending: #7dd3fc;
+
+  /* ── AI Module Accents (used sparingly) ───────────────────── */
+  --phj-accent-gpt: #3fb984;      /* muted emerald */
+  --phj-accent-claude: #d69368;   /* warm amber / clay */
+  --phj-accent-cursor: #8b6cf0;   /* violet */
+  --phj-accent-gemini: #61a8ff;   /* blue */
+  --phj-accent-figma: #e26bb0;    /* magenta */
+  --phj-accent-portfolio: #cfd3dc; /* neutral pearl — evidence/showcase */
+
+  /* ── Spacing (8pt) ────────────────────────────────────────── */
+  --phj-space-2: 2px;
+  --phj-space-4: 4px;
+  --phj-space-8: 8px;
+  --phj-space-12: 12px;
+  --phj-space-16: 16px;
+  --phj-space-24: 24px;
+  --phj-space-32: 32px;
+  --phj-space-48: 48px;
+  --phj-space-64: 64px;
+  --phj-space-96: 96px;
+
+  /* ── Radius ───────────────────────────────────────────────── */
+  --phj-radius-xs: 4px;
+  --phj-radius-sm: 8px;
+  --phj-radius-md: 12px;
+  --phj-radius-lg: 16px;
+  --phj-radius-xl: 24px;
+  --phj-radius-full: 999px;
+
+  /* ── Elevation / Glow ─────────────────────────────────────── */
+  --phj-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --phj-shadow-2: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --phj-shadow-3: 0 20px 48px rgba(0, 0, 0, 0.55);
+  --phj-shadow-glow: 0 0 32px rgba(120, 160, 255, 0.18);
+  --phj-shadow-core: 0 0 64px rgba(120, 160, 255, 0.22),
+    0 0 160px rgba(120, 160, 255, 0.08);
+
+  /* ── Motion ───────────────────────────────────────────────── */
+  --phj-motion-fast: 120ms;
+  --phj-motion-normal: 240ms;
+  --phj-motion-slow: 500ms;
+  --phj-ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* ── Typography ───────────────────────────────────────────── */
+  --phj-font-sans: var(--font-inter), var(--font-pretendard), ui-sans-serif,
+    system-ui, sans-serif;
+  --phj-font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular",
+    Menlo, monospace;
+}
+
+/* Base surface for the PHJ shell */
+.phj-root {
+  background: var(--phj-bg-default);
+  color: var(--phj-text-primary);
+  font-family: var(--phj-font-sans);
+  font-feature-settings: "cv02", "cv03", "cv04";
+  -webkit-font-smoothing: antialiased;
+  cursor: auto;
+}
+
+.phj-mono {
+  font-family: var(--phj-font-mono);
+  letter-spacing: 0.01em;
+}
+
+/* Subtle background grid used behind the landing composition */
+.phj-grid-bg {
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    );
+  background-size: 48px 48px;
+}
+
+.phj-radial-glow {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(120, 160, 255, 0.10) 0%,
+    rgba(120, 160, 255, 0.03) 30%,
+    transparent 60%
+  );
+}
+
+/* One-shot flash for the edge connector strips when chip meets core. */
+@keyframes phj-connector-flash {
+  0%   { transform: scaleY(1);    filter: brightness(1); }
+  25%  { transform: scaleY(1.35); filter: brightness(2.1); }
+  100% { transform: scaleY(1);    filter: brightness(1); }
+}
+
+/* Gentle bob during the docked/loaded phase so the chip feels "live". */
+@keyframes phj-chip-idle-hover {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-2px); }
+}
+
+/* ── Custom scrollbar ──────────────────────────────────────────
+ * Thin "data rail" scrollbar matching the chipset/circuit language:
+ * a faint recessed track with an accent-tinted thumb that glows on hover.
+ * Components may override --phj-scroll-accent inline to tint per module.
+ */
+.phj-scroll {
+  --phj-scroll-accent: var(--phj-border-glow);
+  scrollbar-width: thin;
+  scrollbar-color: var(--phj-scroll-accent) transparent;
+}
+.phj-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.phj-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--phj-radius-full);
+}
+.phj-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--phj-scroll-accent) 55%, transparent);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  border-radius: var(--phj-radius-full);
+  transition: background var(--phj-motion-fast) var(--phj-ease-standard);
+}
+.phj-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--phj-scroll-accent);
+  background-clip: padding-box;
+  box-shadow: 0 0 8px var(--phj-scroll-accent);
+}
+.phj-scroll::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --phj-motion-fast: 0ms;
+    --phj-motion-normal: 0ms;
+    --phj-motion-slow: 0ms;
+  }
+}

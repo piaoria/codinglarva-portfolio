@@ -3,10 +3,19 @@
 import Logo from "./Logo";
 import ThemeSwitch from "./ThemeSwitch";
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { useHeaderColor } from "@/contexts/HeaderColorContext";
+import { useRouter } from "next/navigation";
+
+type MenuItem = {
+  id: string;
+  label: string;
+  href?: string;
+};
 
 export default function Header() {
+  const router = useRouter();
   const { headerColor } = useHeaderColor();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -45,11 +54,21 @@ export default function Header() {
     }
   };
 
-  const menuItems = [
+  const handleMenuClick = (item: MenuItem) => {
+    if (item.href) {
+      router.push(item.href);
+      setIsMenuOpen(false);
+      return;
+    }
+    scrollToSection(item.id);
+  };
+
+  const menuItems: MenuItem[] = [
     { id: "about", label: "About" },
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
     { id: "awards", label: "Awards" },
+    { id: "ai", label: "AI", href: "/ai" },
   ];
 
   return (
@@ -66,18 +85,27 @@ export default function Header() {
         <div className="flex-1"></div>
         {/* 데스크톱 */}
         <div className="hidden md:flex items-center gap-4 sm:gap-10">
-          {menuItems.map((item) => (
-            <button
-              key={item.id}
-              className="text-base sm:text-xl"
-              onClick={() => scrollToSection(item.id)}
-            >
-              <span className="text-[var(--primary-color)] font-black">
-                {item.label[0]}
-              </span>
-              <span className="font-light">{item.label.slice(1)}</span>
-            </button>
-          ))}
+          {menuItems.map((item) =>
+            item.href ? (
+              <Link key={item.id} href={item.href} className="text-base sm:text-xl">
+                <span className="text-[var(--primary-color)] font-black">
+                  {item.label[0]}
+                </span>
+                <span className="font-light">{item.label.slice(1)}</span>
+              </Link>
+            ) : (
+              <button
+                key={item.id}
+                className="text-base sm:text-xl"
+                onClick={() => handleMenuClick(item)}
+              >
+                <span className="text-[var(--primary-color)] font-black">
+                  {item.label[0]}
+                </span>
+                <span className="font-light">{item.label.slice(1)}</span>
+              </button>
+            )
+          )}
         </div>
 
         {/* 모바일 메뉴 버튼 */}
@@ -110,23 +138,41 @@ export default function Header() {
         }`}
       >
         <div className="flex flex-col">
-          {menuItems.map((item, index) => (
-            <button
-              key={item.id}
-              className="px-4 py-3 text-left hover:bg-[var(--dropdown-hover)] transition-colors opacity-0"
-              onClick={() => scrollToSection(item.id)}
-              style={{
-                animation: isMenuOpen
-                  ? `slideDown 0.3s ease forwards ${index * 0.1}s`
-                  : "none",
-              }}
-            >
-              <span className="text-[var(--primary-color)] font-black">
-                {item.label[0]}
-              </span>
-              <span className="font-light">{item.label.slice(1)}</span>
-            </button>
-          ))}
+          {menuItems.map((item, index) =>
+            item.href ? (
+              <Link
+                key={item.id}
+                href={item.href}
+                className="px-4 py-3 text-left hover:bg-[var(--dropdown-hover)] transition-colors opacity-0"
+                style={{
+                  animation: isMenuOpen
+                    ? `slideDown 0.3s ease forwards ${index * 0.1}s`
+                    : "none",
+                }}
+              >
+                <span className="text-[var(--primary-color)] font-black">
+                  {item.label[0]}
+                </span>
+                <span className="font-light">{item.label.slice(1)}</span>
+              </Link>
+            ) : (
+              <button
+                key={item.id}
+                className="px-4 py-3 text-left hover:bg-[var(--dropdown-hover)] transition-colors opacity-0"
+                onClick={() => handleMenuClick(item)}
+                style={{
+                  animation: isMenuOpen
+                    ? `slideDown 0.3s ease forwards ${index * 0.1}s`
+                    : "none",
+                }}
+              >
+                <span className="text-[var(--primary-color)] font-black">
+                  {item.label[0]}
+                </span>
+                <span className="font-light">{item.label.slice(1)}</span>
+              </button>
+            )
+          )}
         </div>
       </div>
     </header>
