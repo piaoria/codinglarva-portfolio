@@ -1,7 +1,13 @@
 import Link from "next/link";
+import { McpEndpoint } from "./McpEndpoint";
 import { StatusDot } from "./StatusDot";
 
-export function TopSystemBar() {
+interface Props {
+  onOpenManual?: (tab?: "screen" | "mcp") => void;
+  onOpenPalette?: () => void;
+}
+
+export function TopSystemBar({ onOpenManual, onOpenPalette }: Props) {
   return (
     <header
       className="phj-mono flex items-center justify-between border-b"
@@ -33,8 +39,25 @@ export function TopSystemBar() {
           <StatusDot status="connected" pulse />
           <span>시스템 온라인</span>
         </span>
-        <span>mcp: 준비됨</span>
-        <span>
+        <button type="button" onClick={() => onOpenManual?.("mcp")}>
+          <McpEndpoint />
+        </button>
+        <button type="button" onClick={() => onOpenManual?.("screen")}>
+          <kbd
+            className="phj-mono"
+            style={{
+              padding: "2px 6px",
+              border: "1px solid var(--phj-border-strong)",
+              borderRadius: "var(--phj-radius-xs)",
+              color: "var(--phj-text-primary)",
+              fontSize: 10,
+            }}
+          >
+            ?
+          </kbd>{" "}
+          사용법
+        </button>
+        <button type="button" onClick={onOpenPalette}>
           <kbd
             className="phj-mono"
             style={{
@@ -48,7 +71,7 @@ export function TopSystemBar() {
             ⌘K
           </kbd>{" "}
           명령
-        </span>
+        </button>
       </div>
     </header>
   );

@@ -5,6 +5,7 @@ import { TopSystemBar } from "./TopSystemBar";
 import { OrbitalField } from "./OrbitalField";
 import { ActivityStrip } from "./ActivityStrip";
 import { CommandPalette } from "./CommandPalette";
+import { UsageManual } from "./UsageManual";
 import {
   BASE_ANGLES,
   MODULES,
@@ -43,6 +44,8 @@ export default function AiProfileApp() {
   const [phase, setPhase] = useState<InsertionPhase>("idle");
   const [rotation, setRotation] = useState(0);
   const [paletteOpen, setPaletteOpen] = useState(false);
+  const [manualOpen, setManualOpen] = useState(false);
+  const [manualTab, setManualTab] = useState<"screen" | "mcp">("screen");
   const [showHint, setShowHint] = useState(true);
   const timerRef = useRef<number | null>(null);
 
@@ -91,13 +94,32 @@ export default function AiProfileApp() {
     }, EJECT_MS);
   }, []);
 
+  const openManual = useCallback((tab: "screen" | "mcp" = "screen") => {
+    setManualTab(tab);
+    setManualOpen(true);
+    setPaletteOpen(false);
+  }, []);
+
   useEffect(() => clearTimer, []);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      if (manualOpen) return;
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
         setPaletteOpen((v) => !v);
+        return;
+      }
+      if (e.key === "?" && !e.metaKey && !e.ctrlKey && !e.altKey) {
+        const target = e.target as HTMLElement | null;
+        if (
+          target &&
+          (target.tagName === "INPUT" || target.tagName === "TEXTAREA")
+        ) {
+          return;
+        }
+        e.preventDefault();
+        openManual("screen");
         return;
       }
       if (paletteOpen) return;
@@ -125,7 +147,7 @@ export default function AiProfileApp() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [paletteOpen, phase, rotation, handleSelectModule]);
+  }, [paletteOpen, manualOpen, phase, rotation, handleSelectModule, openManual]);
 
   const sectionLabel =
     phase === "idle"
@@ -141,7 +163,10 @@ export default function AiProfileApp() {
       className="phj-root flex flex-col"
       style={{ width: "100%", height: "100dvh", overflow: "hidden" }}
     >
-      <TopSystemBar />
+      <TopSystemBar
+        onOpenManual={openManual}
+        onOpenPalette={() => setPaletteOpen(true)}
+      />
 
       <div className="flex flex-1 min-h-0">
         <main
@@ -262,7 +287,13 @@ export default function AiProfileApp() {
         onClose={() => setPaletteOpen(false)}
         onSelectModule={handleSelectModule}
         onEject={handleEject}
+        onOpenManual={() => openManual("screen")}
         loaded={phase === "loaded"}
+      />
+      <UsageManual
+        open={manualOpen}
+        initialTab={manualTab}
+        onClose={() => setManualOpen(false)}
       />
 
       <style>{`

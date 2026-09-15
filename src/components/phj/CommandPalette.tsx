@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Search, CornerDownLeft, Cpu, LogOut } from "lucide-react";
+import { Search, CornerDownLeft, Cpu, LogOut, CircleHelp } from "lucide-react";
 import { MODULES, type ModuleId } from "./types";
 
 interface Props {
@@ -7,6 +7,7 @@ interface Props {
   onClose: () => void;
   onSelectModule: (id: ModuleId) => void;
   onEject: () => void;
+  onOpenManual: () => void;
   loaded: boolean;
 }
 
@@ -27,6 +28,7 @@ export function CommandPalette({
   onClose,
   onSelectModule,
   onEject,
+  onOpenManual,
   loaded,
 }: Props) {
   const [query, setQuery] = useState("");
@@ -41,6 +43,12 @@ export function CommandPalette({
       accentVar: m.accentVar,
       run: () => onSelectModule(m.id),
     }));
+    list.push({
+      id: "manual",
+      label: "사용 설명서",
+      hint: "화면 조작 · MCP 연결",
+      run: onOpenManual,
+    });
     if (loaded) {
       list.push({
         id: "eject",
@@ -50,7 +58,7 @@ export function CommandPalette({
       });
     }
     return list;
-  }, [onSelectModule, onEject, loaded]);
+  }, [onSelectModule, onEject, onOpenManual, loaded]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -192,7 +200,12 @@ export function CommandPalette({
             const accent = cmd.accentVar
               ? `var(${cmd.accentVar})`
               : "var(--phj-border-glow)";
-            const Icon = cmd.id === "eject" ? LogOut : Cpu;
+            const Icon =
+              cmd.id === "eject"
+                ? LogOut
+                : cmd.id === "manual"
+                  ? CircleHelp
+                  : Cpu;
             return (
               <li key={cmd.id}>
                 <button

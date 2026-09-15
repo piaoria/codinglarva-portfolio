@@ -316,6 +316,7 @@ export const MODULES: AIModule[] = [
           {
             heading: "Coding",
             lines: [
+              "코드는 최대한 짧고 간결하게 작성한다.",
               "기존 프로젝트 스타일을 유지한다.",
               "변경 범위를 최소화한다.",
               "관련 없는 코드 수정은 하지 않는다.",

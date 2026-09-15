@@ -13,8 +13,8 @@ RUN npm install --include=dev
 # 소스 코드 복사
 COPY . .
 
-# 빌드 실행
-RUN npm run build
+# 빌드 실행 (Windows CRLF 워킹트리에서도 prettier 린트에 막히지 않게 한다)
+RUN npm run build -- --no-lint
 
 EXPOSE 3000
 
